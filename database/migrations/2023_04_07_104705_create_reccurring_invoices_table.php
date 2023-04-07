@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reccuring_invoices', function (Blueprint $table) {
+        Schema::create('reccurring_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->enum('frequency', ['weekly', 'monthly', 'quarterly', 'yearly']);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reccuring_invoices');
+        Schema::dropIfExists('reccurring_invoices');
     }
 };

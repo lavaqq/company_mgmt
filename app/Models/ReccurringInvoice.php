@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ReccuringInvoice extends Model
+class ReccurringInvoice extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
@@ -18,6 +18,6 @@ class ReccuringInvoice extends Model
     }
     public function reccuringInvoiceItems(): HasMany
     {
-        return $this->hasMany(ReccuringInvoiceItem::class);
+        return $this->hasMany(ReccurringInvoiceItem::class);
     }
 }

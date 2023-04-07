@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ReccuringInvoiceItem extends Model
+class ReccurringInvoiceItem extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
     public function reccuringInvoice(): BelongsTo
     {
-        return $this->belongsTo(ReccuringInvoice::class);
+        return $this->belongsTo(ReccurringInvoice::class);
     }
 }

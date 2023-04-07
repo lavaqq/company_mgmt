@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reccuring_invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reccuring_invoice_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('reccurring_invoice_id')->constrained()->cascadeOnDelete();
             $table->string('description');
             $table->decimal('amount', 10, 2);
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reccuring_invoice_items');
+        Schema::dropIfExists('reccurring_invoice_items');
     }
 };
