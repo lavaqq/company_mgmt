@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('legal_form');
             $table->string('vat_number');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

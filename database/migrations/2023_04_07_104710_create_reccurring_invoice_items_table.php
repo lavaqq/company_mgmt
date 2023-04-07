@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('reccurring_invoice_id')->constrained()->cascadeOnDelete();
             $table->string('description');
             $table->decimal('amount', 10, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

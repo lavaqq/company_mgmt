@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('total_excl_tax', 10, 2);
             $table->decimal('total_incl_tax', 10, 2);
             $table->decimal('total_tax', 10, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
