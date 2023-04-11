@@ -16,8 +16,29 @@ class ReccurringInvoice extends Model
     {
         return $this->belongsTo(Company::class);
     }
-    public function reccuringInvoiceItems(): HasMany
+    public function reccurringInvoiceItems(): HasMany
     {
         return $this->hasMany(ReccurringInvoiceItem::class);
+    }
+    public function getTotalExclTax(): float
+    {
+        $totalItem = $this->reccurringInvoiceItems()->sum('amount');
+        $totalExclTax = $totalItem;
+        return $totalExclTax;
+    }
+    public function getTotalInclTax(): float
+    {
+        $totalItem = $this->reccurringInvoiceItems()->sum('amount');
+        $taxRate = $this->tax_rate;
+        $totalItem += $totalItem * ($taxRate / 100);
+        $totalInclTax = $totalItem;
+        return $totalInclTax;
+    }
+    public function getTotalTax(): float
+    {
+        $totalItem = $this->reccurringInvoiceItems()->sum('amount');
+        $taxRate = $this->tax_rate;
+        $totalTax = $totalItem * ($taxRate / 100);
+        return $totalTax;
     }
 }
