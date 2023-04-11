@@ -21,10 +21,16 @@ use Filament\Tables\Actions\Action;
 class Logs extends Page implements HasTable
 {
     use Tables\Concerns\InteractsWithTable;
-    protected static ?string $navigationIcon = 'heroicon-o-annotation';
-    protected static ?string $label = 'Logs';
-    protected static ?string $navigationLabel = 'Logs';
+    protected static ?string $navigationIcon = 'heroicon-o-database';
+    protected static ?string $navigationGroup = 'Administration';
+    protected static ?string $label = "Journal d'activité";
+    protected static ?string $navigationLabel = "Journal d'activité";
     protected static string $view = 'filament.pages.logs';
+
+    protected function getTitle(): string
+    {
+        return 'Toutes les activités';
+    }
 
     protected function getTableQuery(): Builder
     {
