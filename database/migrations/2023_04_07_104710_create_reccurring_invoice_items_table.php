@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reccuring_invoice_items', function (Blueprint $table) {
+        Schema::create('reccurring_invoice_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reccurring_invoice_id')->constrained()->cascadeOnDelete();
             $table->string('description');

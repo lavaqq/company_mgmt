@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('reccurring_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->string('title');
             $table->enum('frequency', ['weekly', 'monthly', 'quarterly', 'yearly']);
             $table->date('start_date');
             $table->boolean('is_indefinite_duration')->default(false);
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->decimal('tax_rate', 10, 2);
-            $table->decimal('total_excl_tax', 10, 2);
-            $table->decimal('total_incl_tax', 10, 2);
-            $table->decimal('total_tax', 10, 2);
             $table->softDeletes();
             $table->timestamps();
         });
