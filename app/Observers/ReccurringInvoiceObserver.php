@@ -3,72 +3,72 @@
 namespace App\Observers;
 
 use App\Models\ActivityLog;
-use App\Models\ReccuringInvoice;
+use App\Models\ReccurringInvoice;
 
 class ReccurringInvoiceObserver
 {
     /**
-     * Handle the ReccuringInvoice "created" event.
+     * Handle the ReccurringInvoice "created" event.
      */
-    public function created(ReccuringInvoice $reccuringInvoice): void
+    public function created(ReccurringInvoice $reccurringInvoice): void
     {
         $activity = new ActivityLog();
         $activity->user_id = auth()->user()->id;
         $activity->action = 'create';
-        $activity->table = $reccuringInvoice->getTable();
-        $activity->record_id = $reccuringInvoice->id;
+        $activity->table = $reccurringInvoice->getTable();
+        $activity->record_id = $reccurringInvoice->id;
         $activity->save();
     }
 
     /**
-     * Handle the ReccuringInvoice "updated" event.
+     * Handle the ReccurringInvoice "updated" event.
      */
-    public function updated(ReccuringInvoice $reccuringInvoice): void
+    public function updated(ReccurringInvoice $reccurringInvoice): void
     {
         $activity = new ActivityLog();
         $activity->user_id = auth()->user()->id;
         $activity->action = 'update';
-        $activity->table = $reccuringInvoice->getTable();
-        $activity->record_id = $reccuringInvoice->id;
+        $activity->table = $reccurringInvoice->getTable();
+        $activity->record_id = $reccurringInvoice->id;
         $activity->save();
     }
 
     /**
-     * Handle the ReccuringInvoice "deleted" event.
+     * Handle the ReccurringInvoice "deleted" event.
      */
-    public function deleted(ReccuringInvoice $reccuringInvoice): void
+    public function deleted(ReccurringInvoice $reccurringInvoice): void
     {
         $activity = new ActivityLog();
         $activity->user_id = auth()->user()->id;
         $activity->action = 'delete';
-        $activity->table = $reccuringInvoice->getTable();
-        $activity->record_id = $reccuringInvoice->id;
+        $activity->table = $reccurringInvoice->getTable();
+        $activity->record_id = $reccurringInvoice->id;
         $activity->save();
     }
 
     /**
-     * Handle the ReccuringInvoice "restored" event.
+     * Handle the ReccurringInvoice "restored" event.
      */
-    public function restored(ReccuringInvoice $reccuringInvoice): void
+    public function restored(ReccurringInvoice $reccurringInvoice): void
     {
         $activity = new ActivityLog();
         $activity->user_id = auth()->user()->id;
         $activity->action = 'restore';
-        $activity->table = $reccuringInvoice->getTable();
-        $activity->record_id = $reccuringInvoice->id;
+        $activity->table = $reccurringInvoice->getTable();
+        $activity->record_id = $reccurringInvoice->id;
         $activity->save();
     }
 
     /**
-     * Handle the ReccuringInvoice "force deleted" event.
+     * Handle the ReccurringInvoice "force deleted" event.
      */
-    public function forceDeleted(ReccuringInvoice $reccuringInvoice): void
+    public function forceDeleted(ReccurringInvoice $reccurringInvoice): void
     {
         $activity = new ActivityLog();
         $activity->user_id = auth()->user()->id;
         $activity->action = 'force_delete';
-        $activity->table = $reccuringInvoice->getTable();
-        $activity->record_id = $reccuringInvoice->id;
+        $activity->table = $reccurringInvoice->getTable();
+        $activity->record_id = $reccurringInvoice->id;
         $activity->save();
     }
 }
