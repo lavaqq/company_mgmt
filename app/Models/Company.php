@@ -16,12 +16,8 @@ class Company extends Model
     {
         return $this->hasMany(Invoice::class);
     }
-    public function reccuringInvoices(): HasMany
+    public function reccurringInvoices(): HasMany
     {
-        return $this->hasMany(ReccuringInvoice::class);
-    }
-    public function adress(): HasOne
-    {
-        return $this->hasOne(Adress::class);
+        return $this->hasMany(ReccurringInvoice::class);
     }
 }
