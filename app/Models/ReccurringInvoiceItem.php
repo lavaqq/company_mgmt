@@ -11,7 +11,7 @@ class ReccurringInvoiceItem extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
-    public function reccuringInvoice(): BelongsTo
+    public function reccurringInvoice(): BelongsTo
     {
         return $this->belongsTo(ReccurringInvoice::class);
     }
