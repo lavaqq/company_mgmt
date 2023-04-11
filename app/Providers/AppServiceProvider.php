@@ -38,13 +38,13 @@ class AppServiceProvider extends ServiceProvider
         Filament::serving(function () {
             Filament::registerViteTheme('resources/css/filament.css');
         });
-        Adress::observe(AdressObserver::class);
+        Filament::registerNavigationGroups([
+            'Répertoire',
+            'Comptabilité',
+            'Administration',
+        ]);
         Company::observe(CompanyObserver::class);
-        InvoiceDiscount::observe(InvoiceDiscountObserver::class);
-        InvoiceItem::observe(InvoiceItemObserver::class);
         Invoice::observe(InvoiceObserver::class);
-        ReccurringInvoiceItem::observe(ReccurringInvoiceObserver::class);
         ReccurringInvoice::observe(ReccurringInvoiceObserver::class);
-        Transaction::observe(TransactionObserver::class);
     }
 }
