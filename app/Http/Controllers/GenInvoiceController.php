@@ -36,7 +36,6 @@ class GenInvoiceController extends Controller
         return view('pdf.invoice', $data)->render();
     }
 
-
     public static function view()
     {
         $invoice = Invoice::all()->first();
@@ -61,8 +60,22 @@ class GenInvoiceController extends Controller
             'zipcode' => $invoice->company->zipcode,
             'country' => $invoice->company->country,
         ];
-        $pdf = Pdf::loadView('pdf.invoice', $data);
-        return $pdf->stream('invoice.pdf');
+        $html = view('pdf.invoice', $data)->render();
+        $tmp = sys_get_temp_dir();
+        $dompdf = new Dompdf([
+            'logOutputFile' => '',
+            'isRemoteEnabled' => true,
+            'fontDir' => $tmp,
+            'fontCache' => $tmp,
+            'tempDir' => $tmp,
+            'chroot' => $tmp,
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        return $dompdf->stream('test.pdf', [
+            'compress' => true,
+            'Attachment' => false,
+        ]);
     }
 
     public static function download()
