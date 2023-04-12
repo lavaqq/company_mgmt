@@ -2,7 +2,7 @@
 
 <head>
     <title>{{ $invoice_number }}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -149,7 +149,8 @@
 
 <body>
     <div class="invoice__header">
-        <img class="header__logo" src="logo.png">
+        <img class="header__logo"
+            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/logo.png'))) }}">
         <div class="header__info">
             <div class="header__address">
                 <p>LOAK.STUDIO (SRL)</p>
