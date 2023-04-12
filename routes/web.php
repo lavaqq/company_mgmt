@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GenInvoiceController;
+use App\Http\Controllers\RandomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
+Route::get('/view', [GenInvoiceController::class, 'view']);
+Route::get('/test', [GenInvoiceController::class, 'test']);
