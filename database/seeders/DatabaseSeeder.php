@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Person;
+use App\Models\Company;
+use App\Models\Invoice;
+use App\Models\ReccurringInvoice;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -27,5 +29,19 @@ class DatabaseSeeder extends Seeder
         $test_user->email = 'test@test.io';
         $test_user->password = Hash::make('test');
         $test_user->save();
+
+
+        $company = Company::factory()->create();
+
+        Invoice::factory(20)
+            ->hasInvoiceItems(5)
+            ->hasInvoiceDiscounts(2)
+            ->for($company)
+            ->create();
+
+        ReccurringInvoice::factory(10)
+            ->hasReccurringInvoiceItems(5)
+            ->for($company)
+            ->create();
     }
 }
