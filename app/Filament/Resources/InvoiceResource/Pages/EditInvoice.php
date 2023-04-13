@@ -20,7 +20,7 @@ class EditInvoice extends EditRecord
     }
     protected function getTitle(): string
     {
-        return "Modifier la facture : " . $this->record->invoice_id;
+        return "Modifier la facture : " . $this->record->invoice_number;
     }
     protected function getRedirectUrl(): string
     {
