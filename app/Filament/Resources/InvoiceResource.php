@@ -7,6 +7,7 @@ use App\Filament\Resources\InvoiceResource\RelationManagers;
 use App\Models\Invoice;
 use Closure;
 use Filament\Forms;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Hidden;
@@ -156,6 +157,11 @@ class InvoiceResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('View PDF')
+                    ->label('Voir le PDF')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn ($record) => route('invoice.pdf', ['id' => $record->id]))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
