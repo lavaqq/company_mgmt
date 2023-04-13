@@ -128,6 +128,10 @@ class CompanyResource extends Resource
                     ->label('Nom'),
                 TextColumn::make('legal_form')
                     ->label('Forme légal'),
+                TextColumn::make('vat_number')
+                    ->label('Numéro de TVA'),
+                TextColumn::make('country')
+                    ->label('Pays'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -146,7 +150,7 @@ class CompanyResource extends Resource
     {
         return [];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -154,8 +158,8 @@ class CompanyResource extends Resource
             'create' => Pages\CreateCompany::route('/create'),
             'edit' => Pages\EditCompany::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
