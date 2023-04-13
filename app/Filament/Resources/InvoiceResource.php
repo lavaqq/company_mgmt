@@ -124,9 +124,11 @@ class InvoiceResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('invoice_number')
-                    ->label('Numéro de facture'),
+                    ->sortable()
+                    ->label('Référence'),
                 TextColumn::make('company.name')
-                    ->label('Entreprise'),
+                    ->label('Entreprise')
+                    ->limit(20),
                 TextColumn::make('issue_date')
                     ->label("Date d'émission")
                     ->dateTime('d/m/Y'),
@@ -138,12 +140,6 @@ class InvoiceResource extends Resource
                     ->suffix(' €')
                     ->getStateUsing(function (Model $record): float {
                         return $record->getTotalExclTax();
-                    }),
-                TextColumn::make('total_tax')
-                    ->label('TVA')
-                    ->suffix(' €')
-                    ->getStateUsing(function (Model $record): float {
-                        return $record->getTotalTax();
                     }),
                 TextColumn::make('total_incl_tax')
                     ->label('Total TTC')
@@ -158,7 +154,7 @@ class InvoiceResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Action::make('View PDF')
-                    ->label('Voir le PDF')
+                    ->label('PDF')
                     ->icon('heroicon-o-eye')
                     ->url(fn ($record) => route('invoice.pdf', ['id' => $record->id]))
                     ->openUrlInNewTab(),
