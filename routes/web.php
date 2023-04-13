@@ -21,4 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('invoices/{id}/pdf', [GenInvoiceController::class, 'view'])
     ->middleware(Authenticate::class)
-    ->name('invoice.pdf');;
+    ->name('invoice.pdf');
+
+    Route::get('test', [GenInvoiceController::class, 'test']);
