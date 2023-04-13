@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
 
 class GenInvoiceController extends Controller
@@ -36,14 +35,14 @@ class GenInvoiceController extends Controller
         return view('pdf.invoice', $data)->render();
     }
 
-    public static function view()
+    public static function view($id)
     {
-        $invoice = Invoice::all()->first();
+        $invoice = Invoice::find($id);
         $data = [
             'invoice_number' => $invoice->invoice_number,
             'vcs' => $invoice->vcs,
-            'issue_date' => $invoice->issue_date,
-            'due_date' => $invoice->due_date,
+            'issue_date' => date('d/m/Y', strtotime($invoice->issue_date)),
+            'due_date' => date('d/m/Y', strtotime($invoice->due_date)),
             'tax_rate' => $invoice->tax_rate,
             'invoice_items' => $invoice->invoiceItems,
             'invoice_discounts' => $invoice->invoiceDiscounts,
@@ -76,15 +75,5 @@ class GenInvoiceController extends Controller
             'compress' => true,
             'Attachment' => false,
         ]);
-    }
-
-    public static function download()
-    {
-        $data = [
-            'title' => 'My PDF Document',
-            'content' => 'This is the content of my PDF document.'
-        ];
-        $pdf = Pdf::loadView('pdf.invoice', $data);
-        return $pdf->download('invoice.pdf');
     }
 }
