@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\GenInvoiceController;
-use App\Http\Controllers\RandomController;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
-Route::get('/view', [GenInvoiceController::class, 'view']);
-Route::get('/test', [GenInvoiceController::class, 'test']);
+Route::get('invoices/{id}/pdf', [GenInvoiceController::class, 'view'])
+    ->middleware(Authenticate::class)
+    ->name('invoice.pdf');;
