@@ -43,8 +43,9 @@ class AppServiceProvider extends ServiceProvider
             'Comptabilité',
             'Administration',
         ]);
-        Company::observe(CompanyObserver::class);
-        Invoice::observe(InvoiceObserver::class);
-        ReccurringInvoice::observe(ReccurringInvoiceObserver::class);
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class;
+        // Company::observe(CompanyObserver::class);
+        // Invoice::observe(InvoiceObserver::class);
+        // ReccurringInvoice::observe(ReccurringInvoiceObserver::class);
     }
 }
