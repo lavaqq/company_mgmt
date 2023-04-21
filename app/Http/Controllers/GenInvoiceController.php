@@ -11,14 +11,22 @@ class GenInvoiceController extends Controller
 
     public static function test()
     {
-        return self::genQRCode(Invoice::all()->first());
+        return self::genQRCode();
     }
 
-    public static function genQRCode(Invoice $invoice) : string {
-        $defaultParameters = 'BCD 001 1 SCT XXXXXX LOAK.STUDIO BEXXXXXXXXXXXX';
-        $total = $invoice->getTotalInclTax();
-        $vcs = $invoice->vcs;
-        return QrCode::generate($defaultParameters . ' EUR' . $total . ' ' . $vcs);
+    public static function genQRCode()
+    {
+        return QrCode::generate('
+        BCD
+        002
+        1
+        SCT
+        PCHQBEBB
+        service T.V.A.-Recettes
+        BE22679200300047
+        EUR3415.80
+        +++079/5704/36172+++
+        ');
     }
 
     public static function view($id)
@@ -44,6 +52,7 @@ class GenInvoiceController extends Controller
             'city' => $invoice->company->city,
             'zipcode' => $invoice->company->zipcode,
             'country' => $invoice->company->country,
+            'qrcode' => self::genQRCode($invoice),
         ];
         $html = view('pdf.invoice', $data)->render();
         $tmp = sys_get_temp_dir();
@@ -57,7 +66,7 @@ class GenInvoiceController extends Controller
         ]);
         $dompdf->loadHtml($html);
         $dompdf->render();
-        return $dompdf->stream('test.pdf', [
+        return $dompdf->stream(filename: $data['invoice_number'], options: [
             'compress' => true,
             'Attachment' => false,
         ]);
