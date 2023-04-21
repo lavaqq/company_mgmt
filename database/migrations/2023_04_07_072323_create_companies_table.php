@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('legal_form');
             $table->string('vat_number');
             $table->string('street');
-            $table->string('number');
+            $table->string('number')->nullable();
             $table->string('box')->nullable();
             $table->string('city');
             $table->string('zipcode');
