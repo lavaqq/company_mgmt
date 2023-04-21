@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class ReccurringInvoice extends Model
 {
@@ -41,4 +42,13 @@ class ReccurringInvoice extends Model
         $totalTax = $totalItem * ($taxRate / 100);
         return $totalTax;
     }
+
+    public function scopeActive(Builder $query)
+    {
+        return $query->where(function($query) {
+                $query->where('end_date', '>=', now())
+                      ->orWhere('is_indefinite_duration', true);
+            });
+    }
+    
 }
