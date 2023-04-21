@@ -327,8 +327,8 @@
         <hr class="separator total">
         @foreach ($invoice_discounts as $discount)
             <div class="table__item">
-                <p>{{ $item['description'] }}</p>
-                <p>-{{ $item['amount'] }}
+                <p>{{ $discount['description'] }}</p>
+                <p>{{ '-' . $discount['amount'] }}
                     @if ($discount->is_percentage)
                         %
                     @else
