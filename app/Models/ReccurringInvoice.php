@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,12 +44,14 @@ class ReccurringInvoice extends Model
         return $totalTax;
     }
 
-    public function scopeActive(Builder $query)
+    public static function scopeActive()
     {
-        return $query->where(function($query) {
-                $query->where('end_date', '>=', now())
-                      ->orWhere('is_indefinite_duration', true);
-            });
+        $currentDate = Carbon::now();
+        $reccurringInvoices = ReccurringInvoice::where(function ($query) use ($currentDate) {
+            $query->where('end_date', '>=', $currentDate)
+                ->orWhere('is_indefinite_duration', true);
+        })
+            ->get();
+            return $reccurringInvoices;
     }
-    
 }
