@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->string('invoice_number');
-            $table->string('vcs');
+            $table->string('vcs')->nullable();
             $table->date('issue_date');
             $table->date('due_date');
             $table->decimal('tax_rate', 10, 2);
