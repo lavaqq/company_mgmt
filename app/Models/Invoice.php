@@ -24,6 +24,10 @@ class Invoice extends Model
     {
         return $this->hasMany(InvoiceDiscount::class);
     }
+    public function reccurringInvoice(): BelongsTo
+    {
+        return $this->belongsTo(ReccurringInvoice::class);
+    }
     public static function genVCS()
     {
         $count = self::whereNull('deleted_at')->count();

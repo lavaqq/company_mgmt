@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('reccurring_invoice_id')->nullable();
             $table->string('invoice_number');
             $table->string('vcs')->nullable();
             $table->date('issue_date');

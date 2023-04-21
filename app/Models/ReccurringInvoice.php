@@ -22,6 +22,10 @@ class ReccurringInvoice extends Model
     {
         return $this->hasMany(ReccurringInvoiceItem::class);
     }
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
     public function getTotalExclTax(): float
     {
         $totalItem = $this->reccurringInvoiceItems()->sum('amount');
@@ -42,16 +46,5 @@ class ReccurringInvoice extends Model
         $taxRate = $this->tax_rate;
         $totalTax = $totalItem * ($taxRate / 100);
         return $totalTax;
-    }
-
-    public static function scopeActive()
-    {
-        $currentDate = Carbon::now();
-        $reccurringInvoices = ReccurringInvoice::where(function ($query) use ($currentDate) {
-            $query->where('end_date', '>=', $currentDate)
-                ->orWhere('is_indefinite_duration', true);
-        })
-            ->get();
-            return $reccurringInvoices;
     }
 }
