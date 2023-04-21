@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <title>{{ $invoice_number }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         html,
@@ -361,7 +360,7 @@
     </div>
     <p class="payement">
         Veuillez payer le montant dû avant la date d'échéance sur le compte BE74 0689 4674 7107 <br> avec
-        {{ $vcs }}
+        {{ $vcs ? $vcs : $invoice_number }}
         en tant que communication structurée.
     </p>
 </body>
