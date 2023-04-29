@@ -57,7 +57,7 @@ class UserResource extends Resource
                     ->dateTime("d/m/Y ")
                     ->label('Crée le'),
                 TextColumn::make('updated_at')
-                    ->getStateUsing(function (Model $record):string {
+                    ->getStateUsing(function (Model $record): string {
                         return Carbon::parse($record->updated_at)->diffForHumans();
                     })
                     ->label('Dernière modification'),
@@ -67,13 +67,17 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->modalHeading(function (Model $record):string {
+                    ->modalHeading(function (Model $record): string {
                         return "Modifier l'utilisateur : " . $record->name;
                     }),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return "Supprimer l'utilisateur : " . $record->name;
+                    }),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()
+                ->modalHeading("Supprimer la sélection d'utilisateurs"),
             ]);
     }
 
