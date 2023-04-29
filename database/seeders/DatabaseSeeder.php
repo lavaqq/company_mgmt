@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'dev user',
             'email' => 'dev@dev.io',
-            'password' => Hash::make('dev')
+            'password' => Hash::make('dev'),
+            'email_verified_at' => now()
         ]);
     }
 }
