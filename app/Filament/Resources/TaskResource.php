@@ -3,10 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TaskResource\Pages;
-use App\Filament\Resources\TaskResource\RelationManagers;
 use App\Models\Task;
-use Filament\Forms;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -14,13 +11,10 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TaskResource extends Resource
 {
@@ -51,7 +45,7 @@ class TaskResource extends Resource
                     ->options([
                         'pending' => 'En attente',
                         'in_progress' => 'En cours',
-                        'done' => 'Terminée'
+                        'done' => 'Terminée',
                     ])
                     ->label('Statut')
                     ->default('pending')
@@ -60,7 +54,7 @@ class TaskResource extends Resource
                 Select::make('users')
                     ->label('Assignée à')
                     ->multiple()
-                    ->relationship('users', 'name')
+                    ->relationship('users', 'name'),
             ]);
     }
 
@@ -78,7 +72,7 @@ class TaskResource extends Resource
                     ->options([
                         'pending' => 'En attente',
                         'in_progress' => 'En cours',
-                        'done' => 'Terminée'
+                        'done' => 'Terminée',
                     ])
                     ->disablePlaceholderSelection(),
             ])
@@ -88,11 +82,11 @@ class TaskResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Modifier la tâche : ' . $record->title;
+                        return 'Modifier la tâche : '.$record->title;
                     }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer la tâche : ' . $record->title;
+                        return 'Supprimer la tâche : '.$record->title;
                     }),
             ])
             ->bulkActions([

@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\Pages\CreateUser;
+use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Filament\Forms\Components\FileUpload;
@@ -16,9 +18,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use App\Filament\Resources\UserResource\Pages\EditUser;
-use App\Filament\Resources\UserResource\Pages\ListUsers;
-use App\Filament\Resources\UserResource\Pages\CreateUser;
 
 class UserResource extends Resource
 {
@@ -50,19 +49,16 @@ class UserResource extends Resource
                     ->password()
                     ->columnSpanFull()
                     ->dehydrateStateUsing(
-                        static fn (null|string $state): null|string =>
-                        filled($state) ? Hash::make($state) : null,
+                        static fn (null|string $state): null|string => filled($state) ? Hash::make($state) : null,
                     )->required(
-                        static fn (Page $livewire): bool =>
-                        $livewire instanceof CreateUser,
+                        static fn (Page $livewire): bool => $livewire instanceof CreateUser,
                     )->dehydrated(
-                        static fn (null|string $state): bool =>
-                        filled($state),
+                        static fn (null|string $state): bool => filled($state),
                     )->label(
                         static fn (Page $livewire): string => ($livewire instanceof EditUser) ? 'Nouveau mot de passe' : 'Mot de passe'
                     ),
                 FileUpload::make('avatar')
-                    ->image()
+                    ->image(),
             ]);
     }
 
@@ -92,7 +88,7 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return "Supprimer l'utilisateur : " . $record->name;
+                        return "Supprimer l'utilisateur : ".$record->name;
                     }),
             ])
             ->bulkActions([
