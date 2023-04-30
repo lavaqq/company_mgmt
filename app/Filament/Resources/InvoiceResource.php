@@ -58,7 +58,6 @@ class InvoiceResource extends Resource
                         Select::make('company_id')
                             ->label("Entreprise")
                             ->relationship('company', 'name')
-                            ->searchable()
                             ->required(),
                         DatePicker::make('due_date')
                             ->label("Date d'échéance")
