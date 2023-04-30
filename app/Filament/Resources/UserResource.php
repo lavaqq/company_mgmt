@@ -5,13 +5,20 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Carbon\Carbon;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Pages\Page;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
+use App\Filament\Resources\UserResource\Pages\EditUser;
+use App\Filament\Resources\UserResource\Pages\ListUsers;
+use App\Filament\Resources\UserResource\Pages\CreateUser;
 
 class UserResource extends Resource
 {
@@ -42,7 +49,20 @@ class UserResource extends Resource
                     ->label('Mot de passe')
                     ->password()
                     ->columnSpanFull()
-                    ->required(),
+                    ->dehydrateStateUsing(
+                        static fn (null|string $state): null|string =>
+                        filled($state) ? Hash::make($state) : null,
+                    )->required(
+                        static fn (Page $livewire): bool =>
+                        $livewire instanceof CreateUser,
+                    )->dehydrated(
+                        static fn (null|string $state): bool =>
+                        filled($state),
+                    )->label(
+                        static fn (Page $livewire): string => ($livewire instanceof EditUser) ? 'Nouveau mot de passe' : 'Mot de passe'
+                    ),
+                FileUpload::make('avatar')
+                    ->image()
             ]);
     }
 
@@ -50,6 +70,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('avatar')
+                    ->label('')
+                    ->circular(),
                 TextColumn::make('name')
                     ->label("Nom d'utilisateur"),
                 TextColumn::make('email')
@@ -67,13 +90,9 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->modalHeading(function (Model $record): string {
-                        return "Modifier l'utilisateur : ".$record->name;
-                    }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return "Supprimer l'utilisateur : ".$record->name;
+                        return "Supprimer l'utilisateur : " . $record->name;
                     }),
             ])
             ->bulkActions([
@@ -82,10 +101,19 @@ class UserResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageUsers::route('/'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }
