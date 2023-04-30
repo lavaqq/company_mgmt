@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Filament\Resources\TaskResource\Pages;
+
+use App\Filament\Resources\TaskResource;
+use Filament\Pages\Actions;
+use Filament\Resources\Pages\ManageRecords;
+
+class ManageTasks extends ManageRecords
+{
+    protected static string $resource = TaskResource::class;
+
+    protected function getActions(): array
+    {
+        return [
+            Actions\CreateAction::make()
+                ->disableCreateAnother()
+                ->label('Créer une tâche')
+                ->modalHeading('Créer une tâche'),
+        ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des tâches';
+    }
+}
