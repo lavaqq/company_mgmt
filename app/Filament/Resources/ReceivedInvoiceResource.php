@@ -23,6 +23,7 @@ class ReceivedInvoiceResource extends Resource
 {
     protected static ?string $model = ReceivedInvoice::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Comptabilité';
     protected static ?string $label = 'Facture reçue';
     protected static ?string $pluralLabel = 'Factures reçues';
     protected static ?string $navigationLabel = 'Factures reçues';
