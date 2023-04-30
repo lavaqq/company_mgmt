@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('job_title');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('job_title')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }
