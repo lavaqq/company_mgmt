@@ -41,9 +41,13 @@ class InvoiceResource extends Resource
                     ->schema([
                         TextInput::make('reference')
                             ->label("Numéro de facture")
+                            ->disabled()
+                            ->default(fn (): string => Invoice::generateReference())
                             ->required(),
                         TextInput::make('vcs')
                             ->label("Communication structurée")
+                            ->disabled()
+                            ->default(fn (): string => Invoice::generateVCS())
                             ->required(),
                         DatePicker::make('issue_date')
                             ->label("Date d'émission")
@@ -131,15 +135,11 @@ class InvoiceResource extends Resource
                 TextColumn::make('total_excl_tax')
                     ->label('Total HT')
                     ->suffix(' €')
-                    ->getStateUsing(function (Model $record): float {
-                        return 0;
-                    }),
+                    ->getStateUsing(fn (Model $record): float => $record->getTotalExcludingTax()),
                 TextColumn::make('total_incl_tax')
                     ->label('Total TTC')
                     ->suffix(' €')
-                    ->getStateUsing(function (Model $record): float {
-                        return 0;
-                    }),
+                    ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
                 TextColumn::make('updated_at')
                     ->getStateUsing(function (Model $record): string {
                         return Carbon::parse($record->updated_at)->diffForHumans();
