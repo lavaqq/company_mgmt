@@ -8,6 +8,7 @@ use App\Models\Task;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -34,24 +35,30 @@ class TaskResource extends Resource
     protected static ?string $pluralLabel = 'Tâches';
 
     protected static ?string $navigationLabel = 'Tâches';
-    
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
+                    ->label('Titre')
+                    ->columnSpanFull()
                     ->required(),
-                RichEditor::make('description')
-                    ->required(),
+                Textarea::make('description')
+                    ->label('Description')
+                    ->columnSpanFull(),
                 Select::make('status')
                     ->options([
                         'pending' => 'En attente',
                         'in_progress' => 'En cours',
                         'done' => 'Terminée'
                     ])
+                    ->label('Statut')
+                    ->default('pending')
                     ->disablePlaceholderSelection()
                     ->required(),
                 Select::make('users')
+                    ->label('Assignée à')
                     ->multiple()
                     ->relationship('users', 'name')
             ]);
@@ -61,9 +68,13 @@ class TaskResource extends Resource
     {
         return $table
             ->columns([
-                ViewColumn::make('users.avatar')->view('filament.components.images-column'),
-                TextColumn::make('title'),
+                ViewColumn::make('users.avatar')
+                    ->label('Assignée à')
+                    ->view('filament.components.images-column'),
+                TextColumn::make('title')
+                    ->label('Titre'),
                 SelectColumn::make('status')
+                    ->label('Statut')
                     ->options([
                         'pending' => 'En attente',
                         'in_progress' => 'En cours',
