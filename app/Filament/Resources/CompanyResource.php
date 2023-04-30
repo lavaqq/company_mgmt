@@ -67,7 +67,7 @@ class CompanyResource extends Resource
                             ->required(),
                     ])->columns(3),
                 Card::make()
-                    ->relationship('adress')
+                    ->relationship('address')
                     ->schema([
                         TextInput::make('street')
                             ->label('Rue')

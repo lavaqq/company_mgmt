@@ -16,7 +16,7 @@ class Company extends Model
         'name',
         'legal_form',
         'vat_number',
-        'adress_id',
+        'address_id',
     ];
 
     public function invoices(): HasMany
@@ -29,9 +29,9 @@ class Company extends Model
         return $this->hasMany(Invoice::class);
     }
 
-    public function adress(): HasOne
+    public function address(): HasOne
     {
-        return $this->hasOne(Adress::class);
+        return $this->hasOne(Address::class);
     }
 
     public function contacts(): BelongsToMany
