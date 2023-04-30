@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id');
             $table->string('street');
             $table->string('number');
             $table->string('box')->nullable();
