@@ -12,6 +12,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,7 +43,7 @@ class CompanyResource extends Resource
                             ->label('Numéro de TVA')
                             ->required(),
                         Select::make('legal_form')
-                            ->label('Forme légal')
+                            ->label('Forme légale')
                             ->options([
                                 'sa' => 'SA (Société Anonyme)',
                                 'sas' => 'SAS (Société par Actions Simplifiée)',
@@ -127,9 +128,12 @@ class CompanyResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nom')
                     ->limit(20),
-                TextColumn::make('legal_form'),
-                TextColumn::make('vat_number'),
+                BadgeColumn::make('legal_form')
+                    ->label('Forme légale'),
+                TextColumn::make('vat_number')
+                    ->label('Numéro de TVA'),
                 TextColumn::make('updated_at')
                     ->getStateUsing(function (Model $record): string {
                         return Carbon::parse($record->updated_at)->diffForHumans();
