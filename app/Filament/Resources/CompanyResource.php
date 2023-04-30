@@ -126,7 +126,8 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->limit(20),
                 TextColumn::make('legal_form'),
                 TextColumn::make('vat_number'),
                 TextColumn::make('updated_at')
