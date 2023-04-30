@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListCompanies extends ListRecords
 {
     protected static string $resource = CompanyResource::class;
+
     protected function getActions(): array
     {
         return [
@@ -16,6 +17,7 @@ class ListCompanies extends ListRecords
                 ->label('Créer une entreprise'),
         ];
     }
+
     protected function getTitle(): string
     {
         return 'Gestion des entreprises';

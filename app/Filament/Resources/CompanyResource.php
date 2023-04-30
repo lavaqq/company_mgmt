@@ -3,12 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Models\Company;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -16,17 +13,20 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
     protected static ?string $navigationGroup = 'Répertoire';
+
     protected static ?string $label = 'Entreprise';
+
     protected static ?string $pluralLabel = 'Entreprises';
+
     protected static ?string $navigationLabel = 'Entreprises';
 
     public static function form(Form $form): Form
@@ -44,24 +44,24 @@ class CompanyResource extends Resource
                         Select::make('legal_form')
                             ->label('Forme légal')
                             ->options([
-                                "sa" => "SA (Société Anonyme)",
-                                "sas" => "SAS (Société par Actions Simplifiée)",
-                                "snc" => "SNC (Société en Nom Collectif)",
-                                "scs" => "SCS (Société en Commandite Simple)",
-                                "scop" => "SCOP (Société Coopérative et Participative)",
-                                "scm" => "SCM (Société Civile de Moyens)",
-                                "selarl" => "SELARL (Société d'Exercice Libéral à Responsabilité Limitée)",
-                                "sci" => "SCI (Société Civile Immobilière)",
-                                "eurl" => "EURL (Entreprise Unipersonnelle à Responsabilité Limitée)",
-                                "sasu" => "SASU (Société par Actions Simplifiée Unipersonnelle)",
-                                "sep" => "SEP (Société en Participation)",
-                                "selas" => "SELAS (Société d'Exercice Libéral par Actions Simplifiée)",
-                                "selafa" => "SELAFA (Société d'Exercice Libéral à Forme Anonyme)",
-                                "sem" => "SEM (Société d'Economie Mixte)",
-                                "sca" => "SCA (Société en Commandite par Actions)",
-                                "srl" => "SRL (Société à Responsabilité Limitée)",
-                                "sarl" => "SARL (Société à Responsabilité Limitée)",
-                                "sprl" => "SPRL (Société Privée à Responsabilité Limitée)",
+                                'sa' => 'SA (Société Anonyme)',
+                                'sas' => 'SAS (Société par Actions Simplifiée)',
+                                'snc' => 'SNC (Société en Nom Collectif)',
+                                'scs' => 'SCS (Société en Commandite Simple)',
+                                'scop' => 'SCOP (Société Coopérative et Participative)',
+                                'scm' => 'SCM (Société Civile de Moyens)',
+                                'selarl' => "SELARL (Société d'Exercice Libéral à Responsabilité Limitée)",
+                                'sci' => 'SCI (Société Civile Immobilière)',
+                                'eurl' => 'EURL (Entreprise Unipersonnelle à Responsabilité Limitée)',
+                                'sasu' => 'SASU (Société par Actions Simplifiée Unipersonnelle)',
+                                'sep' => 'SEP (Société en Participation)',
+                                'selas' => "SELAS (Société d'Exercice Libéral par Actions Simplifiée)",
+                                'selafa' => "SELAFA (Société d'Exercice Libéral à Forme Anonyme)",
+                                'sem' => "SEM (Société d'Economie Mixte)",
+                                'sca' => 'SCA (Société en Commandite par Actions)',
+                                'srl' => 'SRL (Société à Responsabilité Limitée)',
+                                'sarl' => 'SARL (Société à Responsabilité Limitée)',
+                                'sprl' => 'SPRL (Société Privée à Responsabilité Limitée)',
                             ])
                             ->searchable()
                             ->required(),
@@ -118,7 +118,7 @@ class CompanyResource extends Resource
                             ])
                             ->searchable()
                             ->required(),
-                    ])->columns(2)
+                    ])->columns(2),
             ]);
     }
 

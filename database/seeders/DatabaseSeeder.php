@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'dev user',
             'email' => 'dev@dev.io',
             'password' => Hash::make('dev'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
         ]);
     }
 }

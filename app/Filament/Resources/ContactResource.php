@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Contact;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -16,17 +14,20 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
     protected static ?string $navigationGroup = 'Répertoire';
+
     protected static ?string $label = 'Contact';
+
     protected static ?string $pluralLabel = 'Contacts';
+
     protected static ?string $navigationLabel = 'Contacts';
 
     public static function form(Form $form): Form
@@ -54,7 +55,7 @@ class ContactResource extends Resource
                             ->label('Téléphone')
                             ->tel(),
                         RichEditor::make('note')
-                            ->columnSpanFull()
+                            ->columnSpanFull(),
                     ])->columns(2),
             ]);
     }
@@ -85,7 +86,7 @@ class ContactResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
-                    ->modalHeading("Supprimer la sélection de contacts"),
+                    ->modalHeading('Supprimer la sélection de contacts'),
             ]);
     }
 

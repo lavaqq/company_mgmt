@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListContacts extends ListRecords
 {
     protected static string $resource = ContactResource::class;
+
     protected function getActions(): array
     {
         return [
@@ -16,6 +17,7 @@ class ListContacts extends ListRecords
                 ->label('Créer un contact'),
         ];
     }
+
     protected function getTitle(): string
     {
         return 'Gestion des contacts';

@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListInvoices extends ListRecords
 {
     protected static string $resource = InvoiceResource::class;
+
     protected function getActions(): array
     {
         return [
@@ -16,6 +17,7 @@ class ListInvoices extends ListRecords
                 ->label('Créer une facture'),
         ];
     }
+
     protected function getTitle(): string
     {
         return 'Gestion des factures émises';

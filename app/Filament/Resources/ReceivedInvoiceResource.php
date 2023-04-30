@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReceivedInvoiceResource\Pages;
-use App\Filament\Resources\ReceivedInvoiceResource\RelationManagers;
 use App\Models\ReceivedInvoice;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -15,17 +13,20 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ReceivedInvoiceResource extends Resource
 {
     protected static ?string $model = ReceivedInvoice::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
     protected static ?string $navigationGroup = 'Comptabilité';
+
     protected static ?string $label = 'Facture reçue';
+
     protected static ?string $pluralLabel = 'Factures reçues';
+
     protected static ?string $navigationLabel = 'Factures reçues';
 
     public static function form(Form $form): Form
@@ -42,7 +43,7 @@ class ReceivedInvoiceResource extends Resource
                     ->displayFormat('d/m/Y')
                     ->required(),
                 TextInput::make('tax_rate')
-                    ->label("Taux TVA")
+                    ->label('Taux TVA')
                     ->numeric()
                     ->default(21)
                     ->suffix('%')
@@ -84,16 +85,16 @@ class ReceivedInvoiceResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return "Modifier la facture : " . $record->getTotalIncludingTax() . "€ du " . $record->issue_date;
+                        return 'Modifier la facture : '.$record->getTotalIncludingTax().'€ du '.$record->issue_date;
                     }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return "Supprimer la facture : " . $record->getTotalIncludingTax() . "€ du " . $record->issue_date;
+                        return 'Supprimer la facture : '.$record->getTotalIncludingTax().'€ du '.$record->issue_date;
                     }),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
-                    ->modalHeading("Supprimer la sélection de factures"),
+                    ->modalHeading('Supprimer la sélection de factures'),
             ]);
     }
 

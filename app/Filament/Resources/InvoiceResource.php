@@ -3,11 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InvoiceResource\Pages;
-use App\Filament\Resources\InvoiceResource\RelationManagers;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
@@ -21,17 +19,20 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class InvoiceResource extends Resource
 {
     protected static ?string $model = Invoice::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
     protected static ?string $navigationGroup = 'Comptabilité';
+
     protected static ?string $label = 'Facture émise';
+
     protected static ?string $pluralLabel = 'Factures émises';
+
     protected static ?string $navigationLabel = 'Factures émises';
 
     public static function form(Form $form): Form
@@ -41,12 +42,12 @@ class InvoiceResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('reference')
-                            ->label("Numéro de facture")
+                            ->label('Numéro de facture')
                             ->disabled()
                             ->default(fn (): string => Invoice::generateReference())
                             ->required(),
                         TextInput::make('vcs')
-                            ->label("Communication structurée")
+                            ->label('Communication structurée')
                             ->disabled()
                             ->default(fn (): string => Invoice::generateVCS())
                             ->required(),
@@ -57,7 +58,7 @@ class InvoiceResource extends Resource
                             ->displayFormat('d/m/Y')
                             ->required(),
                         Select::make('company_id')
-                            ->label("Entreprise")
+                            ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->required(),
                         DatePicker::make('due_date')
@@ -67,7 +68,7 @@ class InvoiceResource extends Resource
                             ->displayFormat('d/m/Y')
                             ->required(),
                         TextInput::make('tax_rate')
-                            ->label("Taux TVA")
+                            ->label('Taux TVA')
                             ->numeric()
                             ->default(21)
                             ->suffix('%')
@@ -89,7 +90,7 @@ class InvoiceResource extends Resource
                                             ->label('Montant')
                                             ->numeric()
                                             ->suffix('€')
-                                            ->required()
+                                            ->required(),
                                     ])->columns(2),
                             ]),
                         Tab::make('Réductions')
@@ -110,9 +111,9 @@ class InvoiceResource extends Resource
                                             ->label('Montant')
                                             ->required()
                                             ->numeric()
-                                            ->suffix(fn (Closure $get) => $get('is_percentage') ? '%' : '€')
-                                    ])->columns(2)
-                            ])
+                                            ->suffix(fn (Closure $get) => $get('is_percentage') ? '%' : '€'),
+                                    ])->columns(2),
+                            ]),
                     ])->columnSpanFull(),
             ]);
     }
@@ -154,7 +155,7 @@ class InvoiceResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
-                    ->modalHeading("Supprimer la sélection de factures"),
+                    ->modalHeading('Supprimer la sélection de factures'),
             ]);
     }
 

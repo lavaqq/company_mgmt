@@ -16,7 +16,7 @@ class Contact extends Model
         'job_title',
         'email',
         'phone',
-        'note'
+        'note',
     ];
 
     public function companies(): BelongsToMany
