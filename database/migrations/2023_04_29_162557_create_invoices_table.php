@@ -19,9 +19,6 @@ return new class extends Migration
             $table->date('issue_date');
             $table->date('due_date');
             $table->decimal('tax_rate', 10, 2);
-            $table->decimal('total_excl_tax', 10, 2);
-            $table->decimal('total_incl_tax', 10, 2);
-            $table->enum('status', ['draft', 'pending', 'paid']);
             $table->timestamps();
         });
     }
