@@ -10,6 +10,17 @@ class ReceivedInvoice extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'company_id',
+        'reference',
+        'issue_date',
+        'due_date',
+        'tax_rate',
+        'total_excl_tax',
+        'total_incl_tax',
+        'status',
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);

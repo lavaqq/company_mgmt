@@ -12,6 +12,13 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'legal_form',
+        'vat_number',
+        'adress_id',
+    ];
+
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
@@ -32,4 +39,3 @@ class Company extends Model
         return $this->belongsToMany(Contact::class);
     }
 }
- 

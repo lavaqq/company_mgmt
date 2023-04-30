@@ -10,6 +10,11 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+    ];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

@@ -10,6 +10,13 @@ class InvoiceDiscount extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'invoice_id',
+        'description',
+        'is_percentage',
+        'amount',
+    ];
+
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
