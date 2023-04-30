@@ -16,4 +16,9 @@ class IdentitySheet extends Page
     }
 
     protected static string $view = 'filament.pages.identity-sheet';
+
+    protected function getBreadcrumbs(): array
+    {
+        return ["Fiche d'identité"];
+    }
 }
