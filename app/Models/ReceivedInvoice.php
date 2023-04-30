@@ -25,4 +25,9 @@ class ReceivedInvoice extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function getTotalIncludingTax(): float
+    {
+        return $this->total_excl_tax * (1 + $this->tax_rate / 100);
+    }
 }
