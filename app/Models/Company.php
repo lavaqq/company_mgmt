@@ -31,7 +31,7 @@ class Company extends Model
 
     public function adress(): HasOne
     {
-        return $this->hasOne(Address::class);
+        return $this->hasOne(Adress::class);
     }
 
     public function contacts(): BelongsToMany
