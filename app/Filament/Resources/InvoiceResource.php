@@ -42,22 +42,11 @@ class InvoiceResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('reference')
-                            ->label('Numéro de facture')
-                            ->disabled()
-                            ->required()
-                            ->columnSpan(2),
-                        TextInput::make('vcs')
-                            ->label('Communication structurée')
-                            ->disabled()
-                            ->required()
-                            ->columnSpan(2),
                         Select::make('company_id')
                             ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->preload()
-                            ->required()
-                            ->columnSpan(2),
+                            ->required(),
                         DatePicker::make('issue_date')
                             ->label("Date d'émission")
                             ->minDate(Carbon::now()->format('Y-m-d'))
@@ -70,7 +59,21 @@ class InvoiceResource extends Resource
                             ->default(Carbon::now()->addDay(30)->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
                             ->required(),
-                    ])->columns(4),
+                        TextInput::make('reference')
+                            ->label('Numéro de facture')
+                            ->disabled()
+                            ->required(),
+                        TextInput::make('vcs')
+                            ->label('Communication structurée')
+                            ->disabled()
+                            ->required(),
+                        TextInput::make('tax_rate')
+                            ->label('Taux TVA')
+                            ->numeric()
+                            ->default(21)
+                            ->suffix('%')
+                            ->required(),
+                    ])->columns(3),
                 Tabs::make('Facturation')
                     ->tabs([
                         Tab::make('Services')
@@ -83,17 +86,11 @@ class InvoiceResource extends Resource
                                     ->schema([
                                         TextInput::make('description')
                                             ->required()
-                                            ->columnSpan(2),
+                                            ->columnSpan(3),
                                         TextInput::make('amount')
                                             ->label('Montant')
                                             ->numeric()
                                             ->suffix('€')
-                                            ->required(),
-                                        TextInput::make('tax_rate')
-                                            ->label('Taux TVA')
-                                            ->numeric()
-                                            ->default(21)
-                                            ->suffix('%')
                                             ->required(),
                                     ])->columns(4),
                             ]),
