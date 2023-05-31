@@ -18,4 +18,9 @@ class Contact extends Model
         'phone',
         'note',
     ];
+
+    public function companies(): BelongsToMany
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }

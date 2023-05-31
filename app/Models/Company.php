@@ -23,4 +23,9 @@ class Company extends Model
         'country',
         'note',
     ];
+
+    public function contacts(): BelongsToMany
+    {
+        return $this->belongsToMany(Contact::class);
+    }
 }
