@@ -14,6 +14,7 @@ class Company extends Model
         'name',
         'legal_form',
         'vat_number',
+        'country_code',
         'street',
         'number',
         'box',
