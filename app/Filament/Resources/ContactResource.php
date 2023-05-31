@@ -104,7 +104,13 @@ class ContactResource extends Resource
                     ->label('Dernière modification'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label(''),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return "Supprimer : " . $record->last_name . ' ' . $record->first_name;
+                    })
+                    ->label(''),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
