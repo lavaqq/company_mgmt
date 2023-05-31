@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -158,6 +159,14 @@ class CompanyResource extends Resource
                             ->searchable()
                             ->required(),
                     ])->columns(2),
+                Card::make()
+                    ->schema([
+                        RichEditor::make('note')
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                            ])
+                            ->columnSpanFull(),
+                    ])
             ]);
     }
 
