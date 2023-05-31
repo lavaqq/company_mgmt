@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ContactResource\Pages;
 use App\Models\Contact;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -64,7 +63,7 @@ class ContactResource extends Resource
                                 'attachFiles',
                             ])
                             ->columnSpanFull(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -89,12 +88,15 @@ class ContactResource extends Resource
                             $firstCompany = $companies->first();
                             $remainingCount = $companies->count() - 1;
                             $autres = ($remainingCount === 1) ? 'autre' : 'autres';
-                            return substr($firstCompany->name, 0, 12) . "..." . " et {$remainingCount} $autres";
+
+                            return substr($firstCompany->name, 0, 12).'...'." et {$remainingCount} $autres";
                         }
                         if ($companies->count() === 1) {
                             $firstCompany = $companies->first();
-                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20) . '...' : $firstCompany->name;
+
+                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20).'...' : $firstCompany->name;
                         }
+
                         return 'Aucune';
                     }),
                 TextColumn::make('updated_at')
@@ -108,7 +110,7 @@ class ContactResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return "Supprimer : " . $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
             ])
