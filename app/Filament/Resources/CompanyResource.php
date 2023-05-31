@@ -175,7 +175,7 @@ class CompanyResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nom')
+                    ->label('Dénomination sociale')
                     ->limit(20),
                 BadgeColumn::make('legal_form')
                     ->label('Forme légale')
