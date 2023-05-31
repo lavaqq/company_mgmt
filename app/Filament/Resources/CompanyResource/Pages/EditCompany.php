@@ -13,7 +13,18 @@ class EditCompany extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading("Supprimer l'entreprise : " . $this->record->name),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return "Modifier l'entreprise : " . $this->record->name;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

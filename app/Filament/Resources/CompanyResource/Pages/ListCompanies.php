@@ -13,7 +13,13 @@ class ListCompanies extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer une entreprise'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des entreprises';
     }
 }
