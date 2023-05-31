@@ -18,4 +18,19 @@ class Invoice extends Model
         'issue_date',
         'due_date',
     ];
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(InvoiceItem::class);
+    }
+
+    public function discounts(): HasMany
+    {
+        return $this->hasMany(InvoiceDiscount::class);
+    }
 }

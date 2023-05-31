@@ -16,4 +16,9 @@ class InvoiceDiscount extends Model
         'is_percentage',
         'amount',
     ];
+
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

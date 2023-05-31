@@ -16,4 +16,9 @@ class InvoiceItem extends Model
         'amount',
         'tax_rate'
     ];
+
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }
