@@ -77,6 +77,9 @@ class ContactResource extends Resource
                 TextColumn::make('first_name')
                     ->label('Prénom'),
                 TextColumn::make('job_title')
+                    ->getStateUsing(function (Model $record): string {
+                        return $record->job_title ? $record->job_title : 'Aucun';
+                    })
                     ->label('Titre du poste'),
                 TextColumn::make('companies')
                     ->label('Entreprise(s)')
