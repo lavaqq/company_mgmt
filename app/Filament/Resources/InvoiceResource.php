@@ -72,17 +72,9 @@ class InvoiceResource extends Resource
                                 $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
                                 $date = Carbon::parse($get('issue_date'))->format('dmy');
                                 $sequence = $reference . $date;
-                                $intSequence = intval($sequence);
-                                $remainder = $intSequence % 97;
-                                $verificationNumber = intval($remainder);
-                                if ($remainder < 10) {
-                                    $verificationNumber = '0' . $remainder;
-                                }
-                                if ($verificationNumber == '00') {
-                                    $verificationNumber = '97';
-                                }
+                                $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
                                 $vcs = $sequence . $verificationNumber;
-                                return "+++ " . substr($vcs, 0, 3) . " / " . substr($vcs, 3, 4) . " / " . substr($vcs, 7) . " +++";;
+                                return "+++ " . substr($vcs, 0, 3) . " / " . substr($vcs, 3, 4) . " / " . substr($vcs, 7) . " +++";
                             })
                             ->disabled()
                             ->required(),
