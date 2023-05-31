@@ -36,6 +36,16 @@ class InvoiceResource extends Resource
 
     protected static ?string $navigationLabel = 'Factures émises';
 
+    public static function generateVcs($dateValue): string
+    {
+        $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
+        $date = Carbon::parse($dateValue)->format('dmy');
+        $sequence = $reference . $date;
+        $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
+        $vcs = $sequence . $verificationNumber;
+        return "+++ " . substr($vcs, 0, 3) . " / " . substr($vcs, 3, 4) . " / " . substr($vcs, 7) . " +++";
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -54,6 +64,9 @@ class InvoiceResource extends Resource
                             ->default(Carbon::now()->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
                             ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('vcs', self::generateVcs($state));
+                            })
                             ->required(),
                         DatePicker::make('due_date')
                             ->label("Date d'échéance")
@@ -69,12 +82,7 @@ class InvoiceResource extends Resource
                         TextInput::make('vcs')
                             ->label('Communication structurée')
                             ->default(function (Closure $get) {
-                                $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
-                                $date = Carbon::parse($get('issue_date'))->format('dmy');
-                                $sequence = $reference . $date;
-                                $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
-                                $vcs = $sequence . $verificationNumber;
-                                return "+++ " . substr($vcs, 0, 3) . " / " . substr($vcs, 3, 4) . " / " . substr($vcs, 7) . " +++";
+                                return self::generateVcs($get('issue_date'));
                             })
                             ->disabled()
                             ->required(),
