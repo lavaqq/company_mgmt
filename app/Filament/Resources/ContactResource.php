@@ -4,11 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
 use App\Models\Contact;
+use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 
 class ContactResource extends Resource
 {
@@ -20,16 +27,36 @@ class ContactResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('last_name')
-                    ->required(),
-                Forms\Components\TextInput::make('first_name')
-                    ->required(),
-                Forms\Components\TextInput::make('job_title'),
-                Forms\Components\TextInput::make('email')
-                    ->email(),
-                Forms\Components\TextInput::make('phone')
-                    ->tel(),
-                Forms\Components\Textarea::make('note'),
+                Card::make()
+                    ->schema([
+                        TextInput::make('last_name')
+                            ->label('Nom')
+                            ->required(),
+                        TextInput::make('first_name')
+                            ->label('Prénom')
+                            ->required(),
+                        Select::make('companies')
+                            ->label('Entreprise(s)')
+                            ->multiple()
+                            ->relationship('companies', 'name')
+                            ->preload(),
+                        TextInput::make('job_title')
+                            ->label('Titre du poste'),
+                        TextInput::make('email')
+                            ->label('E-mail')
+                            ->email(),
+                        TextInput::make('phone')
+                            ->label('Téléphone')
+                            ->tel(),
+                    ])->columns(2),
+                Card::make()
+                    ->schema([
+                        RichEditor::make('note')
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                            ])
+                            ->columnSpanFull(),
+                    ])
             ]);
     }
 
@@ -37,33 +64,27 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('last_name'),
-                Tables\Columns\TextColumn::make('first_name'),
-                Tables\Columns\TextColumn::make('job_title'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('phone'),
-                Tables\Columns\TextColumn::make('note'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
-            ])
-            ->filters([
-                //
+                TextColumn::make('last_name')
+                    ->label('Nom'),
+                TextColumn::make('first_name')
+                    ->label('Prénom'),
+                TextColumn::make('job_title')
+                    ->label('Titre du poste'),
+                TextColumn::make('company.name')
+                    ->label('Entreprise'),
+                TextColumn::make('updated_at')
+                    ->getStateUsing(function (Model $record): string {
+                        return Carbon::parse($record->updated_at)->diffForHumans();
+                    })
+                    ->label('Dernière modification'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->modalHeading('Supprimer la sélection de contacts'),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array
