@@ -10,10 +10,22 @@ class EditContact extends EditRecord
 {
     protected static string $resource = ContactResource::class;
 
+
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading('Supprimer le contact : ' . $this->record->last_name . ' ' . $this->record->first_name),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Modifier le contact : ' . $this->record->last_name . ' ' . $this->record->first_name;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

@@ -13,7 +13,13 @@ class ListContacts extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer un contact'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des contacts';
     }
 }
