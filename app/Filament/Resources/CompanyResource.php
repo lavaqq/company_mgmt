@@ -26,6 +26,14 @@ class CompanyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Répertoire';
+
+    protected static ?string $label = 'Entreprise';
+
+    protected static ?string $pluralLabel = 'Entreprises';
+
+    protected static ?string $navigationLabel = 'Entreprises';
+
     public static function form(Form $form): Form
     {
         return $form
