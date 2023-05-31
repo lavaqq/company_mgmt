@@ -48,4 +48,20 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function canAccessFilament(): bool
+    {
+        // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        return true;
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function getFilamentName(): string
+    {
+        return "{$this->last_name} {$this->first_name}";
+    }
 }
