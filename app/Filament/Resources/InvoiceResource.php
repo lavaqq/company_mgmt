@@ -3,11 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InvoiceResource\Pages;
-use App\Filament\Resources\InvoiceResource\RelationManagers;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
@@ -21,9 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class InvoiceResource extends Resource
 {
@@ -161,7 +157,7 @@ class InvoiceResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
             ])
