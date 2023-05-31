@@ -20,6 +20,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Route;
 
 class InvoiceResource extends Resource
 {
@@ -153,11 +154,19 @@ class InvoiceResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('show_pdf')
+                    ->url(fn (Model $record): string => route('invoice.pdf.show', $record))
+                    ->icon('heroicon-o-eye')
+                    ->label(''),
+                Tables\Actions\Action::make('download_pdf')
+                    ->url(fn (Model $record): string => route('invoice.pdf.download', $record))
+                    ->icon('heroicon-o-download')
+                    ->label(''),
                 Tables\Actions\EditAction::make()
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->reference;
+                        return 'Supprimer : ' . $record->reference;
                     })
                     ->label(''),
             ])
