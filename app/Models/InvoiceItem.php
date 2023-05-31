@@ -14,7 +14,6 @@ class InvoiceItem extends Model
         'invoice_id',
         'description',
         'amount',
-        'tax_rate',
     ];
 
     public function invoice(): BelongsTo

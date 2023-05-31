@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('company_id');
             $table->string('reference');
             $table->string('vcs')->nullable();
+            $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
             $table->timestamps();

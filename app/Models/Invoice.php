@@ -15,6 +15,7 @@ class Invoice extends Model
         'company_id',
         'reference',
         'vcs',
+        'tax_rate',
         'issue_date',
         'due_date',
     ];

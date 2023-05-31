@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('invoice_id');
             $table->string('description');
             $table->decimal('amount', 10, 2);
-            $table->decimal('tax_rate', 10, 2);
             $table->timestamps();
         });
     }
