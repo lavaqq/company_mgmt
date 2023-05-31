@@ -13,7 +13,13 @@ class ListInvoices extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer une facture'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des factures émises';
     }
 }

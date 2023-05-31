@@ -13,7 +13,18 @@ class EditInvoice extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading('Supprimer la facture : ' . $this->record->reference),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Modifier la facture : ' . $this->record->reference;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }
