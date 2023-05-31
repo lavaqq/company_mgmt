@@ -46,12 +46,14 @@ class InvoiceResource extends Resource
                             ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->preload()
+                            ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
                             ->label("Date d'émission")
                             ->minDate(Carbon::now()->format('Y-m-d'))
                             ->default(Carbon::now()->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
+                            ->reactive()
                             ->required(),
                         DatePicker::make('due_date')
                             ->label("Date d'échéance")
@@ -61,10 +63,27 @@ class InvoiceResource extends Resource
                             ->required(),
                         TextInput::make('reference')
                             ->label('Numéro de facture')
+                            ->default(fn (): string => 'LS-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
                             ->label('Communication structurée')
+                            ->default(function (Closure $get) {
+                                $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
+                                $date = Carbon::parse($get('issue_date'))->format('dmy');
+                                $sequence = $reference . $date;
+                                $intSequence = intval($sequence);
+                                $remainder = $intSequence % 97;
+                                $verificationNumber = intval($remainder);
+                                if ($remainder < 10) {
+                                    $verificationNumber = '0' . $remainder;
+                                }
+                                if ($verificationNumber == '00') {
+                                    $verificationNumber = '97';
+                                }
+                                $vcs = $sequence . $verificationNumber;
+                                return "+++ " . substr($vcs, 0, 3) . " / " . substr($vcs, 3, 4) . " / " . substr($vcs, 7) . " +++";;
+                            })
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -86,13 +105,13 @@ class InvoiceResource extends Resource
                                     ->schema([
                                         TextInput::make('description')
                                             ->required()
-                                            ->columnSpan(3),
+                                            ->columnSpan(2),
                                         TextInput::make('amount')
                                             ->label('Montant')
                                             ->numeric()
                                             ->suffix('€')
                                             ->required(),
-                                    ])->columns(4),
+                                    ])->columns(3),
                             ]),
                         Tab::make('Réductions')
                             ->schema([
@@ -137,10 +156,12 @@ class InvoiceResource extends Resource
                     ->dateTime('d/m/Y'),
                 TextColumn::make('total_excl_tax')
                     ->label('Total HT')
-                    ->suffix(' €'),
+                    ->suffix(' €')
+                    ->getStateUsing(fn (Model $record): float => $record->getTotalExcludingTax()),
                 TextColumn::make('total_incl_tax')
                     ->label('Total TTC')
-                    ->suffix(' €'),
+                    ->suffix(' €')
+                    ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
                 TextColumn::make('updated_at')
                     ->getStateUsing(function (Model $record): string {
                         return Carbon::parse($record->updated_at)->diffForHumans();
