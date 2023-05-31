@@ -109,7 +109,8 @@ class ContactResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
                     ->modalHeading('Supprimer la sélection de contacts'),
-            ]);
+            ])
+            ->poll('30s');
     }
 
     public static function getPages(): array

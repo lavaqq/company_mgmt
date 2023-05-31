@@ -203,7 +203,8 @@ class CompanyResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
                     ->modalHeading("Supprimer la sélection d'entreprises"),
-            ]);
+            ])
+            ->poll('30s');
     }
 
     public static function getPages(): array
