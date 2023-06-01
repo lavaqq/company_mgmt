@@ -3,11 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EstimateResource\Pages;
-use App\Filament\Resources\EstimateResource\RelationManagers;
 use App\Models\Estimate;
 use Carbon\Carbon;
 use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
@@ -21,9 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EstimateResource extends Resource
 {
@@ -57,7 +53,7 @@ class EstimateResource extends Resource
                             ->required(),
                         TextInput::make('reference')
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -155,7 +151,7 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
             ])

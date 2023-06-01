@@ -41,6 +41,7 @@ class Estimate extends Model
         $totalPercentageDiscount = $this->discounts()->where('is_percentage', true)->sum('amount');
         $totalAmount -= $totalFixedDiscount;
         $totalAmount *= (1 - ($totalPercentageDiscount / 100));
+
         return $totalAmount;
     }
 
@@ -53,6 +54,7 @@ class Estimate extends Model
         $totalAmount -= $totalFixedDiscount;
         $totalAmount *= (1 - $totalPercentageDiscount / 100);
         $totalAmount *= (1 + $taxRate / 100);
+
         return $totalAmount;
     }
 
@@ -65,6 +67,7 @@ class Estimate extends Model
         $totalAmount -= $totalFixedDiscount;
         $totalAmount *= (1 - $totalPercentageDiscount / 100);
         $totalTax = $totalAmount * $taxRate / 100;
+
         return $totalTax;
     }
 }
