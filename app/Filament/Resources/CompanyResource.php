@@ -179,20 +179,15 @@ class CompanyResource extends Resource
                 TextColumn::make('vat_number')
                     ->label('Numéro de TVA')
                     ->getStateUsing(function (Model $record): string {
-                        return $record->country_code.$record->vat_number;
+                        return $record->country_code . $record->vat_number;
                     }),
-                TextColumn::make('updated_at')
-                    ->getStateUsing(function (Model $record): string {
-                        return Carbon::parse($record->updated_at)->diffForHumans();
-                    })
-                    ->label('Dernière modification'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->name;
+                        return 'Supprimer : ' . $record->name;
                     })
                     ->label(''),
             ])

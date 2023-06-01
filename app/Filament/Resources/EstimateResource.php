@@ -140,11 +140,6 @@ class EstimateResource extends Resource
                     ->label('Total TTC')
                     ->suffix(' €')
                     ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
-                TextColumn::make('updated_at')
-                    ->getStateUsing(function (Model $record): string {
-                        return Carbon::parse($record->updated_at)->diffForHumans();
-                    })
-                    ->label('Dernière modification'),
             ])
             ->actions([
                 Tables\Actions\Action::make('stream_pdf')

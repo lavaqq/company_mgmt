@@ -89,28 +89,23 @@ class ContactResource extends Resource
                             $remainingCount = $companies->count() - 1;
                             $autres = ($remainingCount === 1) ? 'autre' : 'autres';
 
-                            return substr($firstCompany->name, 0, 12).'...'." et {$remainingCount} $autres";
+                            return substr($firstCompany->name, 0, 12) . '...' . " et {$remainingCount} $autres";
                         }
                         if ($companies->count() === 1) {
                             $firstCompany = $companies->first();
 
-                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20).'...' : $firstCompany->name;
+                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20) . '...' : $firstCompany->name;
                         }
 
                         return 'Aucune';
                     }),
-                TextColumn::make('updated_at')
-                    ->getStateUsing(function (Model $record): string {
-                        return Carbon::parse($record->updated_at)->diffForHumans();
-                    })
-                    ->label('Dernière modification'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->last_name.' '.$record->first_name;
+                        return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
             ])
