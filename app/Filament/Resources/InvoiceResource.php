@@ -162,18 +162,10 @@ class InvoiceResource extends Resource
                     ->label('Total TTC')
                     ->suffix(' €')
                     ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
-                TextColumn::make('updated_at')
-                    ->getStateUsing(function (Model $record): string {
-                        return Carbon::parse($record->updated_at)->diffForHumans();
-                    })
-                    ->label('Dernière modification'),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
-                Tables\Actions\Action::make('show_pdf')
-                    ->url(fn (Model $record): string => route('invoice.pdf.show', $record))
+                Tables\Actions\Action::make('stream_pdf')
+                    ->url(fn (Model $record): string => route('invoice.pdf.stream', $record))
                     ->icon('heroicon-o-eye')
                     ->label(''),
                 Tables\Actions\Action::make('download_pdf')
@@ -188,17 +180,7 @@ class InvoiceResource extends Resource
                     })
                     ->label(''),
             ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make()
-                    ->modalHeading('Supprimer la sélection de factures'),
-            ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
+            ->bulkActions([]);
     }
 
     public static function getPages(): array
