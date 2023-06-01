@@ -142,15 +142,24 @@ class EstimateResource extends Resource
                     })
                     ->label('Dernière modification'),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('stream_pdf')
+                    ->url(fn (Model $record): string => route('estimate.pdf.stream', $record))
+                    ->icon('heroicon-o-eye')
+                    ->label(''),
+                Tables\Actions\Action::make('download_pdf')
+                    ->url(fn (Model $record): string => route('estimate.pdf.download', $record))
+                    ->icon('heroicon-o-download')
+                    ->label(''),
+                Tables\Actions\EditAction::make()
+                    ->label(''),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return 'Supprimer : ' . $record->reference;
+                    })
+                    ->label(''),
             ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
