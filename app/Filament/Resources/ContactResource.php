@@ -13,6 +13,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 
@@ -71,15 +72,10 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('last_name')
-                    ->label('Nom'),
                 TextColumn::make('first_name')
                     ->label('Prénom'),
-                TextColumn::make('job_title')
-                    ->getStateUsing(function (Model $record): string {
-                        return $record->job_title ? $record->job_title : 'Aucun';
-                    })
-                    ->label('Titre du poste'),
+                TextColumn::make('last_name')
+                    ->label('Nom'),
                 TextColumn::make('companies')
                     ->label('Entreprise(s)')
                     ->getStateUsing(function (Model $record): string {
@@ -99,6 +95,11 @@ class ContactResource extends Resource
 
                         return 'Aucune';
                     }),
+                BadgeColumn::make('job_title')
+                    ->getStateUsing(function (Model $record): string {
+                        return $record->job_title ? $record->job_title : 'Aucun';
+                    })
+                    ->label('Titre du poste'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()

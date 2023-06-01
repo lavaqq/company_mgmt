@@ -173,14 +173,14 @@ class CompanyResource extends Resource
                 TextColumn::make('name')
                     ->label('Dénomination sociale')
                     ->limit(20),
-                BadgeColumn::make('legal_form')
-                    ->label('Forme légale')
-                    ->extraAttributes(['class' => 'uppercase']),
                 TextColumn::make('vat_number')
                     ->label('Numéro de TVA')
                     ->getStateUsing(function (Model $record): string {
                         return $record->country_code . $record->vat_number;
                     }),
+                BadgeColumn::make('legal_form')
+                    ->label('Forme légale')
+                    ->extraAttributes(['class' => 'uppercase']),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
