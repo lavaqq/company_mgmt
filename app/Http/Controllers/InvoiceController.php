@@ -6,7 +6,7 @@ use App\Models\Invoice;
 
 class InvoiceController extends Controller
 {
-    public function show(Invoice $record)
+    public function stream(Invoice $record)
     {
         return $record;
     }
