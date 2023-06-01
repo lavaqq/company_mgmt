@@ -33,4 +33,38 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimateDiscount::class);
     }
+
+    public function getTotalExcludingTax(): float
+    {
+        $totalAmount = $this->items()->sum('amount');
+        $totalFixedDiscount = $this->discounts()->where('is_percentage', false)->sum('amount');
+        $totalPercentageDiscount = $this->discounts()->where('is_percentage', true)->sum('amount');
+        $totalAmount -= $totalFixedDiscount;
+        $totalAmount *= (1 - ($totalPercentageDiscount / 100));
+        return $totalAmount;
+    }
+
+    public function getTotalIncludingTax(): float
+    {
+        $totalAmount = $this->items()->sum('amount');
+        $totalFixedDiscount = $this->discounts()->where('is_percentage', false)->sum('amount');
+        $totalPercentageDiscount = $this->discounts()->where('is_percentage', true)->sum('amount');
+        $taxRate = $this->tax_rate;
+        $totalAmount -= $totalFixedDiscount;
+        $totalAmount *= (1 - $totalPercentageDiscount / 100);
+        $totalAmount *= (1 + $taxRate / 100);
+        return $totalAmount;
+    }
+
+    public function getTax(): float
+    {
+        $totalAmount = $this->items()->sum('amount');
+        $totalFixedDiscount = $this->discounts()->where('is_percentage', false)->sum('amount');
+        $totalPercentageDiscount = $this->discounts()->where('is_percentage', true)->sum('amount');
+        $taxRate = $this->tax_rate;
+        $totalAmount -= $totalFixedDiscount;
+        $totalAmount *= (1 - $totalPercentageDiscount / 100);
+        $totalTax = $totalAmount * $taxRate / 100;
+        return $totalTax;
+    }
 }
