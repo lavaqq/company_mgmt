@@ -13,7 +13,18 @@ class EditEstimate extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading('Supprimer le devis : ' . $this->record->reference),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Modifier le devis : ' . $this->record->reference;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

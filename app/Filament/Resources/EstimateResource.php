@@ -27,6 +27,14 @@ class EstimateResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Administratifs';
+
+    protected static ?string $label = 'Devis émis';
+
+    protected static ?string $pluralLabel = 'Devis émis';
+
+    protected static ?string $navigationLabel = 'Devis émis';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -53,7 +61,7 @@ class EstimateResource extends Resource
                             ->required(),
                         TextInput::make('reference')
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -151,18 +159,11 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->reference;
+                        return 'Supprimer : ' . $record->reference;
                     })
                     ->label(''),
             ])
             ->bulkActions([]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

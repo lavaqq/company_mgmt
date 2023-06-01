@@ -13,7 +13,13 @@ class ListEstimates extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer un devis'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des devis émis';
     }
 }
