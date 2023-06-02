@@ -41,6 +41,9 @@ class EstimateResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        Toggle::make('no_prepayment')
+                            ->label("Pas d'acompte")
+                            ->columnSpanFull(),
                         Select::make('company_id')
                             ->label('Entreprise')
                             ->relationship('company', 'name')
@@ -51,12 +54,6 @@ class EstimateResource extends Resource
                             ->label("Date d'émission")
                             ->minDate(Carbon::now()->format('Y-m-d'))
                             ->default(Carbon::now()->format('Y-m-d'))
-                            ->displayFormat('d/m/Y')
-                            ->required(),
-                        DatePicker::make('due_date')
-                            ->label("Date d'échéance")
-                            ->minDate(Carbon::now()->addDay(30)->format('Y-m-d'))
-                            ->default(Carbon::now()->addDay(30)->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
                             ->required(),
                         TextInput::make('reference')
@@ -70,6 +67,10 @@ class EstimateResource extends Resource
                             ->default(21)
                             ->suffix('%')
                             ->required(),
+                        TextInput::make('deadline')
+                            ->hint('Uniquement chiffre et indicateur (jours, mois, ...) | Laisser vide si pas de délai.')
+                            ->label('Délai de livraison/exécution')
+                            ->columnSpan(2),
                     ])->columns(3),
                 Tabs::make('Facturation')
                     ->tabs([
@@ -128,9 +129,6 @@ class EstimateResource extends Resource
                     ->limit(20),
                 TextColumn::make('issue_date')
                     ->label("Date d'émission")
-                    ->dateTime('d/m/Y'),
-                TextColumn::make('due_date')
-                    ->label("Date d'échéance")
                     ->dateTime('d/m/Y'),
                 TextColumn::make('total_excl_tax')
                     ->label('Total HT')
