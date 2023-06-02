@@ -15,6 +15,8 @@ class Estimate extends Model
         'company_id',
         'reference',
         'tax_rate',
+        'deadline',
+        'no_prepayment',
         'issue_date',
         'due_date',
     ];

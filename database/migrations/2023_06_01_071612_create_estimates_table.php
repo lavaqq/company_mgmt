@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('reference');
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
-            $table->date('due_date');
+            $table->string('deadline')->nullable();
+            $table->boolean('no_prepayment')->default(false);
             $table->timestamps();
         });
     }
