@@ -61,6 +61,7 @@ class CompanyResource extends Resource
                                 'SRL' => 'SRL (Société à Responsabilité Limitée)',
                                 'SARL' => 'SARL (Société à Responsabilité Limitée)',
                                 'SPRL' => 'SPRL (Société Privée à Responsabilité Limitée)',
+                                'INDÉPENDANT' => 'Indépendant'
                             ])
                             ->searchable()
                             ->required(),
