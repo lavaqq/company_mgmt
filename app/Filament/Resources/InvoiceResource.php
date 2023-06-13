@@ -60,8 +60,8 @@ class InvoiceResource extends Resource
                             ->required(),
                         DatePicker::make('issue_date')
                             ->label("Date d'émission")
-                            ->minDate(Carbon::now()->format('Y-m-d'))
-                            ->default(Carbon::now()->format('Y-m-d'))
+                            // ->minDate(Carbon::now()->format('Y-m-d'))
+                            // ->default(Carbon::now()->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
@@ -70,8 +70,8 @@ class InvoiceResource extends Resource
                             ->required(),
                         DatePicker::make('due_date')
                             ->label("Date d'échéance")
-                            ->minDate(Carbon::now()->addDay(30)->format('Y-m-d'))
-                            ->default(Carbon::now()->addDay(30)->format('Y-m-d'))
+                            // ->minDate(Carbon::now()->addDay(30)->format('Y-m-d'))
+                            // ->default(Carbon::now()->addDay(30)->format('Y-m-d'))
                             ->displayFormat('d/m/Y')
                             ->required(),
                         TextInput::make('reference')
@@ -84,8 +84,8 @@ class InvoiceResource extends Resource
                             ->default(function (Closure $get) {
                                 return self::generateVcs($get('issue_date'));
                             })
-                            ->disabled()
-                            ->required(),
+                            ->disabled(),
+                        // ->required(),
                         TextInput::make('tax_rate')
                             ->label('Taux TVA')
                             ->numeric()
