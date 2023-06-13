@@ -337,7 +337,7 @@
         @foreach ($data->items as $item)
             <div class="invoice-table__item">
                 <p>{{ $item->description }}</p>
-                <p>{{ $item->amount }}€</p>
+                <p>{{ $item->amount }} €</p>
             </div>
             @if (!$loop->last)
                 <hr class="invoice-table__separator">
@@ -347,23 +347,23 @@
         @foreach ($data->discounts as $discount)
             <div class="invoice-table__item">
                 <p>{{ $discount->description }}</p>
-                <p>{{ '-' }}{{ $discount->amount }}{{ $discount->is_percentage ? '%' : '€' }}</p>
+                <p>{{ '-' }}{{ $discount->amount }} {{ $discount->is_percentage ? '%' : '€' }}</p>
             </div>
             <hr class="invoice-table__separator">
         @endforeach
         <div class="invoice-table__item">
             <p>Sous-total HTVA</p>
-            <p>{{ $data->getTotalExcludingTax() }} €</p>
+            <p>{{ round($data->getTotalExcludingTax(), 2) }} €</p>
         </div>
         <hr class="invoice-table__separator">
         <div class="invoice-table__item">
-            <p>TVA ({{ $data->tax_rate }}%)</p>
-            <p>{{ $data->getTax() }}€</p>
+            <p>TVA ({{ $data->tax_rate }} %)</p>
+            <p>{{ round($data->getTax(), 2) }} €</p>
         </div>
         <hr class="invoice-table__separator">
         <div class="invoice-table__item">
             <p>Total TTC</p>
-            <p>{{ $data->getTotalIncludingTax() }}€</p>
+            <p>{{ round($data->getTotalIncludingTax(), 2) }} €</p>
         </div>
     </main>
 

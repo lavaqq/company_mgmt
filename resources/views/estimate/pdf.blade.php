@@ -368,7 +368,7 @@
             <div>
                 <h1 class="h1 uppercase">Devis</h1>
                 <p class="text uppercase">Référence : {{ $data->reference }}</p>
-                <p class="text uppercase">DATE D’EMISSION: {{ date('d/m/Y', strtotime($data->issue_date)) }}</p>
+                <p class="text uppercase">DATE D’EMISSION : {{ date('d/m/Y', strtotime($data->issue_date)) }}</p>
                 <p class="text uppercase">VALIDITÉ DU DEVIS : 1 MOIS
                     ({{ date('d/m/Y', strtotime($data->issue_date . ' +1 month')) }})</p>
             </div>
@@ -392,7 +392,7 @@
             @foreach ($data->items as $item)
                 <div class="estimate-table__item">
                     <p>{{ $item->description }}</p>
-                    <p>{{ $item->amount }}€</p>
+                    <p>{{ $item->amount }} €</p>
                 </div>
                 @if (!$loop->last)
                     <hr class="estimate-table__separator">
@@ -402,23 +402,23 @@
             @foreach ($data->discounts as $discount)
                 <div class="estimate-table__item">
                     <p>{{ $discount->description }}</p>
-                    <p>{{ '-' }}{{ $discount->amount }}{{ $discount->is_percentage ? '%' : '€' }}</p>
+                    <p>{{ '-' }}{{ $discount->amount }} {{ $discount->is_percentage ? '%' : '€' }}</p>
                 </div>
                 <hr class="estimate-table__separator">
             @endforeach
             <div class="estimate-table__item">
                 <p>Sous-total HTVA</p>
-                <p>{{ $data->getTotalExcludingTax() }} €</p>
+                <p>{{ round($data->getTotalExcludingTax(), 2) }} €</p>
             </div>
             <hr class="estimate-table__separator">
             <div class="estimate-table__item">
-                <p>TVA ({{ $data->tax_rate }}%)</p>
-                <p>{{ $data->getTax() }}€</p>
+                <p>TVA ({{ $data->tax_rate }} %)</p>
+                <p>{{ round($data->getTax(), 2) }} €</p>
             </div>
             <hr class="estimate-table__separator">
             <div class="estimate-table__item">
                 <p>Total TTC à facturer</p>
-                <p>{{ $data->getTotalIncludingTax() }}€</p>
+                <p>{{ round($data->getTotalIncludingTax(), 2) }} €</p>
             </div>
         </main>
 
