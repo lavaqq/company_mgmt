@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
         'password',
     ];
 
@@ -50,5 +51,10 @@ class User extends Authenticatable
             return true;
         }
         return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar;
     }
 }
