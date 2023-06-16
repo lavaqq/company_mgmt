@@ -34,20 +34,15 @@ class CreateUser extends Command
 
         $email = $this->ask('Please enter an email.');
 
-        $admin = $this->confirm('Should this user be admin? [y|n]', false);
-
         $password = $this->secret('Please enter a password.');
 
         try {
-            $user = User::create([
+            User::create([
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email' => $email,
                 'password' => Hash::make($password),
             ]);
-            if ($admin) {
-                $user->assignRole('admin');
-            }
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             return;
