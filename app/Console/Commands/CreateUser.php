@@ -13,7 +13,7 @@ class CreateUser extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create {--f|first_name= : First name} {--l|last_name= : Last name} {--e|email= : Email}';
+    protected $signature = 'user:create';
 
     /**
      * The console command description.
@@ -27,30 +27,27 @@ class CreateUser extends Command
      */
     public function handle()
     {
-        $first_name = $this->option('first_name');
-        if ($first_name === null) {
-            $first_name = $this->ask('Please enter an first name.');
-        }
 
-        $last_name = $this->option('last_name');
-        if ($last_name === null) {
-            $last_name = $this->ask('Please enter an last name.');
-        }
+        $first_name = $this->ask('Please enter an first name.');
 
-        $email = $this->option('email');
-        if ($email === null) {
-            $email = $this->ask('Please enter an email.');
-        }
+        $last_name = $this->ask('Please enter an last name.');
+
+        $email = $this->ask('Please enter an email.');
+
+        $admin = $this->confirm('Should this user be admin? [y|n]', false);
 
         $password = $this->secret('Please enter a password.');
 
         try {
-            User::create([
+            $user = User::create([
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email' => $email,
                 'password' => Hash::make($password),
             ]);
+            if ($admin) {
+                $user->assignRole('admin');
+            }
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             return;
