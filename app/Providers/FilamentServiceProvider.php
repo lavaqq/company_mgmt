@@ -24,7 +24,7 @@ class FilamentServiceProvider extends ServiceProvider
         Filament::serving(function () {
             Filament::registerViteTheme('resources/css/filament.css');
             Filament::registerUserMenuItems([
-                'account' => UserMenuItem::make()->url(route('filament.pages.mon-compte')),
+                'account' => UserMenuItem::make()->url(route('filament.pages.my-account')),
             ]);
         });
     }

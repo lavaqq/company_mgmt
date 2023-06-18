@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserAccount extends Page
 {
-    protected static ?string $slug = 'mon-compte';
+    protected static ?string $slug = 'my-account';
 
     protected static ?string $title = 'Mon compte';
 
