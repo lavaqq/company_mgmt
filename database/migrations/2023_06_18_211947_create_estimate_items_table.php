@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('estimate_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('estimate_id');
+            $table->foreignId('estimate_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->string('description');
             $table->decimal('amount', 10, 2);
             $table->timestamps();

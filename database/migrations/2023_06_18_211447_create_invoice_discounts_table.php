@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('invoice_discounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id');
+            $table->foreignId('invoice_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->string('description');
             $table->boolean('is_percentage');
             $table->decimal('amount', 10, 2);
