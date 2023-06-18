@@ -15,6 +15,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
 
 class ContactResource extends Resource
@@ -95,6 +97,9 @@ class ContactResource extends Resource
                     })
                     ->label('Titre du poste'),
             ])
+            ->filters([
+                Tables\Filters\TrashedFilter::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->label(''),
@@ -103,9 +108,27 @@ class ContactResource extends Resource
                         return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
+                Tables\Actions\ForceDeleteAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return 'Supprimer définitivement : ' . $record->last_name . ' ' . $record->first_name;
+                    })
+                    ->label(''),
+                Tables\Actions\RestoreAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return 'Restaurer : ' . $record->last_name . ' ' . $record->first_name;
+                    })
+                    ->label(''),
             ])
             ->bulkActions([])
             ->poll('30s');
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function getPages(): array
