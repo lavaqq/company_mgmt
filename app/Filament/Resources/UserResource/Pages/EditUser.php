@@ -13,7 +13,18 @@ class EditUser extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading("Supprimer l'utilisateur : " . $this->record->last_name . ' ' . $this->record->first_name),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return "Modifier l'utilisateur : " . $this->record->last_name . ' ' . $this->record->first_name;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

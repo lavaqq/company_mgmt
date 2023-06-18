@@ -13,7 +13,23 @@ class ListUsers extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer un utilisateur'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Gestion des utilisateurs';
+    }
+
+    protected function getTableEmptyStateIcon(): ?string
+    {
+        return 'heroicon-o-users';
+    }
+
+    protected function getTableEmptyStateHeading(): ?string
+    {
+        return 'Aucun utilisateur enregistré';
     }
 }
