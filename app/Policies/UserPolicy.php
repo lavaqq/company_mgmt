@@ -35,7 +35,7 @@ class UserPolicy
      */
     public function update(): bool
     {
-        return false;
+        return Auth::user()->is_admin;
     }
 
     /**
