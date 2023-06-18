@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
