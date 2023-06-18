@@ -192,8 +192,14 @@ class CompanyResource extends Resource
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return 'Supprimer définitivement : ' . $record->name;
+                    })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
+                    ->modalHeading(function (Model $record): string {
+                        return 'Restaurer : ' . $record->name;
+                    })
                     ->label(''),
             ])
             ->bulkActions([])
