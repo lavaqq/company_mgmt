@@ -191,8 +191,10 @@ class CompanyResource extends Resource
                         return 'Supprimer : ' . $record->name;
                     })
                     ->label(''),
-                Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make(),
+                Tables\Actions\ForceDeleteAction::make()
+                    ->label(''),
+                Tables\Actions\RestoreAction::make()
+                    ->label(''),
             ])
             ->bulkActions([])
             ->poll('30s');
