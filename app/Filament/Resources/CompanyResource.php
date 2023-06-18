@@ -168,15 +168,20 @@ class CompanyResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->label('Dénomination sociale')
+                    ->searchable()
                     ->limit(20),
                 TextColumn::make('vat_number')
                     ->label('Numéro de TVA')
+                    ->searchable()
                     ->getStateUsing(function (Model $record): string {
                         return $record->vat_country_code . $record->vat_number;
                     }),
                 BadgeColumn::make('legal_form')
                     ->label('Forme légale')
                     ->extraAttributes(['class' => 'uppercase']),
+            ])
+            ->filters([
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
@@ -195,16 +200,6 @@ class CompanyResource extends Resource
                 Tables\Actions\RestoreBulkAction::make(),
             ])
             ->poll('30s');
-    }
-
-    protected function getTableFilters(): array
-    {
-        if (Auth::user()->is_admin) {
-            return [
-                Tables\Filters\TrashedFilter::make()
-            ];
-        }
-        return [];
     }
 
     public static function getEloquentQuery(): Builder
