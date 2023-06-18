@@ -16,6 +16,9 @@ use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyResource extends Resource
 {
@@ -183,9 +186,33 @@ class CompanyResource extends Resource
                         return 'Supprimer : ' . $record->name;
                     })
                     ->label(''),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
-            ->bulkActions([])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\ForceDeleteBulkAction::make(),
+                Tables\Actions\RestoreBulkAction::make(),
+            ])
             ->poll('30s');
+    }
+
+    protected function getTableFilters(): array
+    {
+        if (Auth::user()->is_admin) {
+            return [
+                Tables\Filters\TrashedFilter::make()
+            ];
+        }
+        return [];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function getPages(): array
