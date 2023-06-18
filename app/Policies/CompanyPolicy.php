@@ -5,14 +5,13 @@ namespace App\Policies;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
-use Illuminate\Support\Facades\Auth;
 
 class CompanyPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(): bool
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -20,7 +19,7 @@ class CompanyPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(): bool
+    public function view(User $user, Company $company): bool
     {
         return true;
     }
@@ -28,7 +27,7 @@ class CompanyPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(): bool
+    public function create(User $user): bool
     {
         return true;
     }
@@ -38,13 +37,17 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
-        return !$company->trashed();
+        if ($company->trashed() && !$user->is_admin) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(): bool
+    public function delete(User $user, Company $company): bool
     {
         return true;
     }
@@ -52,16 +55,16 @@ class CompanyPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(): bool
+    public function restore(User $user, Company $company): bool
     {
-        return Auth::user()->is_admin;
+        return $user->is_admin;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(): bool
+    public function forceDelete(User $user, Company $company): bool
     {
-        return Auth::user()->is_admin;
+        return $user->is_admin;
     }
 }
