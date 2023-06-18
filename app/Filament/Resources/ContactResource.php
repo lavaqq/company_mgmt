@@ -65,9 +65,11 @@ class ContactResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('first_name')
-                    ->label('Prénom'),
+                    ->label('Prénom')
+                    ->searchable(),
                 TextColumn::make('last_name')
-                    ->label('Nom'),
+                    ->label('Nom')
+                    ->searchable(),
                 TextColumn::make('companies')
                     ->label('Entreprise(s)')
                     ->getStateUsing(function (Model $record): string {
