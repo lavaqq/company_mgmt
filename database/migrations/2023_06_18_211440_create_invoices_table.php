@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
-            $table->enum('status', ['creation', 'pending', 'paid'])->default('creation');
+            $table->enum('status', ['creation', 'pending', 'paid', 'cancelled'])->default('creation');
             $table->softDeletes();
             $table->timestamps();
         });
