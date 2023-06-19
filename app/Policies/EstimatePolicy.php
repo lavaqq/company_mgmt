@@ -41,6 +41,10 @@ class EstimatePolicy
             return false;
         }
 
+        if (($estimate->status == 'signed' || $estimate->status == 'refused') && !$user->is_admin) {
+            return false;
+        }
+
         return true;
     }
 
@@ -49,6 +53,9 @@ class EstimatePolicy
      */
     public function delete(User $user, Estimate $estimate): bool
     {
+        if ($estimate->status != 'creation' && !$user->is_admin) {
+            return false;
+        }
         return true;
     }
 
