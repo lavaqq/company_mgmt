@@ -177,9 +177,8 @@
         }
 
         button {
-            background: none;
-            padding: 0;
-            border: none;
+            none;
+            padding border: none;
             font-size: 1rem;
         }
     </style>
@@ -265,24 +264,22 @@
         }
 
         .estimate-table__item--head {
-            background: #35837D;
-            color: white;
+            #35837D;
+            color: wh
         }
 
         .estimate-table__separator {
             width: 100%;
             height: 0.5px;
-            background: #ECECEC;
-            margin: 0;
-            border: none;
+            #ECECEC;
+            margin border: none;
         }
 
         .estimate-table__separator--result {
             width: 100%;
             height: 0.5px;
-            background: #35837D;
-            margin: 0;
-            border: none;
+            #35837D;
+            margin border: none;
         }
 
         .estimate-information {
@@ -408,17 +405,17 @@
             @endforeach
             <div class="estimate-table__item">
                 <p>Sous-total HTVA</p>
-                <p>{{ round($data->getTotalExcludingTax(), 2) }} €</p>
+                <p>{{ $data->getTotalExcludingTax() }} €</p>
             </div>
             <hr class="estimate-table__separator">
             <div class="estimate-table__item">
                 <p>TVA ({{ $data->tax_rate }} %)</p>
-                <p>{{ round($data->getTax(), 2) }} €</p>
+                <p>{{ $data->getTax() }} €</p>
             </div>
             <hr class="estimate-table__separator">
             <div class="estimate-table__item">
                 <p>Total TTC à facturer</p>
-                <p>{{ round($data->getTotalIncludingTax(), 2) }} €</p>
+                <p>{{ $data->getTotalIncludingTax() }} €</p>
             </div>
         </main>
 

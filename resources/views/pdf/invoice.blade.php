@@ -353,17 +353,17 @@
         @endforeach
         <div class="invoice-table__item">
             <p>Sous-total HTVA</p>
-            <p>{{ round($data->getTotalExcludingTax(), 2) }} €</p>
+            <p>{{ $data->getTotalExcludingTax() }} €</p>
         </div>
         <hr class="invoice-table__separator">
         <div class="invoice-table__item">
             <p>TVA ({{ $data->tax_rate }} %)</p>
-            <p>{{ round($data->getTax(), 2) }} €</p>
+            <p>{{ $data->getTax() }} €</p>
         </div>
         <hr class="invoice-table__separator">
         <div class="invoice-table__item">
             <p>Total TTC</p>
-            <p>{{ round($data->getTotalIncludingTax(), 2) }} €</p>
+            <p>{{ $data->getTotalIncludingTax() }} €</p>
         </div>
     </main>
 
