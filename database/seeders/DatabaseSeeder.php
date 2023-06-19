@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Database\Seeders\secret\CompanySeeder;
+use Database\Seeders\secret\EstimateSeeder;
+use Database\Seeders\secret\InvoiceSeeder;
+use Database\Seeders\secret\UserSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
