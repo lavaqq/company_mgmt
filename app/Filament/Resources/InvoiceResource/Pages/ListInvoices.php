@@ -7,6 +7,8 @@ use App\Models\Invoice;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ListInvoices extends ListRecords
 {
@@ -14,6 +16,15 @@ class ListInvoices extends ListRecords
 
     protected function getActions(): array
     {
+        if (Auth::user()->is_admin) {
+            return [
+                Actions\CreateAction::make()
+                    ->label('Créer une facture'),
+            ];
+        }
+        if (Invoice::all()->last()->status == 'creation') {
+            return [];
+        }
         return [
             Actions\CreateAction::make()
                 ->label('Créer une facture'),
