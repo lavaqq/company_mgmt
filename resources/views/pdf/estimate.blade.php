@@ -177,8 +177,9 @@
         }
 
         button {
-            none;
-            padding border: none;
+            background: none;
+            padding: 0;
+            border: none;
             font-size: 1rem;
         }
     </style>
@@ -264,22 +265,24 @@
         }
 
         .estimate-table__item--head {
-            #35837D;
-            color: wh
+            background: #35837D;
+            color: white;
         }
 
         .estimate-table__separator {
             width: 100%;
             height: 0.5px;
-            #ECECEC;
-            margin border: none;
+            background: #ECECEC;
+            margin: 0;
+            border: none;
         }
 
         .estimate-table__separator--result {
             width: 100%;
             height: 0.5px;
-            #35837D;
-            margin border: none;
+            background: #35837D;
+            margin: 0;
+            border: none;
         }
 
         .estimate-information {
