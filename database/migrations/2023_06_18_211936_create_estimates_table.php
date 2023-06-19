@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('issue_date');
             $table->string('deadline')->nullable();
             $table->boolean('no_prepayment')->default(false);
+            $table->enum('status', ['creation', 'pending', 'signed', 'refused'])->default('creation');
             $table->softDeletes();
             $table->timestamps();
         });

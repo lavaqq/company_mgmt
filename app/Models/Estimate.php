@@ -19,6 +19,7 @@ class Estimate extends Model
         'no_prepayment',
         'issue_date',
         'due_date',
+        'status',
     ];
 
     public function company(): BelongsTo
