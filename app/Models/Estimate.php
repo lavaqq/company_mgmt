@@ -44,7 +44,7 @@ class Estimate extends Model
         $totalAmount -= $totalFixedDiscount;
         $totalAmount *= (1 - ($totalPercentageDiscount / 100));
 
-        return $totalAmount;
+        return round($totalAmount, 2);
     }
 
     public function getTotalIncludingTax(): float
@@ -57,7 +57,7 @@ class Estimate extends Model
         $totalAmount *= (1 - $totalPercentageDiscount / 100);
         $totalAmount *= (1 + $taxRate / 100);
 
-        return $totalAmount;
+        return round($totalAmount, 2);
     }
 
     public function getTax(): float
@@ -70,6 +70,6 @@ class Estimate extends Model
         $totalAmount *= (1 - $totalPercentageDiscount / 100);
         $totalTax = $totalAmount * $taxRate / 100;
 
-        return $totalTax;
+        return round($totalTax, 2);
     }
 }
