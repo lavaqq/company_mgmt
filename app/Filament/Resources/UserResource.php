@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Pages\Page;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -76,6 +77,8 @@ class UserResource extends Resource
                         ->dehydrated(static fn (null|string $state): bool => filled($state))
                         ->maxLength(255)
                         ->required(static fn (Page $livewire): bool => $livewire instanceof CreateUser),
+                    Toggle::make('is_admin')
+                        ->label('Admin')
                 ])->columns(2),
             ]);
     }
