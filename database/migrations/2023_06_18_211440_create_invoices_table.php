@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

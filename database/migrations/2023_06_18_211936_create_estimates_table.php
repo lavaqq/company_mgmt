@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('issue_date');
             $table->string('deadline')->nullable();
             $table->boolean('no_prepayment')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
