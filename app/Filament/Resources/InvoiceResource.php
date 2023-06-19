@@ -151,9 +151,11 @@ class InvoiceResource extends Resource
             ->columns([
                 TextColumn::make('reference')
                     ->label('Référence')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('company.name')
                     ->label('Entreprise')
+                    ->sortable()
                     ->searchable()
                     ->limit(20),
                 TextColumn::make('issue_date')

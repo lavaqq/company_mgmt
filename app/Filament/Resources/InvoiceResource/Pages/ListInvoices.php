@@ -35,9 +35,18 @@ class ListInvoices extends ListRecords
         return 'Aucune facture enregistrée';
     }
 
-    // Create a bug with forceDelete and restore action
-    // protected function getTableQuery(): Builder
-    // {
-    //     return Invoice::orderBy('reference', 'desc');
-    // }
+    protected function shouldPersistTableSortInSession(): bool
+    {
+        return true;
+    }
+
+    protected function getDefaultTableSortColumn(): ?string
+    {
+        return 'reference';
+    }
+
+    protected function getDefaultTableSortDirection(): ?string
+    {
+        return 'desc';
+    }
 }
