@@ -49,7 +49,7 @@ class EstimateResource extends Resource
             ->schema([
                 Select::make('status')
                     ->label('Statut')
-                    ->options(static function (Page $livewire, Model $record) {
+                    ->options(static function (Page $livewire, Model|null $record) {
                         $statuses = [
                             'creation' => 'En création',
                             'pending' => 'En attente',
@@ -82,32 +82,86 @@ class EstimateResource extends Resource
                 Card::make()
                     ->schema([
                         Toggle::make('no_prepayment')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label("Pas d'acompte")
                             ->columnSpanFull(),
                         Select::make('company_id')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->preload()
                             ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label("Date d'émission")
                             ->minDate(static fn (Page $livewire) => $livewire instanceof CreateEstimate ? now() : null)
                             ->default(now())
                             ->displayFormat('d/m/Y')
                             ->required(),
                         TextInput::make('reference')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Taux TVA')
                             ->numeric()
                             ->default(21)
                             ->suffix('%')
                             ->required(),
                         TextInput::make('deadline')
+                            ->disabled(static function (Model|null $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->hint('Uniquement chiffre et indicateur (jours, mois, ...) | Laisser vide si pas de délai.')
                             ->label('Délai de livraison/exécution')
                             ->columnSpan(2),
@@ -117,6 +171,15 @@ class EstimateResource extends Resource
                         Tab::make('Services')
                             ->schema([
                                 Repeater::make('items')
+                                    ->disabled(static function (Model|null $record) {
+                                        if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($record->status != 'creation') {
+                                            return true;
+                                        }
+                                        return false;
+                                    })
                                     ->defaultItems(0)
                                     ->createItemButtonLabel('Ajouter un service')
                                     ->relationship()
@@ -135,6 +198,15 @@ class EstimateResource extends Resource
                         Tab::make('Réductions')
                             ->schema([
                                 Repeater::make('discounts')
+                                    ->disabled(static function (Model|null $record) {
+                                        if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($record->status != 'creation') {
+                                            return true;
+                                        }
+                                        return false;
+                                    })
                                     ->defaultItems(0)
                                     ->createItemButtonLabel('Ajouter une réduction')
                                     ->relationship()
@@ -177,11 +249,11 @@ class EstimateResource extends Resource
                 TextColumn::make('total_excl_tax')
                     ->label('Total HT')
                     ->suffix(' €')
-                    ->getStateUsing(fn (Model $record): float => $record->getTotalExcludingTax()),
+                    ->getStateUsing(fn (Model|null $record): float => $record->getTotalExcludingTax()),
                 TextColumn::make('total_incl_tax')
                     ->label('Total TTC')
                     ->suffix(' €')
-                    ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
+                    ->getStateUsing(fn (Model|null $record): float => $record->getTotalIncludingTax()),
                 BadgeColumn::make('status')
                     ->label('Statut')
                     ->enum([
@@ -202,23 +274,23 @@ class EstimateResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('stream_pdf')
-                    ->url(fn (Model $record): string => route('estimate.pdf', $record))
+                    ->url(fn (Model|null $record): string => route('estimate.pdf', $record))
                     ->icon('heroicon-o-eye')
                     ->label(''),
                 Tables\Actions\EditAction::make()
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
-                    ->modalHeading(function (Model $record): string {
+                    ->modalHeading(function (Model|null $record): string {
                         return 'Supprimer : ' . $record->reference;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
-                    ->modalHeading(function (Model $record): string {
+                    ->modalHeading(function (Model|null $record): string {
                         return 'Supprimer définitivement : ' . $record->reference;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
-                    ->modalHeading(function (Model $record): string {
+                    ->modalHeading(function (Model|null $record): string {
                         return 'Restaurer : ' . $record->reference;
                     })
                     ->label(''),

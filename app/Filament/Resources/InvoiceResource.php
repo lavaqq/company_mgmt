@@ -62,7 +62,7 @@ class InvoiceResource extends Resource
             ->schema([
                 Select::make('status')
                     ->label('Statut')
-                    ->options(static function (Page $livewire, Model $record) {
+                    ->options(static function (Page $livewire, Model|null $record) {
                         $statuses = [
                             'creation' => 'En création',
                             'pending' => 'En attente',
@@ -95,7 +95,7 @@ class InvoiceResource extends Resource
                 Card::make()
                     ->schema([
                         Select::make('company_id')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -110,7 +110,7 @@ class InvoiceResource extends Resource
                             ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -130,7 +130,7 @@ class InvoiceResource extends Resource
                             })
                             ->required(),
                         DatePicker::make('due_date')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -146,7 +146,7 @@ class InvoiceResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('reference')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -160,7 +160,7 @@ class InvoiceResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -175,7 +175,7 @@ class InvoiceResource extends Resource
                             })
                             ->disabled(!Auth::user()->is_admin),
                         TextInput::make('tax_rate')
-                            ->disabled(static function (Model $record) {
+                            ->disabled(static function (Model|null $record) {
                                 if (Auth::user()->is_admin) {
                                     return false;
                                 }
@@ -195,7 +195,7 @@ class InvoiceResource extends Resource
                         Tab::make('Services')
                             ->schema([
                                 Repeater::make('items')
-                                    ->disabled(static function (Model $record) {
+                                    ->disabled(static function (Model|null $record) {
                                         if (Auth::user()->is_admin) {
                                             return false;
                                         }
@@ -222,7 +222,7 @@ class InvoiceResource extends Resource
                         Tab::make('Réductions')
                             ->schema([
                                 Repeater::make('discounts')
-                                    ->disabled(static function (Model $record) {
+                                    ->disabled(static function (Model|null $record) {
                                         if (Auth::user()->is_admin) {
                                             return false;
                                         }
