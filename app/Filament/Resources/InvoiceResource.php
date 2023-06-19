@@ -203,7 +203,8 @@ class InvoiceResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->poll('10s');
     }
 
     public static function getRelations(): array

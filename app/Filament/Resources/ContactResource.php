@@ -120,7 +120,7 @@ class ContactResource extends Resource
                     ->label(''),
             ])
             ->bulkActions([])
-            ->poll('30s');
+            ->poll('10s');
     }
 
     public static function getEloquentQuery(): Builder
