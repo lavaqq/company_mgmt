@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InvoiceResource\Pages;
+use App\Filament\Resources\InvoiceResource\Pages\CreateInvoice;
+use App\Filament\Resources\InvoiceResource\Pages\EditInvoice;
 use App\Filament\Resources\InvoiceResource\RelationManagers;
 use App\Models\Invoice;
 use Carbon\Carbon;
@@ -20,11 +22,14 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Filament\Pages\Page;
 
 class InvoiceResource extends Resource
 {
@@ -55,19 +60,69 @@ class InvoiceResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('status')
+                    ->label('Statut')
+                    ->options(static function (Page $livewire, Model $record) {
+                        $statuses = [
+                            'creation' => 'En création',
+                            'pending' => 'En attente',
+                            'paid' => 'Payée',
+                            'cancelled' => 'Annulée'
+                        ];
+                        if (Auth::user()->is_admin) {
+                            return $statuses;
+                        }
+                        if ($livewire instanceof CreateInvoice) {
+                            return $statuses;
+                        }
+                        if ($livewire instanceof EditInvoice) {
+                            switch ($record->status) {
+                                case 'creation':
+                                    return $statuses;
+                                case 'pending':
+                                    return [
+                                        'pending' => $statuses['pending'],
+                                        'paid' => $statuses['paid'],
+                                        'cancelled' => $statuses['cancelled']
+                                    ];
+                                default:
+                                    return $statuses;
+                            }
+                        }
+                    })
+                    ->default('creation')
+                    ->disablePlaceholderSelection(),
                 Card::make()
                     ->schema([
                         Select::make('company_id')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->preload()
                             ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label("Date d'émission")
                             ->displayFormat('d/m/Y')
                             ->format('d/m/Y')
-                            ->minDate(now())
+                            ->minDate(static fn (Page $livewire) => $livewire instanceof CreateInvoice ? now() : null)
                             ->default(now())
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
@@ -75,6 +130,15 @@ class InvoiceResource extends Resource
                             })
                             ->required(),
                         DatePicker::make('due_date')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label("Date d'échéance")
                             ->displayFormat('d/m/Y')
                             ->format('d/m/Y')
@@ -82,17 +146,44 @@ class InvoiceResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('reference')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Numéro de facture')
                             ->default(fn (): string => 'LS-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Communication structurée')
                             ->default(function (Closure $get) {
                                 return self::generateVcs($get('issue_date'));
                             })
                             ->disabled(!Auth::user()->is_admin),
                         TextInput::make('tax_rate')
+                            ->disabled(static function (Model $record) {
+                                if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($record->status != 'creation') {
+                                    return true;
+                                }
+                                return false;
+                            })
                             ->label('Taux TVA')
                             ->numeric()
                             ->default(21)
@@ -104,6 +195,15 @@ class InvoiceResource extends Resource
                         Tab::make('Services')
                             ->schema([
                                 Repeater::make('items')
+                                    ->disabled(static function (Model $record) {
+                                        if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($record->status != 'creation') {
+                                            return true;
+                                        }
+                                        return false;
+                                    })
                                     ->defaultItems(0)
                                     ->createItemButtonLabel('Ajouter un service')
                                     ->relationship()
@@ -122,6 +222,15 @@ class InvoiceResource extends Resource
                         Tab::make('Réductions')
                             ->schema([
                                 Repeater::make('discounts')
+                                    ->disabled(static function (Model $record) {
+                                        if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($record->status != 'creation') {
+                                            return true;
+                                        }
+                                        return false;
+                                    })
                                     ->defaultItems(0)
                                     ->createItemButtonLabel('Ajouter une réduction')
                                     ->relationship()
@@ -157,12 +266,12 @@ class InvoiceResource extends Resource
                     ->label('Entreprise')
                     ->sortable()
                     ->searchable()
-                    ->limit(20),
+                    ->limit(10),
                 TextColumn::make('issue_date')
-                    ->label("Date d'émission")
+                    ->label("Émission")
                     ->dateTime('d/m/Y'),
                 TextColumn::make('due_date')
-                    ->label("Date d'échéance")
+                    ->label("Échéance")
                     ->dateTime('d/m/Y'),
                 TextColumn::make('total_excl_tax')
                     ->label('Total HT')
@@ -172,6 +281,20 @@ class InvoiceResource extends Resource
                     ->label('Total TTC')
                     ->suffix(' €')
                     ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
+                BadgeColumn::make('status')
+                    ->label('Statut')
+                    ->enum([
+                        'creation' => 'En création',
+                        'pending' => 'En attente',
+                        'paid' => 'Payée',
+                        'cancelled' => 'Annulée'
+                    ])
+                    ->colors([
+                        'secondary' => 'creation',
+                        'warning' => 'pending',
+                        'success' => 'paid',
+                        'danger' => 'cancelled'
+                    ])
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
