@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('company_id');
             $table->string('reference');
             $table->string('vcs')
                 ->nullable();
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
-            $table->enum('status', ['creation', 'pending', 'paid']);
+            $table->enum('status', ['creation', 'pending', 'paid'])->default('creation');
             $table->softDeletes();
             $table->timestamps();
         });

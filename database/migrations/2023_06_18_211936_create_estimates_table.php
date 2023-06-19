@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('company_id');
             $table->string('reference');
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');

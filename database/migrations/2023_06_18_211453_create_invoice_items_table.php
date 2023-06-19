@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('invoice_id');
             $table->string('description');
             $table->decimal('amount', 10, 2);
             $table->softDeletes();

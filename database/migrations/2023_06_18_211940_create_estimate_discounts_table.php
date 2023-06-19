@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('estimate_discounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('estimate_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('estimate_id');
             $table->string('description');
             $table->boolean('is_percentage');
             $table->decimal('amount', 10, 2);
