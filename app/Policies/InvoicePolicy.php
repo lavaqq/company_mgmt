@@ -41,6 +41,10 @@ class InvoicePolicy
             return false;
         }
 
+        if (($invoice->status == 'cancelled' || $invoice->status == 'paid') && !$user->is_admin) {
+            return false;
+        }
+
         return true;
     }
 
@@ -49,6 +53,9 @@ class InvoicePolicy
      */
     public function delete(User $user, Invoice $invoice): bool
     {
+        if ($invoice->status != 'creation' && !$user->is_admin) {
+            return false;
+        }
         return true;
     }
 
