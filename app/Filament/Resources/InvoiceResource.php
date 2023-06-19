@@ -91,7 +91,7 @@ class InvoiceResource extends Resource
                             ->default(function (Closure $get) {
                                 return self::generateVcs($get('issue_date'));
                             })
-                            ->disabled(Auth::user()->is_admin),
+                            ->disabled(!Auth::user()->is_admin),
                         TextInput::make('tax_rate')
                             ->label('Taux TVA')
                             ->numeric()
