@@ -299,6 +299,7 @@ class EstimateResource extends Resource
             ->actions([
                 Tables\Actions\Action::make('stream_pdf')
                     ->url(fn (Model|null $record): string => route('estimate.pdf', $record))
+                    ->openUrlInNewTab()
                     ->icon('heroicon-o-eye')
                     ->label(''),
                 Tables\Actions\EditAction::make()

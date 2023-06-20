@@ -326,6 +326,7 @@ class InvoiceResource extends Resource
             ->actions([
                 Tables\Actions\Action::make('stream_pdf')
                     ->url(fn (Model $record): string => route('invoice.pdf', $record))
+                    ->openUrlInNewTab()
                     ->icon('heroicon-o-eye')
                     ->label(''),
                 Tables\Actions\EditAction::make()
