@@ -82,8 +82,11 @@ class EstimateResource extends Resource
                 Card::make()
                     ->schema([
                         Toggle::make('no_prepayment')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -94,8 +97,11 @@ class EstimateResource extends Resource
                             ->label("Pas d'acompte")
                             ->columnSpanFull(),
                         Select::make('company_id')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -109,8 +115,11 @@ class EstimateResource extends Resource
                             ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -124,8 +133,11 @@ class EstimateResource extends Resource
                             ->displayFormat('d/m/Y')
                             ->required(),
                         TextInput::make('reference')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -138,8 +150,11 @@ class EstimateResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -153,8 +168,11 @@ class EstimateResource extends Resource
                             ->suffix('%')
                             ->required(),
                         TextInput::make('deadline')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateEstimate) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -171,8 +189,11 @@ class EstimateResource extends Resource
                         Tab::make('Services')
                             ->schema([
                                 Repeater::make('items')
-                                    ->disabled(static function (Model|null $record) {
+                                    ->disabled(static function (Model|null $record, Page $livewire) {
                                         if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($livewire instanceof CreateEstimate) {
                                             return false;
                                         }
                                         if ($record->status != 'creation') {
@@ -198,8 +219,11 @@ class EstimateResource extends Resource
                         Tab::make('Réductions')
                             ->schema([
                                 Repeater::make('discounts')
-                                    ->disabled(static function (Model|null $record) {
+                                    ->disabled(static function (Model|null $record, Page $livewire) {
                                         if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($livewire instanceof CreateEstimate) {
                                             return false;
                                         }
                                         if ($record->status != 'creation') {

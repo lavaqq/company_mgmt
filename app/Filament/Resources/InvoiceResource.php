@@ -95,8 +95,11 @@ class InvoiceResource extends Resource
                 Card::make()
                     ->schema([
                         Select::make('company_id')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -110,8 +113,11 @@ class InvoiceResource extends Resource
                             ->placeholder('Sélectionnez une entreprise')
                             ->required(),
                         DatePicker::make('issue_date')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -130,8 +136,11 @@ class InvoiceResource extends Resource
                             })
                             ->required(),
                         DatePicker::make('due_date')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -146,8 +155,11 @@ class InvoiceResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('reference')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -160,8 +172,11 @@ class InvoiceResource extends Resource
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -175,8 +190,11 @@ class InvoiceResource extends Resource
                             })
                             ->disabled(!Auth::user()->is_admin),
                         TextInput::make('tax_rate')
-                            ->disabled(static function (Model|null $record) {
+                            ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
+                                    return false;
+                                }
+                                if ($livewire instanceof CreateInvoice) {
                                     return false;
                                 }
                                 if ($record->status != 'creation') {
@@ -195,8 +213,11 @@ class InvoiceResource extends Resource
                         Tab::make('Services')
                             ->schema([
                                 Repeater::make('items')
-                                    ->disabled(static function (Model|null $record) {
+                                    ->disabled(static function (Model|null $record, Page $livewire) {
                                         if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($livewire instanceof CreateInvoice) {
                                             return false;
                                         }
                                         if ($record->status != 'creation') {
@@ -222,8 +243,11 @@ class InvoiceResource extends Resource
                         Tab::make('Réductions')
                             ->schema([
                                 Repeater::make('discounts')
-                                    ->disabled(static function (Model|null $record) {
+                                    ->disabled(static function (Model|null $record, Page $livewire) {
                                         if (Auth::user()->is_admin) {
+                                            return false;
+                                        }
+                                        if ($livewire instanceof CreateInvoice) {
                                             return false;
                                         }
                                         if ($record->status != 'creation') {
