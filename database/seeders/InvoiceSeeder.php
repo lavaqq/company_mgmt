@@ -305,6 +305,36 @@ class InvoiceSeeder extends Seeder
             'status' => 'paid',
         ]);
 
+        Invoice::create([
+            'company_id' => 22,
+            'reference' => 'LS-0030',
+            'vcs' => null,
+            'issue_date' => "2023-06-22",
+            'due_date' => "2023-07-22",
+            'tax_rate' => 21,
+            'status' => 'pending',
+        ]);
+
+        Invoice::create([
+            'company_id' => 18,
+            'reference' => 'LS-0031',
+            'vcs' => null,
+            'issue_date' => "2023-06-22",
+            'due_date' => "2023-07-22",
+            'tax_rate' => 21,
+            'status' => 'pending',
+        ]);
+
+        Invoice::create([
+            'company_id' => 23,
+            'reference' => 'LS-0032',
+            'vcs' => null,
+            'issue_date' => "2023-06-22",
+            'due_date' => "2023-07-22",
+            'tax_rate' => 21,
+            'status' => 'pending',
+        ]);
+
         InvoiceItem::create([
             'invoice_id' => 1,
             'description' => "Hébergement (annualité)",
@@ -567,6 +597,24 @@ class InvoiceSeeder extends Seeder
             'invoice_id' => 29,
             'description' => "Design de la landing page de Archit3d",
             'amount' => 240
+        ]);
+
+        InvoiceItem::create([
+            'invoice_id' => 30,
+            'description' => 'Suppression du malware dans le wordpress',
+            'amount' => 180,
+        ]);
+
+        InvoiceItem::create([
+            'invoice_id' => 31,
+            'description' => "Adaptation du stand de MyQM",
+            'amount' => 65,
+        ]);
+
+        InvoiceItem::create([
+            'invoice_id' => 32,
+            'description' => "Design et prototypage d'un formulaire pour le Cabinet Monot",
+            'amount' => 325,
         ]);
 
         InvoiceDiscount::create([

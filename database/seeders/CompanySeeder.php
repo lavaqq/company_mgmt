@@ -299,5 +299,18 @@ class CompanySeeder extends Seeder
             'zipcode' => "7700",
             'country' => "Belgique",
         ]);
+
+        Company::create([
+            'name' => "CONNEXION.",
+            'legal_form' => "SRL",
+            'vat_number' => "0793736944",
+            'vat_country_code' => "BE",
+            'street' => "Chaussée de Lille",
+            'number' => "479",
+            'box' => "2",
+            'city' => "Tournai",
+            'zipcode' => "7501",
+            'country' => "Belgique",
+        ]);
     }
 }
