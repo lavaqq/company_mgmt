@@ -127,8 +127,7 @@ class InvoiceResource extends Resource
                             })
                             ->label("Date d'émission")
                             ->displayFormat('d/m/Y')
-                            ->format('d/m/Y')
-                            ->minDate(static fn (Page $livewire) => $livewire instanceof CreateInvoice ? now() : null)
+                            ->minDate(static fn (Page $livewire) => $livewire instanceof CreateInvoice ? now()->subDay() : null)
                             ->default(now())
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
@@ -150,7 +149,6 @@ class InvoiceResource extends Resource
                             })
                             ->label("Date d'échéance")
                             ->displayFormat('d/m/Y')
-                            ->format('d/m/Y')
                             ->default(now()->addMonth())
                             ->disabled()
                             ->required(),
