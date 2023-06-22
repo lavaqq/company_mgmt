@@ -321,8 +321,7 @@
             <h2 class="h2 uppercase">A L’ATTENTION DE :</h2>
             <p class="text uppercase">{{ $data->company->name }} ({{ $data->company->legal_form }})</p>
             <p class="text uppercase">{{ $data->company->street }} {{ $data->company->number }}
-                {{ $data->company->box }}
-            </p>
+                {{ $data->company->box ? 'boîte ' . $data->company->box : null }}</p>
             <p class="text uppercase">{{ $data->company->zipcode }} {{ $data->company->city }}
                 {{ $data->company->country }}</p>
             <p class="text uppercase">{{ $data->company->country_code }}{{ $data->company->vat_number }}</p>
