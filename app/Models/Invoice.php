@@ -11,8 +11,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Invoice extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
+        'company_id',
         'reference',
         'vcs',
         'tax_rate',

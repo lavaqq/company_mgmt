@@ -13,6 +13,7 @@ class Estimate extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'company_id',
         'reference',
         'tax_rate',
         'deadline',
