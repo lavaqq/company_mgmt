@@ -25,7 +25,7 @@ class EstimateResource extends Resource
 {
     protected static ?string $model = Estimate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?string $navigationGroup = 'Administratifs';
 
@@ -140,10 +140,6 @@ class EstimateResource extends Resource
                     ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
             ])
             ->actions([
-                Tables\Actions\Action::make('stream_pdf')
-                    ->url(fn (Model $record): string => route('estimate.pdf.stream', $record))
-                    ->icon('heroicon-o-eye')
-                    ->label(''),
                 Tables\Actions\Action::make('download_pdf')
                     ->url(fn (Model $record): string => route('estimate.pdf.download', $record))
                     ->icon('heroicon-o-download')

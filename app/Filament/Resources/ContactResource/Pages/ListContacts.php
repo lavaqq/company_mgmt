@@ -22,4 +22,15 @@ class ListContacts extends ListRecords
     {
         return 'Gestion des contacts';
     }
+
+    protected function getTableEmptyStateIcon(): ?string
+
+    {
+        return 'heroicon-o-users';
+    }
+
+    protected function getTableEmptyStateHeading(): ?string
+    {
+        return 'Aucun contact trouvé';
+    }
 }

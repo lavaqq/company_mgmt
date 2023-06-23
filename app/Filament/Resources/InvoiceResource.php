@@ -25,7 +25,7 @@ class InvoiceResource extends Resource
 {
     protected static ?string $model = Invoice::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?string $navigationGroup = 'Administratifs';
 
@@ -164,21 +164,19 @@ class InvoiceResource extends Resource
                     ->getStateUsing(fn (Model $record): float => $record->getTotalIncludingTax()),
             ])
             ->actions([
-                Tables\Actions\Action::make('stream_pdf')
-                    ->url(fn (Model $record): string => route('invoice.pdf.stream', $record))
-                    ->icon('heroicon-o-eye')
-                    ->label(''),
                 Tables\Actions\Action::make('download_pdf')
                     ->url(fn (Model $record): string => route('invoice.pdf.download', $record))
-                    ->icon('heroicon-o-download')
+                    ->icon('heroicon-o-document-download')
                     ->label(''),
                 Tables\Actions\EditAction::make()
-                    ->label(''),
+                    ->label('')
+                    ->visible(fn (Model $record): bool => $record->id != 29),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
                         return 'Supprimer : ' . $record->reference;
                     })
-                    ->label(''),
+                    ->label('')
+                    ->visible(fn (Model $record): bool => $record->id != 29),
             ])
             ->bulkActions([]);
     }
