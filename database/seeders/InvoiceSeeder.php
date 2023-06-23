@@ -212,7 +212,7 @@ class InvoiceSeeder extends Seeder
             'issue_date' => "2023-05-03",
             'due_date' => "2023-06-03",
             'tax_rate' => 21,
-            'status' => 'paid',
+            'status' => 'cancelled',
         ]);
 
         Invoice::create([
@@ -318,16 +318,6 @@ class InvoiceSeeder extends Seeder
         Invoice::create([
             'company_id' => 18,
             'reference' => 'LS-0031',
-            'vcs' => null,
-            'issue_date' => "2023-06-22",
-            'due_date' => "2023-07-22",
-            'tax_rate' => 21,
-            'status' => 'pending',
-        ]);
-
-        Invoice::create([
-            'company_id' => 23,
-            'reference' => 'LS-0032',
             'vcs' => null,
             'issue_date' => "2023-06-22",
             'due_date' => "2023-07-22",
@@ -609,12 +599,6 @@ class InvoiceSeeder extends Seeder
             'invoice_id' => 31,
             'description' => "Adaptation du stand de MyQM",
             'amount' => 65,
-        ]);
-
-        InvoiceItem::create([
-            'invoice_id' => 32,
-            'description' => "Design et prototypage d'un formulaire pour le Cabinet Monot",
-            'amount' => 325,
         ]);
 
         InvoiceDiscount::create([
