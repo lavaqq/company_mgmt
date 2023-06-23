@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -70,28 +71,22 @@ class ContactResource extends Resource
                 TextColumn::make('last_name')
                     ->label('Nom')
                     ->searchable(),
-                TextColumn::make('companies')
+                TagsColumn::make('companies')
                     ->label('Entreprise(s)')
-                    ->getStateUsing(function (Model $record): string {
+                    ->getStateUsing(function (Model $record): array {
                         $companies = $record->companies;
-                        if ($companies->count() > 1) {
-                            $firstCompany = $companies->first();
-                            $remainingCount = $companies->count() - 1;
-                            $autres = ($remainingCount === 1) ? 'autre' : 'autres';
-
-                            return substr($firstCompany->name, 0, 12).'...'." et {$remainingCount} $autres";
+                        $data = [];
+                        foreach ($companies as $company) {
+                            $data[] =  strlen($company->name) > 15 ?  substr($company->name, 0, 15) . "..." : $company->name;
                         }
-                        if ($companies->count() === 1) {
-                            $firstCompany = $companies->first();
-
-                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20).'...' : $firstCompany->name;
+                        if (empty($data)) {
+                            $data[] = 'Aucune';
                         }
-
-                        return 'Aucune';
+                        return $data;
                     }),
                 BadgeColumn::make('job_title')
                     ->getStateUsing(function (Model $record): string {
-                        return $record->job_title ? $record->job_title : 'Aucun';
+                        return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15) . "..." : $record->job_title) : 'Aucun';
                     })
                     ->label('Titre du poste'),
             ])
@@ -103,17 +98,17 @@ class ContactResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->last_name.' '.$record->first_name;
+                        return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : '.$record->last_name.' '.$record->first_name;
+                        return 'Supprimer définitivement : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : '.$record->last_name.' '.$record->first_name;
+                        return 'Restaurer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
             ])
