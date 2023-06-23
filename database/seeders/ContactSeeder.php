@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Contact;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ContactSeeder extends Seeder
 {
@@ -377,8 +378,8 @@ class ContactSeeder extends Seeder
             'phone' => null,
         ]);
         Contact::create([
-            'last_name' => 'Consult',
-            'first_name' => 'Fortress',
+            'last_name' => 'Ch',
+            'first_name' => 'Leclercq',
             'job_title' => null,
             'email' => 'ch.leclercq@fortress-consult.com',
             'phone' => null,
@@ -431,6 +432,146 @@ class ContactSeeder extends Seeder
             'job_title' => 'Commercial',
             'email' => 'benoit@ghalan.be',
             'phone' => null,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 1,
+            'company_id' => 2,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 3,
+            'company_id' => 15,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 3,
+            'company_id' => 14,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 4,
+            'company_id' => 4,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 5,
+            'company_id' => 16,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 6,
+            'company_id' => 10,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 6,
+            'company_id' => 1,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 7,
+            'company_id' => 13,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 7,
+            'company_id' => 18,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 7,
+            'company_id' => 17,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 8,
+            'company_id' => 12,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 10,
+            'company_id' => 8,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 11,
+            'company_id' => 7,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 14,
+            'company_id' => 3,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 16,
+            'company_id' => 3,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 17,
+            'company_id' => 8,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 19,
+            'company_id' => 9,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 20,
+            'company_id' => 12,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 21,
+            'company_id' => 6,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 22,
+            'company_id' => 11,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 29,
+            'company_id' => 12,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 38,
+            'company_id' => 16,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 39,
+            'company_id' => 16,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 40,
+            'company_id' => 18,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 41,
+            'company_id' => 23,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 43,
+            'company_id' => 3,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 48,
+            'company_id' => 20,
+        ]);
+
+        DB::table('company_contact')->insert([
+            'contact_id' => 54,
+            'company_id' => 6,
         ]);
     }
 }
