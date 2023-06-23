@@ -39,11 +39,11 @@ class InvoiceResource extends Resource
     {
         $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
         $date = Carbon::parse($dateValue)->format('dmy');
-        $sequence = $reference . $date;
+        $sequence = $reference.$date;
         $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
-        $vcs = $sequence . $verificationNumber;
+        $vcs = $sequence.$verificationNumber;
 
-        return '+++ ' . substr($vcs, 0, 3) . ' / ' . substr($vcs, 3, 4) . ' / ' . substr($vcs, 7) . ' +++';
+        return '+++ '.substr($vcs, 0, 3).' / '.substr($vcs, 3, 4).' / '.substr($vcs, 7).' +++';
     }
 
     public static function form(Form $form): Form
@@ -76,7 +76,7 @@ class InvoiceResource extends Resource
                             ->required(),
                         TextInput::make('reference')
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'LS-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'LS-'.str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
@@ -173,7 +173,7 @@ class InvoiceResource extends Resource
                     ->visible(fn (Model $record): bool => $record->id != 29),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label('')
                     ->visible(fn (Model $record): bool => $record->id != 29),

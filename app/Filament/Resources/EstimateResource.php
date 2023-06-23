@@ -58,7 +58,7 @@ class EstimateResource extends Resource
                             ->required(),
                         TextInput::make('reference')
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -148,7 +148,7 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
             ])

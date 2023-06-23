@@ -24,7 +24,6 @@ class ListContacts extends ListRecords
     }
 
     protected function getTableEmptyStateIcon(): ?string
-
     {
         return 'heroicon-o-users';
     }

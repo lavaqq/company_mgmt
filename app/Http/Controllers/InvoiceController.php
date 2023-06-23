@@ -21,7 +21,7 @@ class InvoiceController extends Controller
         ]);
         $dompdf->loadHtml($html);
         $dompdf->render();
-        $dompdf->stream($record->reference . ' (' . $record->company->name . ').pdf', [
+        $dompdf->stream($record->reference.' ('.$record->company->name.').pdf', [
             'compress' => true,
             'Attachment' => true,
         ]);

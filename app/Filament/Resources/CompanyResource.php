@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
 use App\Models\Company;
-use Carbon\Carbon;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -61,7 +60,7 @@ class CompanyResource extends Resource
                                 'SRL' => 'SRL (Société à Responsabilité Limitée)',
                                 'SARL' => 'SARL (Société à Responsabilité Limitée)',
                                 'SPRL' => 'SPRL (Société Privée à Responsabilité Limitée)',
-                                'INDÉPENDANT' => 'Indépendant'
+                                'INDÉPENDANT' => 'Indépendant',
                             ])
                             ->searchable()
                             ->required(),
@@ -177,7 +176,7 @@ class CompanyResource extends Resource
                 TextColumn::make('vat_number')
                     ->label('Numéro de TVA')
                     ->getStateUsing(function (Model $record): string {
-                        return $record->country_code . $record->vat_number;
+                        return $record->country_code.$record->vat_number;
                     }),
                 BadgeColumn::make('legal_form')
                     ->label('Forme légale')
@@ -188,7 +187,7 @@ class CompanyResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->name;
+                        return 'Supprimer : '.$record->name;
                     })
                     ->label(''),
             ])

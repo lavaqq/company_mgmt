@@ -14,13 +14,13 @@ class EditEstimate extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->modalHeading('Supprimer le devis : ' . $this->record->reference),
+                ->modalHeading('Supprimer le devis : '.$this->record->reference),
         ];
     }
 
     protected function getTitle(): string
     {
-        return 'Modifier le devis : ' . $this->record->reference;
+        return 'Modifier le devis : '.$this->record->reference;
     }
 
     protected function getRedirectUrl(): string
