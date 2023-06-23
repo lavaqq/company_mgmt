@@ -5,9 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\EditUser;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
@@ -18,11 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
@@ -78,7 +72,7 @@ class UserResource extends Resource
                         ->maxLength(255)
                         ->required(static fn (Page $livewire): bool => $livewire instanceof CreateUser),
                     Toggle::make('is_admin')
-                        ->label('Admin')
+                        ->label('Admin'),
                 ])->columns(2),
             ]);
     }
@@ -105,7 +99,7 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
-                    ->label('')
+                    ->label(''),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

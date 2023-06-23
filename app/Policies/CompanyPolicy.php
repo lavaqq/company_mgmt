@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Company;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class CompanyPolicy
 {
@@ -37,7 +36,7 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
-        if ($company->trashed() && !$user->is_admin) {
+        if ($company->trashed() && ! $user->is_admin) {
             return false;
         }
 

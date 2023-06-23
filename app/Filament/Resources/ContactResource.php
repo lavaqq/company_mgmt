@@ -4,9 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
 use App\Models\Contact;
-use Carbon\Carbon;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -16,8 +14,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends Resource
 {
@@ -81,12 +79,12 @@ class ContactResource extends Resource
                             $remainingCount = $companies->count() - 1;
                             $autres = ($remainingCount === 1) ? 'autre' : 'autres';
 
-                            return substr($firstCompany->name, 0, 12) . '...' . " et {$remainingCount} $autres";
+                            return substr($firstCompany->name, 0, 12).'...'." et {$remainingCount} $autres";
                         }
                         if ($companies->count() === 1) {
                             $firstCompany = $companies->first();
 
-                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20) . '...' : $firstCompany->name;
+                            return strlen($firstCompany->name) > 20 ? substr($firstCompany->name, 0, 20).'...' : $firstCompany->name;
                         }
 
                         return 'Aucune';
@@ -105,17 +103,17 @@ class ContactResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer définitivement : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Restaurer : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
             ])

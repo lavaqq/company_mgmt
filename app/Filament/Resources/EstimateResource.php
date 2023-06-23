@@ -5,10 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EstimateResource\Pages;
 use App\Filament\Resources\EstimateResource\Pages\CreateEstimate;
 use App\Filament\Resources\EstimateResource\Pages\EditEstimate;
-use App\Filament\Resources\EstimateResource\RelationManagers;
 use App\Models\Estimate;
 use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
@@ -17,16 +15,16 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Pages\Page;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Pages\Page;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class EstimateResource extends Resource
@@ -54,7 +52,7 @@ class EstimateResource extends Resource
                             'creation' => 'En création',
                             'pending' => 'En attente',
                             'signed' => 'Signé',
-                            'refused' => 'Refusé'
+                            'refused' => 'Refusé',
                         ];
                         if (Auth::user()->is_admin) {
                             return $statuses;
@@ -70,7 +68,7 @@ class EstimateResource extends Resource
                                     return [
                                         'pending' => $statuses['pending'],
                                         'signed' => $statuses['signed'],
-                                        'refused' => $statuses['refused']
+                                        'refused' => $statuses['refused'],
                                     ];
                                 default:
                                     return $statuses;
@@ -92,6 +90,7 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label("Pas d'acompte")
@@ -107,6 +106,7 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label('Entreprise')
@@ -125,6 +125,7 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label("Date d'émission")
@@ -143,10 +144,11 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
+                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -160,6 +162,7 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label('Taux TVA')
@@ -178,6 +181,7 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->hint('Uniquement chiffre et indicateur (jours, mois, ...) | Laisser vide si pas de délai.')
@@ -199,6 +203,7 @@ class EstimateResource extends Resource
                                         if ($record->status != 'creation') {
                                             return true;
                                         }
+
                                         return false;
                                     })
                                     ->defaultItems(0)
@@ -229,6 +234,7 @@ class EstimateResource extends Resource
                                         if ($record->status != 'creation') {
                                             return true;
                                         }
+
                                         return false;
                                     })
                                     ->defaultItems(0)
@@ -284,14 +290,14 @@ class EstimateResource extends Resource
                         'creation' => 'En création',
                         'pending' => 'En attente',
                         'signed' => 'Signé',
-                        'refused' => 'Refusé'
+                        'refused' => 'Refusé',
                     ])
                     ->colors([
                         'secondary' => 'creation',
                         'warning' => 'pending',
                         'success' => 'signed',
-                        'danger' => 'refused'
-                    ])
+                        'danger' => 'refused',
+                    ]),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -306,17 +312,17 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer définitivement : ' . $record->reference;
+                        return 'Supprimer définitivement : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Restaurer : ' . $record->reference;
+                        return 'Restaurer : '.$record->reference;
                     })
                     ->label(''),
             ])

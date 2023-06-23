@@ -6,8 +6,6 @@ use App\Filament\Resources\InvoiceResource;
 use App\Models\Invoice;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class ListInvoices extends ListRecords
@@ -25,6 +23,7 @@ class ListInvoices extends ListRecords
         if (Invoice::all()->last()->status == 'creation') {
             return [];
         }
+
         return [
             Actions\CreateAction::make()
                 ->label('Créer une facture'),

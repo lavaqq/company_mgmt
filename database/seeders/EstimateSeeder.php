@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Estimate;
 use App\Models\EstimateItem;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class EstimateSeeder extends Seeder

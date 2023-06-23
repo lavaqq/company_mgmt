@@ -4,9 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
 use App\Models\Company;
-use Carbon\Carbon;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -15,10 +13,9 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Auth;
 
 class CompanyResource extends Resource
 {
@@ -64,7 +61,7 @@ class CompanyResource extends Resource
                                 'SRL' => 'SRL (Société à Responsabilité Limitée)',
                                 'SARL' => 'SARL (Société à Responsabilité Limitée)',
                                 'SPRL' => 'SPRL (Société Privée à Responsabilité Limitée)',
-                                'INDÉPENDANT' => 'Indépendant'
+                                'INDÉPENDANT' => 'Indépendant',
                             ])
                             ->searchable()
                             ->required(),
@@ -174,7 +171,7 @@ class CompanyResource extends Resource
                     ->label('Numéro de TVA')
                     ->searchable()
                     ->getStateUsing(function (Model $record): string {
-                        return $record->vat_country_code . $record->vat_number;
+                        return $record->vat_country_code.$record->vat_number;
                     }),
                 BadgeColumn::make('legal_form')
                     ->label('Forme légale')
@@ -188,17 +185,17 @@ class CompanyResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->name;
+                        return 'Supprimer : '.$record->name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : ' . $record->name;
+                        return 'Supprimer définitivement : '.$record->name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : ' . $record->name;
+                        return 'Restaurer : '.$record->name;
                     })
                     ->label(''),
             ])

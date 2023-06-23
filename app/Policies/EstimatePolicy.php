@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Estimate;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class EstimatePolicy
 {
@@ -37,11 +36,11 @@ class EstimatePolicy
      */
     public function update(User $user, Estimate $estimate): bool
     {
-        if ($estimate->trashed() && !$user->is_admin) {
+        if ($estimate->trashed() && ! $user->is_admin) {
             return false;
         }
 
-        if (($estimate->status == 'signed' || $estimate->status == 'refused') && !$user->is_admin) {
+        if (($estimate->status == 'signed' || $estimate->status == 'refused') && ! $user->is_admin) {
             return false;
         }
 
@@ -53,9 +52,10 @@ class EstimatePolicy
      */
     public function delete(User $user, Estimate $estimate): bool
     {
-        if ($estimate->status != 'creation' && !$user->is_admin) {
+        if ($estimate->status != 'creation' && ! $user->is_admin) {
             return false;
         }
+
         return true;
     }
 

@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Invoice;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class InvoicePolicy
 {
@@ -37,11 +36,11 @@ class InvoicePolicy
      */
     public function update(User $user, Invoice $invoice): bool
     {
-        if ($invoice->trashed() && !$user->is_admin) {
+        if ($invoice->trashed() && ! $user->is_admin) {
             return false;
         }
 
-        if (($invoice->status == 'cancelled' || $invoice->status == 'paid') && !$user->is_admin) {
+        if (($invoice->status == 'cancelled' || $invoice->status == 'paid') && ! $user->is_admin) {
             return false;
         }
 
@@ -53,9 +52,10 @@ class InvoicePolicy
      */
     public function delete(User $user, Invoice $invoice): bool
     {
-        if ($invoice->status != 'creation' && !$user->is_admin) {
+        if ($invoice->status != 'creation' && ! $user->is_admin) {
             return false;
         }
+
         return true;
     }
 

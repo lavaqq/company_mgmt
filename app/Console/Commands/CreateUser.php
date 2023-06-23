@@ -45,6 +45,7 @@ class CreateUser extends Command
             ]);
         } catch (\Exception $e) {
             $this->error($e->getMessage());
+
             return;
         }
     }

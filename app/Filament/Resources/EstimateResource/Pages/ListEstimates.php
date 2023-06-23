@@ -12,7 +12,6 @@ class ListEstimates extends ListRecords
 {
     protected static string $resource = EstimateResource::class;
 
-
     protected function getActions(): array
     {
         if (Auth::user()->is_admin) {
@@ -24,6 +23,7 @@ class ListEstimates extends ListRecords
         if (Estimate::all()->last()->status == 'creation') {
             return [];
         }
+
         return [
             Actions\CreateAction::make()
                 ->label('Créer un devis'),

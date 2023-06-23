@@ -4,8 +4,6 @@ namespace App\Policies;
 
 use App\Models\Contact;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
-use Illuminate\Support\Facades\Auth;
 
 class ContactPolicy
 {
@@ -38,7 +36,7 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact): bool
     {
-        if ($contact->trashed() && !$user->is_admin) {
+        if ($contact->trashed() && ! $user->is_admin) {
             return false;
         }
 
