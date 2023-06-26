@@ -39,5 +39,6 @@ class InvoiceController extends Controller
             'compress' => true,
             'Attachment' => false,
         ]);
+        exit();
     }
 }
