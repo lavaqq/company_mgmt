@@ -189,12 +189,8 @@
             margin: 64px;
         }
 
-        p {
-            font-family: 'Poppins';
-            margin: 64px;
-        }
-
         .h1 {
+            font-family: Poppins;
             font-style: normal;
             font-weight: 600;
             font-size: 24px;
@@ -202,12 +198,14 @@
         }
 
         .h2 {
+            font-family: Poppins;
             font-style: normal;
             font-weight: 600;
             font-size: 12px;
         }
 
         .text {
+            font-family: Poppins;
             font-style: normal;
             font-weight: 500;
             font-size: 10px;
