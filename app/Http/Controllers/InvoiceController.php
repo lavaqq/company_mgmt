@@ -17,7 +17,7 @@ class InvoiceController extends Controller
     // }
     public function show(Invoice $record)
     {
-        $html = view('test', ['data' => $record])->render;
+        $html = view('pdf.invoice', ['data' => $record])->render;
 
         $tmp = sys_get_temp_dir();
 
