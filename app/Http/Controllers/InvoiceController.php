@@ -19,6 +19,9 @@ class InvoiceController extends Controller
             'tempDir' => $tmp,
             'chroot' => $tmp,
         ])->loadHTML($html);
-        return $pdf->stream($record->reference . ' (' . $record->company->name . ').pdf');
+        return $pdf->stream($record->reference . ' (' . $record->company->name . ').pdf', [
+            'compress' => true,
+            'Attachment' => false,
+        ]);
     }
 }
