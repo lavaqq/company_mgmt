@@ -36,9 +36,10 @@ class InvoiceController extends Controller
 
         $dompdf->render();
 
-        return $dompdf->stream('test.pdf', [
+        $dompdf->stream('test.pdf', [
             'compress' => true,
             'Attachment' => false,
         ]);
+        exit();
     }
 }
