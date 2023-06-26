@@ -79,5 +79,6 @@ HTML;
             'compress' => true,
             'Attachment' => false,
         ]);
+        exit();
     }
 }
