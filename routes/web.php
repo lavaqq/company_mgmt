@@ -5,8 +5,6 @@ use App\Http\Controllers\InvoiceController;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
-use Barryvdh\DomPDF\Facade\Pdf;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +19,4 @@ use Barryvdh\DomPDF\Facade\Pdf;
 Route::middleware([Authenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'show'])->name('invoice.pdf');
     Route::get('estimates/{record}/pdf', [EstimateController::class, 'show'])->name('estimate.pdf');
-});
-
-Route::get('/test', function () {
-    $pdf = Pdf::loadHTML('<h1>Test</h1>');
-    return $pdf->stream();
 });
