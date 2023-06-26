@@ -184,7 +184,7 @@
         }
     </style>
     <style>
-        body {
+        p {
             font-family: 'Poppins';
             margin: 64px;
         }
