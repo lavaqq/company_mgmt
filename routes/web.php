@@ -22,5 +22,13 @@ Route::middleware([Authenticate::class])->group(function () {
 });
 
 Route::get('test', function () {
-    return sys_get_temp_dir();
+    $name = 'testfile.txt';
+    $content = "test";
+    $directory = sys_get_temp_dir();
+    $filePath = $directory . DIRECTORY_SEPARATOR . $name;
+    $fileHandle = fopen($filePath, 'w');
+    if ($fileHandle !== false) {
+        fwrite($fileHandle, $content);
+        fclose($fileHandle);
+    }
 });
