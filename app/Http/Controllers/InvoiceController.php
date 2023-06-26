@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use Dompdf\Dompdf;
 
+
 class InvoiceController extends Controller
 {
     public function sshow(Invoice $record)
@@ -35,10 +36,9 @@ class InvoiceController extends Controller
 
         $dompdf->render();
 
-        $dompdf->stream('test.pdf', [
+        return $dompdf->stream('test.pdf', [
             'compress' => true,
             'Attachment' => false,
         ]);
-        exit();
     }
 }
