@@ -10,19 +10,11 @@ class InvoiceController extends Controller
 {
     public function show(Invoice $record)
     {
-
-
-        // instantiate and use the dompdf class
+        $html = view('pdf.invoice', ['data' => $record]);
         $dompdf = new Dompdf();
-        $dompdf->loadHtml('hello world');
-
-        // (Optional) Setup the paper size and orientation
+        $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'landscape');
-
-        // Render the HTML as PDF
         $dompdf->render();
-
-        // Output the generated PDF to Browser
         $dompdf->stream();
     }
 }
