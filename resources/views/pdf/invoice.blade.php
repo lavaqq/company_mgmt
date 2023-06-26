@@ -184,6 +184,11 @@
         }
     </style>
     <style>
+        body {
+            font-family: Poppins;
+            margin: 64px;
+        }
+
         p {
             font-family: 'Poppins';
             margin: 64px;
