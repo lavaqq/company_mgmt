@@ -118,15 +118,8 @@ HTML;
         $dompdf->loadHtml($html);
         $dompdf->render();
 
-        // Create the response object
         $response = new Response($dompdf->output());
-
-        // Remove the "Content-Type" header
         $response->headers->remove('Content-Type');
-
-        // Set the headers for PDF output
-        $response->headers->set('Content-Type', 'application/pdf');
-        $response->headers->set('Content-Disposition', 'inline; filename="hello.pdf"');
 
         return $response;
     }
