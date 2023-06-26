@@ -20,7 +20,6 @@ class InvoiceController extends Controller
     {
         $html = view('pdf.invoice', ['data' => $record])->render();
 
-        return $html;
         $tmp = sys_get_temp_dir();
 
         $dompdf = new Dompdf([
