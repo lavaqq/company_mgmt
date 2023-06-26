@@ -20,3 +20,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'show'])->name('invoice.pdf');
     Route::get('estimates/{record}/pdf', [EstimateController::class, 'show'])->name('estimate.pdf');
 });
+
+Route::get('test', function () {
+    return sys_get_temp_dir();
+});
