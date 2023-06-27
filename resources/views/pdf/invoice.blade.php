@@ -179,10 +179,24 @@
             border: none;
             font-size: 1rem;
         }
-    </style>
-    <style>
+
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            src: url({{ storage_path('fonts/Poppins-Medium.ttf') }}) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 600;
+            src: url({{ storage_path('fonts/Poppins-SemiBold.ttf') }}) format('truetype');
+        }
+
         body {
             margin: 64px;
+            font-family: 'Poppins';
         }
 
         .h1 {
@@ -202,7 +216,7 @@
             font-style: normal;
             font-weight: 500;
             font-size: 10px;
-            line-height: 16px;
+            line-height: 15px;
         }
 
         .uppercase {
