@@ -20,15 +20,3 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'show'])->name('invoice.pdf');
     Route::get('estimates/{record}/pdf', [EstimateController::class, 'show'])->name('estimate.pdf');
 });
-
-Route::get('test', function () {
-    $name = 'testfile.txt';
-    $content = "test";
-    $directory = sys_get_temp_dir();
-    $filePath = $directory . DIRECTORY_SEPARATOR . $name;
-    $fileHandle = fopen($filePath, 'w');
-    if ($fileHandle !== false) {
-        fwrite($fileHandle, $content);
-        fclose($fileHandle);
-    }
-});
