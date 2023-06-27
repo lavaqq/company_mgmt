@@ -77,16 +77,17 @@ class ContactResource extends Resource
                         $companies = $record->companies;
                         $data = [];
                         foreach ($companies as $company) {
-                            $data[] =  strlen($company->name) > 15 ?  substr($company->name, 0, 15) . "..." : $company->name;
+                            $data[] = strlen($company->name) > 15 ? substr($company->name, 0, 15).'...' : $company->name;
                         }
                         if (empty($data)) {
                             $data[] = 'Aucune';
                         }
+
                         return $data;
                     }),
                 BadgeColumn::make('job_title')
                     ->getStateUsing(function (Model $record): string {
-                        return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15) . "..." : $record->job_title) : 'Aucun';
+                        return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15).'...' : $record->job_title) : 'Aucun';
                     })
                     ->label('Titre du poste'),
             ])
@@ -98,17 +99,17 @@ class ContactResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer définitivement : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : ' . $record->last_name . ' ' . $record->first_name;
+                        return 'Restaurer : '.$record->last_name.' '.$record->first_name;
                     })
                     ->label(''),
             ])
