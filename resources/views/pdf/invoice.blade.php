@@ -5,16 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: normal;
-            src: url('/dompdf/Poppins-Regular.ttf') format('truetype');
-        }
-
         body {
             font-family: 'Poppins';
+            margin: 64px;
         }
     </style>
 </head>
