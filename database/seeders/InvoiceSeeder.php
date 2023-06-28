@@ -22,6 +22,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/bqgyUkvNxYmVAxa3oL6oYCP4n4LsKpHkqyc5rhtbJYNzumGCG00qnUyD7dwKrjwU.pdf',
         ]);
 
         Invoice::create([
@@ -32,6 +34,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/iAkqGp9VCvZx0MYCFzamArDRFBZqZ7h03BVqiVxyfDfzcrNP1Diwi7kucfBdgYKg.pdf',
         ]);
 
         Invoice::create([
@@ -42,6 +46,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/kmyBtwR1b7G1e546sP6E8BErCQ8GJQxr3qze61QVq9NUQRjQNniV5XydreuQXAJK.pdf',
         ]);
 
         Invoice::create([
@@ -52,6 +58,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/yGmxFyGNx83feJPm3gryNYHEKPgKy8s4XQy97h0bsBC47w4pP8s8xyMg29BFMP0i.pdf',
         ]);
 
         Invoice::create([
@@ -62,6 +70,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/kN7JBW2ENXwLC5ttH9nCf9ah3DhHFyLbb8M3TTnZeKAfbDTFvqANyHV9BLF20MNA.pdf',
         ]);
 
         Invoice::create([
@@ -72,6 +82,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/BMyMwTEBxGav98FQNgy4K7F51TUFuee02p6duewCsCHoV9bf73VBMy3LyELF3Qxu.pdf',
         ]);
 
         Invoice::create([
@@ -82,6 +94,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-02-16',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/64J9FuYBUNVDQE9Dtnxuy6jUFKfJETJBMP2pxWAGjbzcfqPU93qTTR5MNnLAZG7C.pdf',
         ]);
 
         Invoice::create([
@@ -92,6 +106,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-03',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/Ze10cz1qyGfhobHBtnsJghGZ05gLJDGyrc2ybmdtUXwAVvMaXT8zKLXNdHfPZmA1.pdf',
         ]);
 
         Invoice::create([
@@ -102,6 +118,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-16',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/EV43onaoje74YHLRe3m24dbEsuMKAw1pua30FfAKTQxzm4zVTeeN6BT4BfLoBL92.pdf',
         ]);
 
         Invoice::create([
@@ -112,6 +130,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-28',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/9kRykyD13dAaPdqh7pvF0jpK6VmaFkQLLA7y5dx2h7We0zVzdeBisqWNC5hew7EE.pdf',
         ]);
 
         Invoice::create([
@@ -122,6 +142,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-28',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/v5RwQbrvDdEWpoaPErssH2g1q02mkDAEk7FFh33EfKvB1Q9HqsXNZznebuw7RDro.pdf',
         ]);
 
         Invoice::create([
@@ -132,6 +154,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-28',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/RQyUteqppaqKepx8NEdVYWo0XdskAYUcUhavMQ0rksuh6VmC5C8dHesm6gqrAda2.pdf',
         ]);
 
         Invoice::create([
@@ -142,6 +166,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-28',
             'tax_rate' => 0,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/rZ9kkWuqk48RkwrhtkWJxwnh5bzVopUPQA7g9XRCD9t0ri5anf6X9APWfUnr6bAx.pdf',
         ]);
 
         Invoice::create([
@@ -152,6 +178,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-30',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/eCfy3cpvfMa03rD8gqT4tKwK0r9XD7WvucFFRkg0Kv5Zec0xvkG4LfkjEDwEFqhY.pdf',
         ]);
 
         Invoice::create([
@@ -162,6 +190,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-03-31',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/LdmCWFf1Z4J2NuYVxdfG5fM4jK1rPunE8p36s14gas65kroTQRXJX1djE0xnX6P1.pdf',
         ]);
 
         Invoice::create([
@@ -172,6 +202,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-04-04',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/by9cit0M3sK03pkK8YWNyd0qXDjcmcTGf3A88TUuM2FT4wuo6Gg8ig4tdcA7VQaJ.pdf',
         ]);
 
         Invoice::create([
@@ -182,6 +214,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-04-05',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/nYxBWd0jvZhsb26wJq2kr4UaxPosnX85qFaYvcsPsX6TtoFt1kpi9CXVADsMhs1u.pdf',
         ]);
 
         Invoice::create([
@@ -192,6 +226,8 @@ class InvoiceSeeder extends Seeder
             'due_date' => '2023-05-12',
             'tax_rate' => 21,
             'status' => 'paid',
+            'is_external' => true,
+            'external_file' => 'Xz5Tb6bzfUM4ZgzyhDmE/pPK2KmfvY5fZ9DerBzonWZQwiXMgRZbqTkZmMepzvK2EgZ4FAXMHMZtWZyvEtGd0.pdf',
         ]);
 
         Invoice::create([
