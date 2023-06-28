@@ -20,6 +20,8 @@ class Estimate extends Model
         'issue_date',
         'due_date',
         'status',
+        'is_external',
+        'external_file',
     ];
 
     public function company(): BelongsTo
