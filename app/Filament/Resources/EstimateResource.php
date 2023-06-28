@@ -9,6 +9,7 @@ use App\Models\Estimate;
 use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
@@ -77,6 +78,16 @@ class EstimateResource extends Resource
                     })
                     ->default('creation')
                     ->disablePlaceholderSelection(),
+                Card::make()
+                    ->schema([
+                        Toggle::make('is_external')
+                            ->label('Externe')
+                            ->columnSpanFull(),
+                        FileUpload::make('external_file')
+                            ->label('Fichier')
+                            ->acceptedFileTypes(['application/pdf'])
+                            ->directory('Xz5Tb6bzfUM4ZgzyhDmE'),
+                    ])->hidden(static fn () => !Auth::user()->is_admin)->columnSpan(1),
                 Card::make()
                     ->schema([
                         Toggle::make('no_prepayment')
@@ -148,7 +159,7 @@ class EstimateResource extends Resource
                                 return false;
                             })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
+                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -312,17 +323,17 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer : '.$record->reference;
+                        return 'Supprimer : ' . $record->reference;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer définitivement : '.$record->reference;
+                        return 'Supprimer définitivement : ' . $record->reference;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Restaurer : '.$record->reference;
+                        return 'Restaurer : ' . $record->reference;
                     })
                     ->label(''),
             ])
