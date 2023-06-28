@@ -86,7 +86,7 @@ class EstimateResource extends Resource
                         FileUpload::make('external_file')
                             ->label('Fichier')
                             ->acceptedFileTypes(['application/pdf'])
-                            ->directory('Xz5Tb6bzfUM4ZgzyhDmE'),
+                            ->directory('Fv7ejLY4q2HJZBvMPTRd'),
                     ])->hidden(static fn () => !Auth::user()->is_admin)->columnSpan(1),
                 Card::make()
                     ->schema([
