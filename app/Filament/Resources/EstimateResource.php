@@ -140,7 +140,7 @@ class EstimateResource extends Resource
                                 return false;
                             })
                             ->label("Date d'émission")
-                            ->minDate(static fn (Page $livewire) => $livewire instanceof CreateEstimate ? now() : null)
+                            ->minDate(static fn (Page $livewire) => $livewire instanceof CreateEstimate ? now()->subDay() : null)
                             ->default(now())
                             ->displayFormat('d/m/Y')
                             ->required(),
