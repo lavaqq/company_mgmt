@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('deadline')->nullable();
             $table->boolean('no_prepayment')->default(false);
             $table->enum('status', ['creation', 'pending', 'signed', 'refused'])->default('creation');
+            $table->boolean('is_external')->default(false);
+            $table->string('external_file')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

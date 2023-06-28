@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('issue_date');
             $table->date('due_date');
             $table->enum('status', ['creation', 'pending', 'paid', 'cancelled'])->default('creation');
+            $table->boolean('is_external')->default(false);
+            $table->string('external_file')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
