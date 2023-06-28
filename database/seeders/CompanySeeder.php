@@ -310,5 +310,18 @@ class CompanySeeder extends Seeder
             'zipcode' => '7501',
             'country' => 'Belgique',
         ]);
+
+        Company::create([
+            'name' => 'UTILE GAMES',
+            'legal_form' => 'SRL',
+            'vat_number' => '0750931042',
+            'vat_country_code' => 'BE',
+            'street' => 'VIEUX CHEMIN',
+            'number' => '11',
+            'box' => 'A',
+            'city' => 'BRUXELLES',
+            'zipcode' => '1180',
+            'country' => 'Belgique',
+        ]);
     }
 }
