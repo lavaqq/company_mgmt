@@ -159,7 +159,7 @@ class EstimateResource extends Resource
                                 return false;
                             })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 21, 4, '0', STR_PAD_LEFT)) // need fix
+                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
