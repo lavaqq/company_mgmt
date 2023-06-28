@@ -327,7 +327,7 @@ class InvoiceSeeder extends Seeder
             'issue_date' => '2023-06-02',
             'due_date' => '2023-07-02',
             'tax_rate' => 21,
-            'status' => 'pending',
+            'status' => 'paid',
         ]);
 
         Invoice::create([
