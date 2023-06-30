@@ -5,6 +5,8 @@ namespace App\Filament\Resources\CompanyResource\Pages;
 use App\Filament\Resources\CompanyResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Closure;
+use Illuminate\Database\Eloquent\Model;
 
 class ListCompanies extends ListRecords
 {
@@ -20,7 +22,7 @@ class ListCompanies extends ListRecords
 
     protected function getTitle(): string
     {
-        return 'Gestion des entreprises';
+        return 'Liste des entreprises';
     }
 
     protected function getTableEmptyStateIcon(): ?string
@@ -31,5 +33,10 @@ class ListCompanies extends ListRecords
     protected function getTableEmptyStateHeading(): ?string
     {
         return 'Aucune entreprise enregistré';
+    }
+
+    protected function getTableRecordUrlUsing(): ?Closure
+    {
+        return fn (Model $record): string => route('filament.resources.companies.view', ['record' => $record]);
     }
 }
