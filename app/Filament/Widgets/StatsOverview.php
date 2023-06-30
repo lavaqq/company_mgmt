@@ -69,8 +69,8 @@ class StatsOverview extends BaseWidget
                 ->description(number_format($yearPercentage, 2) . '% de ' . $this->goal . ' €'),
             Card::make('Total facturé (HT) ce mois', self::getCurrentMonthTotalExclVat() . ' €')
                 ->description(number_format($monthPercentage, 2) . '% de ' . $this->goal . ' €'),
-            Card::make('Total TVA ' . Carbon::now()->year, self::getCurrentYearTax() . ' €'),
-            Card::make('Total TVA ce trimestre', self::getCurrentQuarterTax() . ' €'),
+            Card::make('TVA ' . Carbon::now()->year, self::getCurrentYearTax() . ' €'),
+            Card::make('TVA ce trimestre', self::getCurrentQuarterTax() . ' €'),
         ];
     }
 }
