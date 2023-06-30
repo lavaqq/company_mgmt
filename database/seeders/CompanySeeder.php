@@ -254,8 +254,8 @@ class CompanySeeder extends Seeder
             'street' => 'Avenue de Maire',
             'number' => '44',
             'box' => null,
-            'city' => '7500',
-            'zipcode' => 'Tournai',
+            'city' => 'Tournai',
+            'zipcode' => '7500',
             'country' => 'Belgique',
         ]);
 
