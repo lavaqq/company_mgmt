@@ -142,6 +142,7 @@ class InvoiceResource extends Resource
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('vcs', self::generateVcs($state));
+                                $set('due_date', Carbon::parse($state)->addMonth());
                             })
                             ->required(),
                         DatePicker::make('due_date')
