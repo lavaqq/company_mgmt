@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\ContactResource\Pages;
 
 use App\Filament\Resources\ContactResource;
+use Closure;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Model;
 
 class ListContacts extends ListRecords
 {
@@ -20,7 +22,7 @@ class ListContacts extends ListRecords
 
     protected function getTitle(): string
     {
-        return 'Gestion des contacts';
+        return 'Liste des contacts';
     }
 
     protected function getTableEmptyStateIcon(): ?string
@@ -31,5 +33,10 @@ class ListContacts extends ListRecords
     protected function getTableEmptyStateHeading(): ?string
     {
         return 'Aucun contact enregistré';
+    }
+
+    protected function getTableRecordUrlUsing(): ?Closure
+    {
+        return fn (Model $record): string => route('filament.resources.contacts.view', ['record' => $record]);
     }
 }
