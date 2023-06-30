@@ -73,6 +73,6 @@ class InvoiceTable extends BaseWidget
 
     protected function getTableRecordUrlUsing(): ?Closure
     {
-        return fn (Model $record): string => route('estimate.pdf', ['record' => $record]);
+        return fn (Model $record): string => route('invoice.pdf', ['record' => $record]);
     }
 }
