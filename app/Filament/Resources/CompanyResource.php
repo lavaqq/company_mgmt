@@ -20,15 +20,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
-
     protected static ?string $navigationGroup = 'Répertoire';
-
     protected static ?string $label = 'Entreprise';
-
     protected static ?string $pluralLabel = 'Entreprises';
-
     protected static ?string $navigationLabel = 'Entreprises';
 
     public static function form(Form $form): Form
@@ -156,6 +151,15 @@ class CompanyResource extends Resource
                             ->searchable()
                             ->required(),
                     ])->columns(2),
+                Card::make()
+                    ->schema([
+                        Select::make('contacts')
+                            ->label('Contact(s)')
+                            ->multiple()
+                            ->relationship('contacts', 'first_name')
+                            ->preload()
+                            ->columnSpan(1),
+                    ])->columns(2)
             ]);
     }
 
@@ -171,7 +175,7 @@ class CompanyResource extends Resource
                     ->label('Numéro de TVA')
                     ->searchable()
                     ->getStateUsing(function (Model $record): string {
-                        return $record->vat_country_code.$record->vat_number;
+                        return $record->vat_country_code . $record->vat_number;
                     }),
                 BadgeColumn::make('legal_form')
                     ->label('Forme légale')
@@ -185,17 +189,17 @@ class CompanyResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->name;
+                        return 'Supprimer : ' . $record->name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : '.$record->name;
+                        return 'Supprimer définitivement : ' . $record->name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : '.$record->name;
+                        return 'Restaurer : ' . $record->name;
                     })
                     ->label(''),
             ])
@@ -216,6 +220,7 @@ class CompanyResource extends Resource
         return [
             'index' => Pages\ListCompanies::route('/'),
             'create' => Pages\CreateCompany::route('/create'),
+            'view' => Pages\ViewCompany::route('/{record}'),
             'edit' => Pages\EditCompany::route('/{record}/edit'),
         ];
     }
