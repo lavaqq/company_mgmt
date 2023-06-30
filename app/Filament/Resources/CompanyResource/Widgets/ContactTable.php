@@ -70,6 +70,6 @@ class ContactTable extends BaseWidget
 
     protected function getTableRecordUrlUsing(): ?Closure
     {
-        return fn (Model $record): string => route('filament.resources.contacts.edit', ['record' => $record]);
+        return fn (Model $record): string => route('filament.resources.contacts.view', ['record' => $record]);
     }
 }
