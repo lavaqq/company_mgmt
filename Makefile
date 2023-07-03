@@ -1,6 +1,7 @@
 .PHONY: deploy install
 
 deploy:
+	git push
 	npm install
 	npm run build
 	rsync -avz public/build SM1:~/sites/mgmt.loak.studio/public
@@ -14,3 +15,4 @@ install:
 	php artisan route:clear
 	php artisan cache:clear
 	php artisan storage:link
+	php artisan migrate
