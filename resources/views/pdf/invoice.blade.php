@@ -334,7 +334,7 @@
                 {{ $data->company->box ? 'boîte ' . $data->company->box : null }}</p>
             <p class="text uppercase">{{ $data->company->zipcode }} {{ $data->company->city }}
                 {{ $data->company->country }}</p>
-            <p class="text uppercase">{{ $data->company->country_code }}{{ $data->company->vat_number }}</p>
+            <p class="text uppercase">{{ $data->company->vat_country_code }}{{ $data->company->vat_number }}</p>
         </div>
     </section>
 

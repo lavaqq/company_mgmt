@@ -389,7 +389,7 @@
                     {{ $data->company->box ? 'boîte ' . $data->company->box : null }}</p>
                 <p class="text uppercase">{{ $data->company->zipcode }} {{ $data->company->city }}
                     {{ $data->company->country }}</p>
-                <p class="text uppercase">{{ $data->company->country_code }}{{ $data->company->vat_number }}</p>
+                <p class="text uppercase">{{ $data->company->vat_country_code }}{{ $data->company->vat_number }}</p>
             </div>
         </section>
 
@@ -437,7 +437,7 @@
             @else
                 <p class="text">Aucun délai de livraison/exécution.</p>
             @endif
-            @if ($data->no_prepayment)
+            @if (!$data->prepayment)
                 <p class="text">Aucun acompte.</p>
             @endif
         </section>

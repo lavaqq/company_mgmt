@@ -90,7 +90,7 @@ class EstimateResource extends Resource
                     ])->hidden(static fn () => !Auth::user()->is_admin)->columnSpan(1),
                 Card::make()
                     ->schema([
-                        Toggle::make('no_prepayment')
+                        Toggle::make('prepayment')
                             ->disabled(static function (Model|null $record, Page $livewire) {
                                 if (Auth::user()->is_admin) {
                                     return false;
@@ -104,7 +104,7 @@ class EstimateResource extends Resource
 
                                 return false;
                             })
-                            ->label("Pas d'acompte")
+                            ->label("Acompte")
                             ->columnSpanFull(),
                         Select::make('company_id')
                             ->disabled(static function (Model|null $record, Page $livewire) {

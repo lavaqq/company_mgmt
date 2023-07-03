@@ -16,7 +16,7 @@ class Estimate extends Model
         'reference',
         'tax_rate',
         'deadline',
-        'no_prepayment',
+        'prepayment',
         'issue_date',
         'due_date',
         'status',
