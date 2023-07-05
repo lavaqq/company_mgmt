@@ -18,6 +18,9 @@ class Contact extends Model
         'phone',
     ];
 
+    /**
+     * Get all companies in relation with the record.
+     */
     public function companies(): BelongsToMany
     {
         return $this->belongsToMany(Company::class);
