@@ -21,6 +21,7 @@ class Invoice extends Model
         'status',
         'in_falco',
         'external_invoice',
+        'in_falco'
     ];
 
     /**
