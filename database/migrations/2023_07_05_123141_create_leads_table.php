@@ -23,6 +23,11 @@ return new class extends Migration
                 'unqualified',
             ]);
             $table->date('start_date');
+            $table->enum('origin', [
+                'unknown',
+                'inbound',
+                'outbound',
+            ])->default('unknown');
             $table->softDeletes();
             $table->timestamps();
         });
