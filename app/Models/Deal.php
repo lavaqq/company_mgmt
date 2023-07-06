@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Deal extends Model
@@ -12,6 +13,7 @@ class Deal extends Model
 
     protected $fillable = [
         'lead_id',
+        'company_id',
         'title',
         'status',
         'deal_value',
@@ -26,5 +28,13 @@ class Deal extends Model
     public function lead(): BelongsTo
     {
         return $this->BelongsTo(Lead::class);
+    }
+
+    /**
+     * Get all estimates in relation with the record.
+     */
+    public function estimates(): HasMany
+    {
+        return $this->HasMany(Estimate::class);
     }
 }
