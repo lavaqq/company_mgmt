@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('lead_id');
+            $table->foreignId('company_id');
             $table->longText('title');
             $table->enum('status', [
                 'new',
