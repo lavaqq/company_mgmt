@@ -27,6 +27,7 @@ return new class extends Migration
             $table->decimal('actual_deal_value', 10, 2)->default(0);
             $table->date('start_date');
             $table->date('signature_date')->nullable();
+            $table->longText('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
