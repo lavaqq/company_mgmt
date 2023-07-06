@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('legal_form');
-            $table->string('vat_number');
-            $table->string('vat_country_code');
-            $table->string('street');
-            $table->string('number');
+            $table->string('legal_form')->nullable();
+            $table->string('vat_number')->nullable();
+            $table->string('vat_country_code')->nullable();
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
             $table->string('box')->nullable();
-            $table->string('city');
-            $table->string('zipcode');
-            $table->string('country');
+            $table->string('city')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('country')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
