@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('deal_id');
-            $table->foreignId('company_id');
             $table->string('reference');
             $table->string('vcs')
                 ->nullable();
