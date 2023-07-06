@@ -66,4 +66,12 @@ class Company extends Model
         return $this->hasManyThrough(Invoice::class, Deal::class, 'lead_id', 'deal_id')
             ->with('lead');
     }
+
+    /**
+     * Get all received invoices in relation with the record.
+     */
+    public function receivedInvoices(): HasMany
+    {
+        return $this->HasMany(ReceivedInvoice::class);
+    }
 }
