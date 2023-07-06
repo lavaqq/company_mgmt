@@ -15,6 +15,8 @@ class Lead extends Model
         'company_id',
         'title',
         'status',
+        'origin',
+        'note',
         'start_date',
     ];
 
