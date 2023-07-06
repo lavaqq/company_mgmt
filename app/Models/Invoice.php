@@ -19,7 +19,6 @@ class Invoice extends Model
         'issue_date',
         'due_date',
         'status',
-        'in_falco',
         'external_invoice',
         'in_falco'
     ];
