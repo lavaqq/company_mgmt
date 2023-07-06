@@ -46,7 +46,7 @@ class Company extends Model
      */
     public function deals(): HasManyThrough
     {
-        return $this->hasManyThrough(Lead::class, Deal::class);
+        return $this->hasManyThrough(Deal::class, Lead::class);
     }
 
     /**
@@ -54,7 +54,8 @@ class Company extends Model
      */
     public function estimates(): HasManyThrough
     {
-        return $this->hasManyThrough(Deal::class, Estimate::class);
+        return $this->hasManyThrough(Estimate::class, Deal::class, 'lead_id', 'deal_id')
+            ->with('lead');
     }
 
     /**
@@ -62,6 +63,7 @@ class Company extends Model
      */
     public function invoices(): HasManyThrough
     {
-        return $this->hasManyThrough(Deal::class, Invoice::class);
+        return $this->hasManyThrough(Invoice::class, Deal::class, 'lead_id', 'deal_id')
+            ->with('lead');
     }
 }
