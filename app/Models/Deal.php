@@ -19,6 +19,7 @@ class Deal extends Model
         'actual_deal_value',
         'start_date',
         'signature_date',
+        'note',
     ];
 
     /**
