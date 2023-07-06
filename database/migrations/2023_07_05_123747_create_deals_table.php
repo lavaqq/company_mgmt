@@ -21,7 +21,7 @@ return new class extends Migration
                 'proposal',
                 'negotiation',
                 'won',
-                'lost'
+                'lost',
             ])->default('new');
             $table->decimal('deal_value', 10, 2)->default(0);
             $table->decimal('actual_deal_value', 10, 2)->default(0);

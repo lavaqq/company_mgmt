@@ -24,7 +24,7 @@ return new class extends Migration
                 'creation',
                 'pending',
                 'paid',
-                'cancelled'
+                'cancelled',
             ])->default('creation');
             $table->string('external_invoice')->nullable();
             $table->softDeletes();

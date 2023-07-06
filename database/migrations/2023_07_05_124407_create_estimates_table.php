@@ -23,7 +23,7 @@ return new class extends Migration
                 'creation',
                 'pending',
                 'signed',
-                'refused'
+                'refused',
             ])->default('creation');
             $table->string('external_estimate')->nullable();
             $table->softDeletes();
