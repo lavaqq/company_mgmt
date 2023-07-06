@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('due_date');
             $table->enum('status', [
                 'creation',
-                'pending',
+                'sended',
                 'paid',
                 'cancelled',
             ])->default('creation');

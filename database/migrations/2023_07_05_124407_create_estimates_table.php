@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('prepayment')->default(false);
             $table->enum('status', [
                 'creation',
-                'pending',
+                'sended',
                 'signed',
                 'refused',
             ])->default('creation');
