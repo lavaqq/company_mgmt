@@ -16,6 +16,8 @@ class ReceivedInvoice extends Model
         'issue_date',
         'total_excl_vat',
         'tax',
+        'in_falco',
+        'file'
     ];
 
     /**
