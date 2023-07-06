@@ -28,6 +28,7 @@ return new class extends Migration
                 'inbound',
                 'outbound',
             ])->default('unknown');
+            $table->longText('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
