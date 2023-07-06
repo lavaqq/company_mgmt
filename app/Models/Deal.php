@@ -13,7 +13,6 @@ class Deal extends Model
 
     protected $fillable = [
         'lead_id',
-        'company_id',
         'title',
         'status',
         'deal_value',

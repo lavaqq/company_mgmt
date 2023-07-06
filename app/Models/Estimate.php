@@ -13,7 +13,6 @@ class Estimate extends Model
 
     protected $fillable = [
         'deal_id',
-        'company_id',
         'reference',
         'tax_rate',
         'issue_date',
