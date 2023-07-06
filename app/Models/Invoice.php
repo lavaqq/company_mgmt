@@ -20,8 +20,7 @@ class Invoice extends Model
         'due_date',
         'status',
         'in_falco',
-        'is_external',
-        'external_file',
+        'external_invoice',
     ];
 
     /**
