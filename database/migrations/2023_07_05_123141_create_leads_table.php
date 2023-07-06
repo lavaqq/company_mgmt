@@ -21,7 +21,7 @@ return new class extends Migration
                 'contacted',
                 'qualified',
                 'unqualified',
-            ]);
+            ])->default('new');
             $table->date('start_date');
             $table->enum('origin', [
                 'unknown',
