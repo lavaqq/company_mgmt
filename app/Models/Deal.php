@@ -13,6 +13,7 @@ class Deal extends Model
 
     protected $fillable = [
         'lead_id',
+        'company_id',
         'title',
         'status',
         'deal_value',
@@ -28,6 +29,14 @@ class Deal extends Model
     public function lead(): BelongsTo
     {
         return $this->BelongsTo(Lead::class);
+    }
+
+    /**
+     * Get the company in relation with the record.
+     */
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
     /**
