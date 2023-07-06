@@ -27,6 +27,7 @@ return new class extends Migration
                 'cancelled',
             ])->default('creation');
             $table->string('external_invoice')->nullable();
+            $table->boolean('in_falco')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
