@@ -56,4 +56,12 @@ class Company extends Model
     {
         return $this->hasManyThrough(Deal::class, Estimate::class);
     }
+
+    /**
+     * Get all invoices in relation with the record.
+     */
+    public function invoices(): HasManyThrough
+    {
+        return $this->hasManyThrough(Deal::class, Invoice::class);
+    }
 }
