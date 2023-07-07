@@ -7,6 +7,7 @@ use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
@@ -48,7 +49,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
 
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@'.env('DOMAIN_CAN_ACCESS_FILAMENT'));
+        if (App::environment('local')) {
+            return true;
+        }
+        return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
     }
 
     public function getFilamentAvatarUrl(): ?string
