@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +16,7 @@ class ReceivedInvoice extends Model
         'total_excl_vat',
         'tax',
         'in_falco',
-        'file'
+        'file',
     ];
 
     /**

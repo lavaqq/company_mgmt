@@ -350,9 +350,8 @@ class CompanySeeder extends Seeder
             'country' => 'Belgique',
         ]);
 
-
         Company::create([
-            'name' => "SITCA",
+            'name' => 'SITCA',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -365,7 +364,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "SPICX",
+            'name' => 'SPICX',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -378,7 +377,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "BELFIUS",
+            'name' => 'BELFIUS',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -391,7 +390,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "ENTREPRENDRE.WAPI",
+            'name' => 'ENTREPRENDRE.WAPI',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -404,7 +403,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "CRESCO",
+            'name' => 'CRESCO',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -417,7 +416,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "FIDUCIA PARTNER",
+            'name' => 'FIDUCIA PARTNER',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -430,7 +429,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "IFID",
+            'name' => 'IFID',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -443,7 +442,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "TEKHNE STUDIO",
+            'name' => 'TEKHNE STUDIO',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -456,7 +455,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "CONDORCET",
+            'name' => 'CONDORCET',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -469,7 +468,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "IDETA",
+            'name' => 'IDETA',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -482,7 +481,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "EE-CAMPUS",
+            'name' => 'EE-CAMPUS',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -495,7 +494,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "FEELIN",
+            'name' => 'FEELIN',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -508,7 +507,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "CBC",
+            'name' => 'CBC',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -521,7 +520,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "LM STUDIO",
+            'name' => 'LM STUDIO',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -534,7 +533,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "URIEL PIERCER",
+            'name' => 'URIEL PIERCER',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -547,7 +546,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "REVERSE CONSEIL",
+            'name' => 'REVERSE CONSEIL',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -560,7 +559,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "VINS BRUNIN",
+            'name' => 'VINS BRUNIN',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -573,7 +572,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "MICHAL CCS",
+            'name' => 'MICHAL CCS',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -586,7 +585,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "GROUPE VANDECASTEELE",
+            'name' => 'GROUPE VANDECASTEELE',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -599,7 +598,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "CHEZ BOBONNE",
+            'name' => 'CHEZ BOBONNE',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -612,7 +611,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "SOLUCIO",
+            'name' => 'SOLUCIO',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -625,7 +624,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "GROUPE S",
+            'name' => 'GROUPE S',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -638,7 +637,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "INTEC BELGIUM",
+            'name' => 'INTEC BELGIUM',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -651,7 +650,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "WAPICT",
+            'name' => 'WAPICT',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -664,7 +663,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "JAGUAR LAND ROVER TOURNAI",
+            'name' => 'JAGUAR LAND ROVER TOURNAI',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -677,7 +676,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "GHALAN",
+            'name' => 'GHALAN',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,
@@ -690,7 +689,7 @@ class CompanySeeder extends Seeder
         ]);
 
         Company::create([
-            'name' => "PHILIPPE DUMON",
+            'name' => 'PHILIPPE DUMON',
             'legal_form' => null,
             'vat_number' => null,
             'vat_country_code' => null,

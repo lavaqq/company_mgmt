@@ -22,7 +22,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/BdtGIgUVowAURKDavalHmMImMhpXfbXbKPQGVGW4sO5t7H0sfDEvBkK8A6U09Tun.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/BdtGIgUVowAURKDavalHmMImMhpXfbXbKPQGVGW4sO5t7H0sfDEvBkK8A6U09Tun.pdf',
         ]);
 
         EstimateItem::create([
@@ -57,7 +57,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/R03janZfyOYpdlq0LwXjNAg9pTkKP3zkcEmSItBPNgiehLmWVmwPU9ETfaAUUk7e.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/R03janZfyOYpdlq0LwXjNAg9pTkKP3zkcEmSItBPNgiehLmWVmwPU9ETfaAUUk7e.pdf',
         ]);
 
         EstimateItem::create([
@@ -92,7 +92,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xyuh5h2GBorgmEALy7praMy4c4NFtUB3hey1j63xiDcCct4dY3Vvlltjatt9MOzt.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xyuh5h2GBorgmEALy7praMy4c4NFtUB3hey1j63xiDcCct4dY3Vvlltjatt9MOzt.pdf',
         ]);
 
         EstimateItem::create([
@@ -109,7 +109,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/kS9qGvvT90wzeqOdxsBqO6HtEgCIGRTkPs9WQDSqQiYnoHsKyZJhORUZy0oaYnkk.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/kS9qGvvT90wzeqOdxsBqO6HtEgCIGRTkPs9WQDSqQiYnoHsKyZJhORUZy0oaYnkk.pdf',
         ]);
 
         EstimateItem::create([
@@ -144,7 +144,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/Jumf820CzdgEPFTDPbrMRgaXeG6wXpiy6EfQpq7ocI63RvQoss5HIdTD1AH2JY9l.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/Jumf820CzdgEPFTDPbrMRgaXeG6wXpiy6EfQpq7ocI63RvQoss5HIdTD1AH2JY9l.pdf',
         ]);
 
         EstimateItem::create([
@@ -167,7 +167,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xtNU6EozBKGrGow0XnkUTbMMvmGekG9W5aSjJH2eZHcU2rYjrWdV3Yy6bSEjZmeF.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xtNU6EozBKGrGow0XnkUTbMMvmGekG9W5aSjJH2eZHcU2rYjrWdV3Yy6bSEjZmeF.pdf',
         ]);
 
         EstimateItem::create([
@@ -190,7 +190,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/LtH8ggsXt16fuoPPyI6AfaDme3fYjVn3P1eyEUfE7QmwotFLjWqi5UNPyGykW7l2.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/LtH8ggsXt16fuoPPyI6AfaDme3fYjVn3P1eyEUfE7QmwotFLjWqi5UNPyGykW7l2.pdf',
         ]);
 
         EstimateItem::create([
@@ -219,7 +219,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/Gqh0UOtUZXqEhoO41mrRs4sqEOFDSttPSN5EIQ3LY0ufpnEGR1BvzqdRg4YZE22f.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/Gqh0UOtUZXqEhoO41mrRs4sqEOFDSttPSN5EIQ3LY0ufpnEGR1BvzqdRg4YZE22f.pdf',
         ]);
 
         EstimateItem::create([
@@ -248,7 +248,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/qEnyjipw4E8afWNatDCDLw5qXvlqQ5iI7kYlGZ6XPjTqmcKE0GMrveIpb8YYUpqg.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/qEnyjipw4E8afWNatDCDLw5qXvlqQ5iI7kYlGZ6XPjTqmcKE0GMrveIpb8YYUpqg.pdf',
         ]);
 
         EstimateItem::create([
@@ -283,7 +283,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/hwjW4zz3b5JCTQJoNY5vS4RzKWZI7T0lsXnRW1lda8c6Fnw1uz2Cr4oQbbyPv5sS.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/hwjW4zz3b5JCTQJoNY5vS4RzKWZI7T0lsXnRW1lda8c6Fnw1uz2Cr4oQbbyPv5sS.pdf',
         ]);
 
         EstimateItem::create([
@@ -331,7 +331,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/wsi7lp39OtFyCKCuAew3CgxVYu4Tdw8FPJe8KgLnqVNFbMxZtPtFPZKJ3DAq7xt3.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/wsi7lp39OtFyCKCuAew3CgxVYu4Tdw8FPJe8KgLnqVNFbMxZtPtFPZKJ3DAq7xt3.pdf',
         ]);
 
         EstimateItem::create([
@@ -348,7 +348,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/GMPtCeZwTsOEpzszE2obSKUvMAxxIB2E1YKPMUNrCsDdnqWccyqYNq9rrlnqTujv.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/GMPtCeZwTsOEpzszE2obSKUvMAxxIB2E1YKPMUNrCsDdnqWccyqYNq9rrlnqTujv.pdf',
         ]);
 
         EstimateItem::create([
@@ -377,7 +377,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/TTS5mZrKqcFGces5O3uOkANEJwLVzOMoyoNST9g6MSHG6gB1spHO8dAkQku0qQYh.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/TTS5mZrKqcFGces5O3uOkANEJwLVzOMoyoNST9g6MSHG6gB1spHO8dAkQku0qQYh.pdf',
         ]);
 
         EstimateItem::create([
@@ -400,7 +400,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/jShHJHVnsrQGlM4IzJx8Rdbh6BrYTSP1OLFsq0PMI5uhZfOY4R7d6yCs3rMNsvfp.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/jShHJHVnsrQGlM4IzJx8Rdbh6BrYTSP1OLFsq0PMI5uhZfOY4R7d6yCs3rMNsvfp.pdf',
         ]);
 
         EstimateItem::create([
@@ -417,7 +417,7 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'refused',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/LiUjQKgz4mtOc41lCfh4shMqdT4hujizTNMrl4OFkIHiQ8F2z2PqZ9PiU9A9ft9M.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/LiUjQKgz4mtOc41lCfh4shMqdT4hujizTNMrl4OFkIHiQ8F2z2PqZ9PiU9A9ft9M.pdf',
         ]);
 
         EstimateItem::create([
@@ -446,7 +446,7 @@ class EstimateSeeder extends Seeder
 
         EstimateItem::create([
             'estimate_id' => 15,
-            'description' => "Création de 6 visuels",
+            'description' => 'Création de 6 visuels',
             'amount' => 1400,
         ]);
 
@@ -458,24 +458,24 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'refused',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/UVHkTypt3N8SFqyfz2sw4T0plc6ORE0PQViyH1HiqkoRYpiaupNw5l81TGHNokB5.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/UVHkTypt3N8SFqyfz2sw4T0plc6ORE0PQViyH1HiqkoRYpiaupNw5l81TGHNokB5.pdf',
         ]);
 
         EstimateItem::create([
             'estimate_id' => 16,
-            'description' => "UX Design (structure, design, prototypage, ...)",
+            'description' => 'UX Design (structure, design, prototypage, ...)',
             'amount' => 1500,
         ]);
 
         EstimateItem::create([
             'estimate_id' => 16,
-            'description' => "Intégration et développement",
+            'description' => 'Intégration et développement',
             'amount' => 1700,
         ]);
 
         EstimateItem::create([
             'estimate_id' => 16,
-            'description' => "Hébergement (annualité)",
+            'description' => 'Hébergement (annualité)',
             'amount' => 120,
         ]);
 
@@ -487,12 +487,12 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/DFwhKL1g69iAzDEJWORh7ofA7r2gcaL7BYcB0k33d1VqsDuwBPf61Nl2oRyE5TIr.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/DFwhKL1g69iAzDEJWORh7ofA7r2gcaL7BYcB0k33d1VqsDuwBPf61Nl2oRyE5TIr.pdf',
         ]);
 
         EstimateItem::create([
             'estimate_id' => 17,
-            'description' => "Hébergement (annualité)",
+            'description' => 'Hébergement (annualité)',
             'amount' => 120,
         ]);
 
@@ -504,18 +504,18 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xwb7ZSRTSfCIjaHdYzCr9hl0cr1C8PucRzcJnVBa0egkgUcI3JzdKYzruQ8ddeND.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/xwb7ZSRTSfCIjaHdYzCr9hl0cr1C8PucRzcJnVBa0egkgUcI3JzdKYzruQ8ddeND.pdf',
         ]);
 
         EstimateItem::create([
             'estimate_id' => 18,
-            'description' => "Achat du module",
+            'description' => 'Achat du module',
             'amount' => 69.99,
         ]);
 
         EstimateItem::create([
             'estimate_id' => 18,
-            'description' => "Installation et configuration du module",
+            'description' => 'Installation et configuration du module',
             'amount' => 35,
         ]);
 
@@ -527,12 +527,12 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/RjBV1idp42hU1syz58NUp1NjmaQz4tUz1RfUHZM18vtOY2S3YmDtLBLvevivTKvF.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/RjBV1idp42hU1syz58NUp1NjmaQz4tUz1RfUHZM18vtOY2S3YmDtLBLvevivTKvF.pdf',
         ]);
 
         EstimateItem::create([
             'estimate_id' => 19,
-            'description' => "Design de 2 visuels pour un stand de MyQM",
+            'description' => 'Design de 2 visuels pour un stand de MyQM',
             'amount' => 212.50,
         ]);
 
@@ -544,12 +544,12 @@ class EstimateSeeder extends Seeder
             'deadline' => null,
             'status' => 'signed',
             'prepayment' => false,
-            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/vXro1mUXXj8CmCBgrgFkIjisqCZl0zqGy0QhgR1FaDBPRlZLmTdGPbppelP6gcsH.pdf'
+            'external_estimate' => 'Fv7ejLY4q2HJZBvMPTRd/vXro1mUXXj8CmCBgrgFkIjisqCZl0zqGy0QhgR1FaDBPRlZLmTdGPbppelP6gcsH.pdf',
         ]);
 
         EstimateItem::create([
             'estimate_id' => 20,
-            'description' => "Réalisation de la maquette",
+            'description' => 'Réalisation de la maquette',
             'amount' => 300,
         ]);
 

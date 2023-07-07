@@ -376,8 +376,8 @@ class InvoiceSeeder extends Seeder
         Invoice::create([
             'deal_id' => 1,
             'in_falco' => true,
-            'reference' => "LS-0032",
-            'vcs' => "+++ 003 / 2300 / 62311 +++",
+            'reference' => 'LS-0032',
+            'vcs' => '+++ 003 / 2300 / 62311 +++',
             'tax_rate' => 21,
             'issue_date' => '2023-06-30',
             'due_date' => '2023-07-30',
@@ -387,8 +387,8 @@ class InvoiceSeeder extends Seeder
         Invoice::create([
             'deal_id' => 1,
             'in_falco' => true,
-            'reference' => "LS-0033",
-            'vcs' => "+++ 003 / 3030 / 72389 +++",
+            'reference' => 'LS-0033',
+            'vcs' => '+++ 003 / 3030 / 72389 +++',
             'tax_rate' => 21,
             'issue_date' => '2023-07-03',
             'due_date' => '2023-08-03',
@@ -398,8 +398,8 @@ class InvoiceSeeder extends Seeder
         Invoice::create([
             'deal_id' => 1,
             'in_falco' => true,
-            'reference' => "LS-0034",
-            'vcs' => "+++ 003 / 4030 / 72319 +++",
+            'reference' => 'LS-0034',
+            'vcs' => '+++ 003 / 4030 / 72319 +++',
             'tax_rate' => 21,
             'issue_date' => '2023-07-03',
             'due_date' => '2023-08-03',
@@ -409,8 +409,8 @@ class InvoiceSeeder extends Seeder
         Invoice::create([
             'deal_id' => 1,
             'in_falco' => true,
-            'reference' => "LS-0035",
-            'vcs' => "+++ 003 / 5030 / 72346 +++",
+            'reference' => 'LS-0035',
+            'vcs' => '+++ 003 / 5030 / 72346 +++',
             'tax_rate' => 21,
             'issue_date' => '2023-07-03',
             'due_date' => '2023-08-03',

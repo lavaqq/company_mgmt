@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             DealSeeder::class,
             InvoiceSeeder::class,
             EstimateSeeder::class,
-            ReceivedInvoiceSeeder::class
+            ReceivedInvoiceSeeder::class,
         ]);
     }
 }
