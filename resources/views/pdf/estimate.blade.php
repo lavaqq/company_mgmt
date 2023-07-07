@@ -384,12 +384,16 @@
             </div>
             <div class="informations__recipient">
                 <h2 class="h2 uppercase">A L’ATTENTION DE :</h2>
-                <p class="text uppercase">{{ $data->company->name }} ({{ $data->company->legal_form }})</p>
-                <p class="text uppercase">{{ $data->company->street }} {{ $data->company->number }}
-                    {{ $data->company->box ? 'boîte ' . $data->company->box : null }}</p>
-                <p class="text uppercase">{{ $data->company->zipcode }} {{ $data->company->city }}
-                    {{ $data->company->country }}</p>
-                <p class="text uppercase">{{ $data->company->vat_country_code }}{{ $data->company->vat_number }}</p>
+                <p class="text uppercase">{{ $data->deal->lead->company->name }}
+                    ({{ $data->deal->lead->company->legal_form }})</p>
+                <p class="text uppercase">{{ $data->deal->lead->company->street }}
+                    {{ $data->deal->lead->company->number }}
+                    {{ $data->deal->lead->company->box ? 'boîte ' . $data->deal->lead->company->box : null }}</p>
+                <p class="text uppercase">{{ $data->deal->lead->company->zipcode }}
+                    {{ $data->deal->lead->company->city }}
+                    {{ $data->deal->lead->company->country }}</p>
+                <p class="text uppercase">
+                    {{ $data->deal->lead->company->vat_country_code }}{{ $data->deal->lead->company->vat_number }}</p>
             </div>
         </section>
 
