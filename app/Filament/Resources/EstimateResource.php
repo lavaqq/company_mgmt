@@ -103,6 +103,7 @@ class EstimateResource extends Resource
                             })
                             ->label('Deals')
                             ->relationship('deal', 'title')
+                            ->searchable()
                             ->preload()
                             ->placeholder('Sélectionnez un deal')
                             ->required(),
