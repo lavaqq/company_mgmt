@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\CompanyResource\Pages;
 
 use App\Filament\Resources\CompanyResource;
+use Closure;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Closure;
 use Illuminate\Database\Eloquent\Model;
 
 class ListCompanies extends ListRecords

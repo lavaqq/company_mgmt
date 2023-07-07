@@ -4,7 +4,6 @@ namespace App\Filament\Resources\ContactResource\Widgets;
 
 use App\Models\Company;
 use Closure;
-use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -43,7 +42,7 @@ class CompanyTable extends BaseWidget
             TextColumn::make('vat_number')
                 ->label('Numéro de TVA')
                 ->getStateUsing(function (Model $record): string {
-                    return $record->vat_country_code . $record->vat_number;
+                    return $record->vat_country_code.$record->vat_number;
                 }),
             BadgeColumn::make('legal_form')
                 ->label('Forme légale')

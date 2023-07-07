@@ -2,19 +2,14 @@
 
 namespace App\Filament\Resources\CompanyResource\Widgets;
 
-use App\Models\Company;
 use App\Models\Contact;
-use App\Models\Invoice;
 use Closure;
-use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\DB;
 
 class ContactTable extends BaseWidget
 {
@@ -52,7 +47,7 @@ class ContactTable extends BaseWidget
                     $companies = $record->companies;
                     $data = [];
                     foreach ($companies as $company) {
-                        $data[] = strlen($company->name) > 15 ? substr($company->name, 0, 15) . '...' : $company->name;
+                        $data[] = strlen($company->name) > 15 ? substr($company->name, 0, 15).'...' : $company->name;
                     }
                     if (empty($data)) {
                         $data[] = 'Aucune';
@@ -62,7 +57,7 @@ class ContactTable extends BaseWidget
                 }),
             BadgeColumn::make('job_title')
                 ->getStateUsing(function (Model $record): string {
-                    return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15) . '...' : $record->job_title) : 'Aucun';
+                    return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15).'...' : $record->job_title) : 'Aucun';
                 })
                 ->label('Titre du poste'),
         ];

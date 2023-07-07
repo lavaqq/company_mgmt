@@ -2,12 +2,9 @@
 
 namespace App\Filament\Resources\CompanyResource\Widgets;
 
-use App\Models\Contact;
 use App\Models\Estimate;
 use Closure;
-use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
-use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,6 +30,7 @@ class EstimateTable extends BaseWidget
     {
         $estimates = $this->record->estimates;
         $estimateIds = $estimates->pluck('id');
+
         return Estimate::query()->whereIn('id', $estimateIds);
     }
 

@@ -26,8 +26,6 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 
 class EstimateResource extends Resource
 {
@@ -86,9 +84,10 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
-                            ->label("Acompte")
+                            ->label('Acompte')
                             ->columnSpanFull(),
                         Select::make('deal_id')
                             ->disabled(static function (Model|null $record, Page $livewire) {
@@ -131,10 +130,11 @@ class EstimateResource extends Resource
                                 if ($record->status != 'creation') {
                                     return true;
                                 }
+
                                 return false;
                             })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'D-' . str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'D-'.str_pad(Estimate::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('tax_rate')
@@ -293,17 +293,17 @@ class EstimateResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Supprimer définitivement : ' . $record->reference;
+                        return 'Supprimer définitivement : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model|null $record): string {
-                        return 'Restaurer : ' . $record->reference;
+                        return 'Restaurer : '.$record->reference;
                     })
                     ->label(''),
             ])

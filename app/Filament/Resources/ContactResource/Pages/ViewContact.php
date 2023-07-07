@@ -6,7 +6,6 @@ use App\Filament\Resources\ContactResource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Support\HtmlString;
 
@@ -16,7 +15,7 @@ class ViewContact extends ViewRecord
 
     protected function getTitle(): string
     {
-        return $this->record->first_name . ' ' . $this->record->last_name;
+        return $this->record->first_name.' '.$this->record->last_name;
     }
 
     protected function getFormSchema(): array
@@ -48,7 +47,7 @@ class ViewContact extends ViewRecord
         ];
     }
 
-    protected function getFooterWidgetsColumns(): int | string | array
+    protected function getFooterWidgetsColumns(): int|string|array
     {
         return 1;
     }

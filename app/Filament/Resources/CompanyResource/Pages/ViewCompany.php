@@ -51,7 +51,7 @@ class ViewCompany extends ViewRecord
                             TextInput::make('country')
                                 ->label('Pays'),
                         ])->columns(2),
-                ])
+                ]),
         ];
     }
 
@@ -64,7 +64,7 @@ class ViewCompany extends ViewRecord
         ];
     }
 
-    protected function getFooterWidgetsColumns(): int | string | array
+    protected function getFooterWidgetsColumns(): int|string|array
     {
         return 1;
     }

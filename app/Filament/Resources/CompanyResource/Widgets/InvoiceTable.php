@@ -4,7 +4,6 @@ namespace App\Filament\Resources\CompanyResource\Widgets;
 
 use App\Models\Invoice;
 use Closure;
-use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -31,6 +30,7 @@ class InvoiceTable extends BaseWidget
     {
         $invoices = $this->record->invoices;
         $invoiceIds = $invoices->pluck('id');
+
         return Invoice::query()->whereIn('id', $invoiceIds);
     }
 

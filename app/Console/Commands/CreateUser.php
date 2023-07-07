@@ -15,8 +15,9 @@ class CreateUser extends Command
 
     public function handle()
     {
-        if ($this->option('dev') && !App::environment('local')) {
+        if ($this->option('dev') && ! App::environment('local')) {
             $this->error('The --dev option can only be used in the local environment.');
+
             return;
         }
 
@@ -42,6 +43,7 @@ class CreateUser extends Command
             $this->info('User created successfully!');
         } catch (\Exception $e) {
             $this->error($e->getMessage());
+
             return;
         }
     }
