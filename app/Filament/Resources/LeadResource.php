@@ -27,11 +27,11 @@ class LeadResource extends Resource
 
     protected static ?string $navigationGroup = 'Prospects et opportunités';
 
-    protected static ?string $label = 'Deal';
+    protected static ?string $label = 'Lead';
 
-    protected static ?string $pluralLabel = 'Deals';
+    protected static ?string $pluralLabel = 'Leads';
 
-    protected static ?string $navigationLabel = 'Deals';
+    protected static ?string $navigationLabel = 'Leads';
 
     public static function form(Form $form): Form
     {
