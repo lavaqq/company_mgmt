@@ -91,7 +91,7 @@ class DealResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\MultiTableDeal::route('/'),
+            'index' => Pages\MultipleListDeal::route('/'),
             'deleted' => Pages\DeletedListDeal::route('/deleted'),
             'create' => Pages\CreateDeal::route('/create'),
             'edit' => Pages\EditDeal::route('/{record}/edit'),

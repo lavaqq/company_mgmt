@@ -6,7 +6,7 @@ use App\Filament\Resources\DealResource;
 use Filament\Resources\Pages\Page;
 use Filament\Pages\Actions\Action;
 
-class MultiTableDeal extends Page
+class MultipleListDeal extends Page
 {
     protected static string $resource = DealResource::class;
 
