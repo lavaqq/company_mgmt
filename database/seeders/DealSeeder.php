@@ -332,7 +332,7 @@ class DealSeeder extends Seeder
             'deal_value' => 2000,
             'actual_deal_value' => 0,
             'start_date' => '2023-03-23',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -344,7 +344,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1070,
             'actual_deal_value' => 0,
             'start_date' => '2023-04-03',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -356,7 +356,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1920,
             'actual_deal_value' => 0,
             'start_date' => '2023-05-30',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -368,7 +368,7 @@ class DealSeeder extends Seeder
             'deal_value' => 3200,
             'actual_deal_value' => 0,
             'start_date' => '2023-06-07',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -380,7 +380,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1470,
             'actual_deal_value' => 0,
             'start_date' => '2023-06-16',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -392,7 +392,7 @@ class DealSeeder extends Seeder
             'deal_value' => 3000,
             'actual_deal_value' => 0,
             'start_date' => '2023-06-28',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -404,7 +404,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1570,
             'actual_deal_value' => 0,
             'start_date' => '2023-07-03',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -416,7 +416,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1570,
             'actual_deal_value' => 0,
             'start_date' => '2023-07-03',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -428,7 +428,7 @@ class DealSeeder extends Seeder
             'deal_value' => 4000,
             'actual_deal_value' => 0,
             'start_date' => '2022-12-15',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -440,7 +440,7 @@ class DealSeeder extends Seeder
             'deal_value' => 6070,
             'actual_deal_value' => 0,
             'start_date' => '2023-02-21',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -452,7 +452,7 @@ class DealSeeder extends Seeder
             'deal_value' => 3320,
             'actual_deal_value' => 0,
             'start_date' => '2022-12-19',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -464,7 +464,7 @@ class DealSeeder extends Seeder
             'deal_value' => 7370,
             'actual_deal_value' => 0,
             'start_date' => '2023-02-15',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -476,7 +476,7 @@ class DealSeeder extends Seeder
             'deal_value' => 120,
             'actual_deal_value' => 0,
             'start_date' => '2022-11-07',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -488,7 +488,7 @@ class DealSeeder extends Seeder
             'deal_value' => 3200,
             'actual_deal_value' => 0,
             'start_date' => '2023-03-13',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -500,7 +500,7 @@ class DealSeeder extends Seeder
             'deal_value' => 360,
             'actual_deal_value' => 0,
             'start_date' => '2023-04-07',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -512,7 +512,7 @@ class DealSeeder extends Seeder
             'deal_value' => 1870,
             'actual_deal_value' => 0,
             'start_date' => '2023-05-09',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -524,7 +524,7 @@ class DealSeeder extends Seeder
             'deal_value' => 180,
             'actual_deal_value' => 0,
             'start_date' => '2023-05-24',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -536,7 +536,7 @@ class DealSeeder extends Seeder
             'deal_value' => 2000,
             'actual_deal_value' => 0,
             'start_date' => '2023-03-09',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
 
@@ -548,7 +548,7 @@ class DealSeeder extends Seeder
             'deal_value' => 3940,
             'actual_deal_value' => 0,
             'start_date' => '2023-01-31',
-            'signature_date' => 'null',
+            'signature_date' => null,
             'note' => null,
         ]);
     }
