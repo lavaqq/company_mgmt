@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id');
             $table->date('issue_date');
-            $table->decimal('total_excl_vat', 10, 2)->nullable();
-            $table->decimal('tax', 10, 2)->nullable();
+            $table->decimal('total_excl_vat', 10, 2);
+            $table->decimal('tax', 10, 2);
             $table->string('file');
             $table->boolean('in_falco')->default(false);
             $table->softDeletes();
