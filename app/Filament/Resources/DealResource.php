@@ -32,9 +32,11 @@ class DealResource extends Resource
             ->schema([
                 Select::make('lead_id')
                     ->relationship('lead', 'title')
+                    ->searchable()
                     ->required(),
                 Select::make('company_id')
                     ->label('Entreprise')
+                    ->searchable()
                     ->relationship('company', 'name')
                     ->required(),
                 Card::make()
@@ -44,6 +46,7 @@ class DealResource extends Resource
                             ->required(),
                         Select::make('status')
                             ->label('Statut')
+                            ->searchable()
                             ->options([
                                 'new' => 'Nouveau',
                                 'discovery' => 'Découverte',

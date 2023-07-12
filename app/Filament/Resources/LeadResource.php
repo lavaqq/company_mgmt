@@ -40,6 +40,7 @@ class LeadResource extends Resource
                             ->label('Entreprise')
                             ->relationship('company', 'name')
                             ->preload()
+                            ->searchable()
                             ->required(),
                         DatePicker::make('start_date')
                             ->label('Date de début')
