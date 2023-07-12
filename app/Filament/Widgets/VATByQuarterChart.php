@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\BarChartWidget;
 use App\Models\Invoice;
+use App\Models\ReceivedInvoice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -74,7 +75,7 @@ class VATByQuarterChart extends BarChartWidget
         foreach ($quarters as $quarter) {
             $quarterMonths = $quarter;
 
-            $invoices = Invoice::whereYear('issue_date', $year)
+            $issuedInvoices = Invoice::whereYear('issue_date', $year)
                 ->where(function ($query) use ($quarterMonths) {
                     foreach ($quarterMonths as $month) {
                         $query->orWhereMonth('issue_date', $month);
@@ -83,9 +84,21 @@ class VATByQuarterChart extends BarChartWidget
                 ->whereNotIn('status', ['cancelled', 'creation'])
                 ->get();
 
-            $taxTotal = $invoices->sum(function ($invoice) {
+            $receivedInvoices = ReceivedInvoice::whereYear('issue_date', $year)
+                ->where(function ($query) use ($quarterMonths) {
+                    foreach ($quarterMonths as $month) {
+                        $query->orWhereMonth('issue_date', $month);
+                    }
+                })
+                ->get();
+
+            $issuedTaxTotal = $issuedInvoices->sum(function ($invoice) {
                 return $invoice->getTax();
             });
+
+            $receivedTaxTotal = $receivedInvoices->sum('tax');
+
+            $taxTotal = $issuedTaxTotal - $receivedTaxTotal;
 
             $data[] = $taxTotal;
         }
