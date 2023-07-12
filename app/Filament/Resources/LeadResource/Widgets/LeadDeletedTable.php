@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\LeadResource\Widgets;
 
 use App\Models\Lead;
-use Closure;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -81,19 +80,18 @@ class LeadDeletedTable extends BaseWidget
         return [
             Tables\Actions\RestoreAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Restaurer : ' . $record->title;
+                    return 'Restaurer : '.$record->title;
                 })
                 ->label(''),
             Tables\Actions\ForceDeleteAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Supprimer définitivement : ' . $record->title;
+                    return 'Supprimer définitivement : '.$record->title;
                 })
                 ->label(''),
         ];
     }
 
     protected function getTableBulkActions(): array
-
     {
         return [
             Tables\Actions\RestoreBulkAction::make(),

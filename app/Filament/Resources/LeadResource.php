@@ -3,21 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LeadResource\Pages;
-use App\Filament\Resources\LeadResource\RelationManagers;
 use App\Models\Lead;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
-use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class LeadResource extends Resource
 {
@@ -78,7 +71,7 @@ class LeadResource extends Resource
                                 'attachFiles',
                             ])
                             ->columnSpanFull(),
-                    ])->columns(3)
+                    ])->columns(3),
             ]);
     }
 

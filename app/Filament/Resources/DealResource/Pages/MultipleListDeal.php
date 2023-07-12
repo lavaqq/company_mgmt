@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\DealResource\Pages;
 
 use App\Filament\Resources\DealResource;
-use Filament\Resources\Pages\Page;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\Page;
 
 class MultipleListDeal extends Page
 {

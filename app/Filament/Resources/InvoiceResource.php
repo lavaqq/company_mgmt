@@ -27,7 +27,6 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Auth;
 
 class InvoiceResource extends Resource
 {
@@ -47,11 +46,11 @@ class InvoiceResource extends Resource
     {
         $reference = str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
         $date = Carbon::parse($dateValue)->format('dmy');
-        $sequence = $reference . $date;
+        $sequence = $reference.$date;
         $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
-        $vcs = $sequence . $verificationNumber;
+        $vcs = $sequence.$verificationNumber;
 
-        return '+++ ' . substr($vcs, 0, 3) . ' / ' . substr($vcs, 3, 4) . ' / ' . substr($vcs, 7) . ' +++';
+        return '+++ '.substr($vcs, 0, 3).' / '.substr($vcs, 3, 4).' / '.substr($vcs, 7).' +++';
     }
 
     public static function form(Form $form): Form
@@ -155,7 +154,7 @@ class InvoiceResource extends Resource
                                 return false;
                             })
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'LS-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'LS-'.str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT))
                             ->disabled()
                             ->required(),
                         TextInput::make('vcs')
@@ -318,17 +317,17 @@ class InvoiceResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->reference;
+                        return 'Supprimer : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : ' . $record->reference;
+                        return 'Supprimer définitivement : '.$record->reference;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : ' . $record->reference;
+                        return 'Restaurer : '.$record->reference;
                     })
                     ->label(''),
             ])

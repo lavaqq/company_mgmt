@@ -14,13 +14,13 @@ class EditLead extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->modalHeading('Supprimer le lead : ' . $this->record->title)
+                ->modalHeading('Supprimer le lead : '.$this->record->title),
         ];
     }
 
     protected function getTitle(): string
     {
-        return 'Modifier le lead : ' . $this->record->title;
+        return 'Modifier le lead : '.$this->record->title;
     }
 
     protected function getRedirectUrl(): string

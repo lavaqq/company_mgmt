@@ -14,13 +14,13 @@ class EditDeal extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->modalHeading('Supprimer le deal : ' . $this->record->title)
+                ->modalHeading('Supprimer le deal : '.$this->record->title),
         ];
     }
 
     protected function getTitle(): string
     {
-        return 'Modifier le deal : ' . $this->record->title;
+        return 'Modifier le deal : '.$this->record->title;
     }
 
     protected function getRedirectUrl(): string

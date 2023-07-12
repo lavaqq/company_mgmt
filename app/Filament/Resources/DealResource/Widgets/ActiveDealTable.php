@@ -4,15 +4,14 @@ namespace App\Filament\Resources\DealResource\Widgets;
 
 use App\Filament\Resources\DealResource;
 use App\Models\Deal;
-use Carbon\Carbon;
 use Closure;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Filament\Tables\Actions\Action;
 
 class ActiveDealTable extends BaseWidget
 {
@@ -81,14 +80,13 @@ class ActiveDealTable extends BaseWidget
                 ->icon('heroicon-s-pencil'),
             Tables\Actions\DeleteAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Supprimer : ' . $record->title;
+                    return 'Supprimer : '.$record->title;
                 })
                 ->label(''),
         ];
     }
 
     protected function getTableBulkActions(): array
-
     {
         return [
             Tables\Actions\DeleteBulkAction::make(),

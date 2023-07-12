@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReceivedInvoiceResource\Pages;
-use App\Filament\Resources\ReceivedInvoiceResource\RelationManagers;
 use App\Models\ReceivedInvoice;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -20,8 +17,6 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
-use function Ramsey\Uuid\v1;
 
 class ReceivedInvoiceResource extends Resource
 {
@@ -80,9 +75,10 @@ class ReceivedInvoiceResource extends Resource
                     ->label("Date d'émission"),
                 TextColumn::make('quarter')
                     ->dateTime('d/m/Y')
-                    ->label("Trimestre")
+                    ->label('Trimestre')
                     ->suffix(static function (Model $record) {
                         $date = Carbon::parse($record->issue_date);
+
                         return "Q$date->quarter $date->year";
                     }),
                 TextColumn::make('total_excl_vat')
@@ -105,17 +101,17 @@ class ReceivedInvoiceResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : ' . $record->issue_date . ' (' . $record->company->name . ')';
+                        return 'Supprimer : '.$record->issue_date.' ('.$record->company->name.')';
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : ' . $record->issue_date . ' (' . $record->company->name . ')';
+                        return 'Supprimer définitivement : '.$record->issue_date.' ('.$record->company->name.')';
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : ' . $record->issue_date . ' (' . $record->company->name . ')';
+                        return 'Restaurer : '.$record->issue_date.' ('.$record->company->name.')';
                     })
                     ->label(''),
             ])

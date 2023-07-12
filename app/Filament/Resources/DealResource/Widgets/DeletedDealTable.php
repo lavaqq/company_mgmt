@@ -3,15 +3,12 @@
 namespace App\Filament\Resources\DealResource\Widgets;
 
 use App\Models\Deal;
-use Carbon\Carbon;
-use Closure;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Filament\Tables\Actions\Action;
 
 class DeletedDealTable extends BaseWidget
 {
@@ -70,19 +67,18 @@ class DeletedDealTable extends BaseWidget
         return [
             Tables\Actions\RestoreAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Restaurer : ' . $record->title;
+                    return 'Restaurer : '.$record->title;
                 })
                 ->label(''),
             Tables\Actions\ForceDeleteAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Supprimer définitivement : ' . $record->title;
+                    return 'Supprimer définitivement : '.$record->title;
                 })
                 ->label(''),
         ];
     }
 
     protected function getTableBulkActions(): array
-
     {
         return [
             Tables\Actions\RestoreBulkAction::make(),

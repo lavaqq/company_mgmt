@@ -7,11 +7,11 @@ use App\Models\Deal;
 use Carbon\Carbon;
 use Closure;
 use Filament\Tables;
-use Filament\Widgets\TableWidget as BaseWidget;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Widgets\TableWidget as BaseWidget;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class WonDealTable extends BaseWidget
@@ -69,7 +69,7 @@ class WonDealTable extends BaseWidget
             TextColumn::make('signature_date')
                 ->label('Date de signature')
                 ->getStateUsing(
-                    static fn (Model $record) => $record->signature_date == null ? "Aucune" : Carbon::parse($record->signature_date)->format('d/m/Y')
+                    static fn (Model $record) => $record->signature_date == null ? 'Aucune' : Carbon::parse($record->signature_date)->format('d/m/Y')
                 ),
             TextColumn::make('time_between')
                 ->label('Temps écoulé')
@@ -78,7 +78,8 @@ class WonDealTable extends BaseWidget
                         $startDate = Carbon::parse($record->start_date);
                         $signatureDate = Carbon::parse($record->signature_date);
                         $timeBetween = $startDate->diffInDays($signatureDate);
-                        return $timeBetween . ' jours';
+
+                        return $timeBetween.' jours';
                     } else {
                         return 'Aucun';
                     }
@@ -94,7 +95,8 @@ class WonDealTable extends BaseWidget
                 ->getStateUsing(function (Model $record) {
                     if ($record->deal_value && $record->actual_deal_value) {
                         $percentage = ($record->actual_deal_value / $record->deal_value) * 100;
-                        return round($percentage, 2) . '%';
+
+                        return round($percentage, 2).'%';
                     } else {
                         return 'Aucun';
                     }
@@ -111,14 +113,13 @@ class WonDealTable extends BaseWidget
                 ->icon('heroicon-s-pencil'),
             Tables\Actions\DeleteAction::make()
                 ->modalHeading(function (Model $record): string {
-                    return 'Supprimer : ' . $record->title;
+                    return 'Supprimer : '.$record->title;
                 })
                 ->label(''),
         ];
     }
 
     protected function getTableBulkActions(): array
-
     {
         return [
             Tables\Actions\DeleteBulkAction::make(),

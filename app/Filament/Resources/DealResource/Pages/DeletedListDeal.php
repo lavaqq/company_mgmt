@@ -3,9 +3,8 @@
 namespace App\Filament\Resources\DealResource\Pages;
 
 use App\Filament\Resources\DealResource;
-use App\Filament\Resources\LeadResource;
-use Filament\Resources\Pages\Page;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\Page;
 
 class DeletedListDeal extends Page
 {
@@ -22,7 +21,7 @@ class DeletedListDeal extends Page
         return [
             Action::make('deleted')
                 ->url(fn () => DealResource::getUrl('index'))
-                ->label('Voir les deals')
+                ->label('Voir les deals'),
         ];
     }
 

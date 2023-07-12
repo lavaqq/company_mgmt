@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\LeadResource\Pages;
 
 use App\Filament\Resources\LeadResource;
-use Filament\Resources\Pages\Page;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\Page;
 
 class DeletedListLead extends Page
 {
@@ -21,7 +21,7 @@ class DeletedListLead extends Page
         return [
             Action::make('deleted')
                 ->url(fn () => LeadResource::getUrl('index'))
-                ->label('Voir les leads')
+                ->label('Voir les leads'),
         ];
     }
 
