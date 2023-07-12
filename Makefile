@@ -1,4 +1,4 @@
-.PHONY: deploy install
+.PHONY: deploy install setup
 
 deploy:
 	git push
@@ -15,4 +15,13 @@ install:
 	php artisan route:clear
 	php artisan cache:clear
 	php artisan storage:link
-	php artisan migrate:fresh --seed
+	php artisan migrate:fresh --seed --force
+
+setup:
+	cp .env.example .env
+	sed -i '' 's/mysql/sqlite/g' .env
+	npm i
+	npm run build
+	composer i
+	php artisan key:gen
+	php artisan migrate --seed --force
