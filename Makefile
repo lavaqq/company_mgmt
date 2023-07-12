@@ -15,7 +15,7 @@ install:
 	php artisan route:clear
 	php artisan cache:clear
 	php artisan storage:link
-	php artisan migrate:fresh --seed --force
+	php artisan migrate:fresh --force
 
 setup:
 	cp .env.example .env
