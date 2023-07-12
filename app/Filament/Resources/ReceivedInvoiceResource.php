@@ -39,10 +39,12 @@ class ReceivedInvoiceResource extends Resource
                 Select::make('company_id')
                     ->label('Entreprise')
                     ->preload()
+                    ->searchable()
                     ->relationship('company', 'name')
                     ->required(),
                 DatePicker::make('issue_date')
                     ->label("Date d'émission")
+                    ->displayFormat('d/m/Y')
                     ->default(now())
                     ->required(),
                 TextInput::make('total_excl_vat')
@@ -101,17 +103,17 @@ class ReceivedInvoiceResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer : '.$record->issue_date.' ('.$record->company->name.')';
+                        return 'Supprimer : ' . $record->issue_date . ' (' . $record->company->name . ')';
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Supprimer définitivement : '.$record->issue_date.' ('.$record->company->name.')';
+                        return 'Supprimer définitivement : ' . $record->issue_date . ' (' . $record->company->name . ')';
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return 'Restaurer : '.$record->issue_date.' ('.$record->company->name.')';
+                        return 'Restaurer : ' . $record->issue_date . ' (' . $record->company->name . ')';
                     })
                     ->label(''),
             ])
