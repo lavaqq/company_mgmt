@@ -18,9 +18,9 @@ install:
 setup:
 	cp .env.example .env
 	sed -i '' 's/mysql/sqlite/g' .env
+	composer i
 	npm i
 	npm run build
-	composer i
 	php artisan key:gen
-	php artisan migrate --seed --force
-	php artisan user:create --dev
+	php artisan migrate --seed
+	# php artisan user:create --dev
