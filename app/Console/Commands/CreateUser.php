@@ -15,25 +15,28 @@ class CreateUser extends Command
 
     public function handle()
     {
-        if ($this->option('dev') && !App::environment('local')) {
+        if ($this->option('dev') && ! App::environment('local')) {
             $this->error('The --dev option can only be used in the local environment.');
 
             return;
         }
 
         if ($this->option('dev')) {
-            $name = 'dev';
+            $firstName = 'dev';
+            $lastName = 'dev';
             $email = 'dev@dev.io';
             $password = 'dev';
         } else {
-            $name = $this->ask('Please enter a name.');
+            $firstName = $this->ask('Please enter a first name.');
+            $lastName = $this->ask('Please enter a last name.');
             $email = $this->ask('Please enter an email.');
             $password = $this->secret('Please enter a password.');
         }
 
         try {
             User::create([
-                'name' => $name,
+                'first_name' => $firstName,
+                'last_name' => $lastName,
                 'email' => $email,
                 'password' => Hash::make($password),
             ]);

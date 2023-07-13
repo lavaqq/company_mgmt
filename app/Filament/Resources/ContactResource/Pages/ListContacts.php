@@ -15,8 +15,24 @@ class ListContacts extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Créer un contact'),
         ];
+    }
+
+    protected function getTitle(): string
+    {
+        return 'Liste des contacts';
+    }
+
+    protected function getTableEmptyStateIcon(): ?string
+    {
+        return 'heroicon-o-users';
+    }
+
+    protected function getTableEmptyStateHeading(): ?string
+    {
+        return 'Aucun contact enregistré';
     }
 
     protected function getTableRecordUrlUsing(): ?Closure

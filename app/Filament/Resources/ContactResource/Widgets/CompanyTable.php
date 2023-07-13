@@ -12,7 +12,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyTable extends BaseWidget
 {
-    protected static ?string $heading = 'Companies';
+    protected static ?string $heading = 'Entreprises';
+
+    protected function getTableEmptyStateIcon(): ?string
+    {
+        return 'heroicon-o-briefcase';
+    }
+
+    protected function getTableEmptyStateHeading(): ?string
+    {
+        return 'Aucune entreprise enregistré';
+    }
 
     public ?Model $record = null;
 
@@ -27,12 +37,15 @@ class CompanyTable extends BaseWidget
     {
         return [
             TextColumn::make('name')
+                ->label('Dénomination sociale')
                 ->limit(20),
             TextColumn::make('vat_number')
+                ->label('Numéro de TVA')
                 ->getStateUsing(function (Model $record): string {
-                    return $record->vat_country_code . $record->vat_number;
+                    return $record->vat_country_code.$record->vat_number;
                 }),
             BadgeColumn::make('legal_form')
+                ->label('Forme légale')
                 ->extraAttributes(['class' => 'uppercase']),
         ];
     }

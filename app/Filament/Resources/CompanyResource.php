@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Models\Company;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -25,13 +23,13 @@ class CompanyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
-    protected static ?string $navigationGroup = 'Company directory';
+    protected static ?string $navigationGroup = 'Répertoire';
 
-    protected static ?string $label = 'Company';
+    protected static ?string $label = 'Entreprise';
 
-    protected static ?string $pluralLabel = 'Companies';
+    protected static ?string $pluralLabel = 'Entreprises';
 
-    protected static ?string $navigationLabel = 'Companies';
+    protected static ?string $navigationLabel = 'Entreprises';
 
     public static function form(Form $form): Form
     {
@@ -40,31 +38,35 @@ class CompanyResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('name')
+                            ->label('Dénomination sociale')
                             ->required(),
                         Select::make('legal_form')
+                            ->label('Forme légale')
                             ->options([
-                                'SA' => 'SA',
-                                'SAS' => 'SAS',
-                                'SNC' => 'SNC',
-                                'SCS' => 'SCS',
-                                'SCOP' => 'SCOP',
-                                'SCM' => 'SCM',
-                                'SELARL' => 'SELARL',
-                                'SCI' => 'SCI',
-                                'EURL' => 'EURL',
-                                'SASU' => 'SASU',
-                                'SEP' => 'SEP',
-                                'SELAS' => 'SELAS',
-                                'SELAFA' => 'SELAFA',
-                                'SEM' => 'SEM',
-                                'SCA' => 'SCA',
-                                'SRL' => 'SRL',
-                                'SARL' => 'SARL',
-                                'SPRL' => 'SPRL',
+                                'SA' => 'SA (Société Anonyme)',
+                                'SAS' => 'SAS (Société par Actions Simplifiée)',
+                                'SNC' => 'SNC (Société en Nom Collectif)',
+                                'SCS' => 'SCS (Société en Commandite Simple)',
+                                'SCOP' => 'SCOP (Société Coopérative et Participative)',
+                                'SCM' => 'SCM (Société Civile de Moyens)',
+                                'SELARL' => "SELARL (Société d'Exercice Libéral à Responsabilité Limitée)",
+                                'SCI' => 'SCI (Société Civile Immobilière)',
+                                'EURL' => 'EURL (Entreprise Unipersonnelle à Responsabilité Limitée)',
+                                'SASU' => 'SASU (Société par Actions Simplifiée Unipersonnelle)',
+                                'SEP' => 'SEP (Société en Participation)',
+                                'SELAS' => "SELAS (Société d'Exercice Libéral par Actions Simplifiée)",
+                                'SELAFA' => "SELAFA (Société d'Exercice Libéral à Forme Anonyme)",
+                                'SEM' => "SEM (Société d'Economie Mixte)",
+                                'SCA' => 'SCA (Société en Commandite par Actions)',
+                                'SRL' => 'SRL (Société à Responsabilité Limitée)',
+                                'SARL' => 'SARL (Société à Responsabilité Limitée)',
+                                'SPRL' => 'SPRL (Société Privée à Responsabilité Limitée)',
+                                'INDÉPENDANT' => 'Indépendant',
                             ])
                             ->searchable()
                             ->required(),
                         Select::make('vat_country_code')
+                            ->label('Code pays (géonomenclature)')
                             ->options([
                                 'AT' => 'AT',
                                 'BE' => 'BE',
@@ -98,51 +100,58 @@ class CompanyResource extends Resource
                             ->searchable()
                             ->required(),
                         TextInput::make('vat_number')
+                            ->label('Numéro de TVA')
                             ->numeric()
                             ->required(),
                     ])->columns(2),
                 Card::make()
                     ->schema([
                         TextInput::make('street')
+                            ->label('Rue')
                             ->required(),
                         TextInput::make('zipcode')
+                            ->label('Code postal')
                             ->numeric()
                             ->required(),
                         TextInput::make('number')
+                            ->label('Numéro')
                             ->numeric()
                             ->required(),
                         TextInput::make('city')
+                            ->label('Ville')
                             ->required(),
-                        TextInput::make('box'),
+                        TextInput::make('box')
+                            ->label('Boîte'),
                         Select::make('country')
+                            ->label('Pays')
                             ->options([
-                                'Germany' => 'Germany',
-                                'Austria' => 'Austria',
-                                'Belgium' => 'Belgium',
-                                'Bulgaria' => 'Bulgaria',
-                                'Cyprus' => 'Cyprus',
-                                'Croatia' => 'Croatia',
-                                'Denmark' => 'Denmark',
-                                'Spain' => 'Spain',
-                                'Estonia' => 'Estonia',
-                                'Finland' => 'Finland',
+                                'Allemagne' => 'Allemagne',
+                                'Autriche' => 'Autriche',
+                                'Belgique' => 'Belgique',
+                                'Bulgarie' => 'Bulgarie',
+                                'Chypre' => 'Chypre',
+                                'Croatie' => 'Croatie',
+                                'Danemark' => 'Danemark',
+                                'Espagne' => 'Espagne',
+                                'Estonie' => 'Estonie',
+                                'Finlande' => 'Finlande',
                                 'France' => 'France',
-                                'Greece' => 'Greece',
-                                'Hungary' => 'Hungary',
-                                'Ireland' => 'Ireland',
-                                'Italy' => 'Italy',
-                                'Latvia' => 'Latvia',
-                                'Lithuania' => 'Lithuania',
+                                'Grèce' => 'Grèce',
+                                'Hongrie' => 'Hongrie',
+                                'Irlande' => 'Irlande',
+                                'Italie' => 'Italie',
+                                'Lettonie' => 'Lettonie',
+                                'Lituanie' => 'Lituanie',
                                 'Luxembourg' => 'Luxembourg',
-                                'Malta' => 'Malta',
-                                'Netherlands' => 'Netherlands',
-                                'Poland' => 'Poland',
+                                'Malte' => 'Malte',
+                                'Pays-Bas' => 'Pays-Bas',
+                                'Pologne' => 'Pologne',
                                 'Portugal' => 'Portugal',
-                                'Romania' => 'Romania',
-                                'Slovakia' => 'Slovakia',
-                                'Slovenia' => 'Slovenia',
-                                'Sweden' => 'Sweden',
-                                'Czech Republic' => 'Czech Republic'
+                                'Roumanie' => 'Roumanie',
+                                'Slovaquie' => 'Slovaquie',
+                                'Slovénie' => 'Slovénie',
+                                'Suède' => 'Suède',
+                                'Tchéquie' => 'Tchéquie',
                             ])
                             ->searchable()
                             ->required(),
@@ -150,6 +159,7 @@ class CompanyResource extends Resource
                 Card::make()
                     ->schema([
                         Select::make('contacts')
+                            ->label('Contact(s)')
                             ->searchable()
                             ->multiple()
                             ->relationship('contacts', 'first_name')
@@ -164,33 +174,40 @@ class CompanyResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Dénomination sociale')
                     ->searchable()
                     ->limit(20),
                 TextColumn::make('vat_number')
+                    ->label('Numéro de TVA')
                     ->searchable()
                     ->getStateUsing(function (Model $record): string {
                         return $record->vat_country_code . $record->vat_number;
                     }),
                 BadgeColumn::make('legal_form')
+                    ->label('Forme légale')
                     ->extraAttributes(['class' => 'uppercase']),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->name;
-                    }),
+                        return 'Supprimer : ' . $record->name;
+                    })
+                    ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->name;
-                    }),
+                        return 'Supprimer définitivement : ' . $record->name;
+                    })
+                    ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->name;
+                        return 'Restaurer : ' . $record->name;
                     })
+                    ->label(''),
             ])
             ->bulkActions([])
             ->poll('10s');

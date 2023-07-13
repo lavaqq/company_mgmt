@@ -2,16 +2,27 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Filament\Models\Contracts\FilamentUser;
+=======
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasName;
+>>>>>>> parent of e60e34d (test)
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\HasApiTokens;
 
+<<<<<<< HEAD
 class User extends Authenticatable implements FilamentUser
+=======
+class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
+>>>>>>> parent of e60e34d (test)
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +30,9 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'avatar',
         'email',
         'password',
     ];
@@ -46,6 +59,20 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessFilament(): bool
     {
-        return true;
+        if (App::environment('local')) {
+            return true;
+        }
+
+        return str_ends_with($this->email, '@'.env('DOMAIN_CAN_ACCESS_FILAMENT'));
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function getFilamentName(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }

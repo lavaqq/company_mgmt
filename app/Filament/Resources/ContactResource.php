@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Contact;
-use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -26,7 +24,7 @@ class ContactResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Company directory';
+    protected static ?string $navigationGroup = 'Répertoire';
 
     protected static ?string $label = 'Contact';
 
@@ -41,18 +39,30 @@ class ContactResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('last_name')
+                            ->label('Nom')
                             ->required(),
                         TextInput::make('first_name')
+                            ->label('Prénom')
                             ->required(),
-                        TextInput::make('job_title'),
+                        // Select::make('companies')
+                        //     ->label('Entreprise(s)')
+                        //     ->searchable()
+                        //     ->multiple()
+                        //     ->relationship('companies', 'name')
+                        //     ->preload(),
+                        TextInput::make('job_title')
+                            ->label('Titre du poste'),
                         TextInput::make('email')
+                            ->label('E-mail')
                             ->email(),
                         TextInput::make('phone')
+                            ->label('Téléphone')
                             ->tel(),
                     ])->columns(2),
                 Card::make()
                     ->schema([
                         Select::make('companies')
+                            ->label('Entreprise(s)')
                             ->searchable()
                             ->multiple()
                             ->relationship('companies', 'name')
@@ -67,10 +77,13 @@ class ContactResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('first_name')
+                    ->label('Prénom')
                     ->searchable(),
                 TextColumn::make('last_name')
+                    ->label('Nom')
                     ->searchable(),
                 TagsColumn::make('companies')
+                    ->label('Entreprise(s)')
                     ->getStateUsing(function (Model $record): array {
                         $companies = $record->companies;
                         $data = [];
@@ -80,12 +93,14 @@ class ContactResource extends Resource
                         if (empty($data)) {
                             $data[] = 'Aucune';
                         }
+
                         return $data;
                     }),
                 BadgeColumn::make('job_title')
                     ->getStateUsing(function (Model $record): string {
                         return $record->job_title ? (strlen($record->job_title) > 15 ? substr($record->job_title, 0, 15) . '...' : $record->job_title) : 'Aucun';
-                    }),
+                    })
+                    ->label('Titre du poste'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -95,17 +110,17 @@ class ContactResource extends Resource
                     ->label(''),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\ForceDeleteAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->last_name . ' ' . $record->first_name;
+                        return 'Supprimer définitivement : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
                 Tables\Actions\RestoreAction::make()
                     ->modalHeading(function (Model $record): string {
-                        return $record->last_name . ' ' . $record->first_name;
+                        return 'Restaurer : ' . $record->last_name . ' ' . $record->first_name;
                     })
                     ->label(''),
             ])

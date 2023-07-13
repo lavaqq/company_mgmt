@@ -13,13 +13,14 @@ class EditContact extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->modalHeading('Supprimer le contact : '.$this->record->last_name.' '.$this->record->first_name),
         ];
     }
 
     protected function getTitle(): string
     {
-        return $this->record->last_name . ' ' . $this->record->first_name;
+        return 'Modifier le contact : '.$this->record->last_name.' '.$this->record->first_name;
     }
 
     protected function getRedirectUrl(): string
