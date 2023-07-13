@@ -24,4 +24,8 @@ setup:
 	npm run build
 	php artisan key:gen
 	php artisan migrate --seed --force
-	# php artisan user:create --dev
+	php artisan user:create --dev
+
+new-db:
+	php artisan migrate:fresh --seed --force
+	php artisan user:create --dev
