@@ -24,4 +24,6 @@ setup:
 	npm run build
 	composer i
 	php artisan key:gen
+	touch
 	php artisan migrate --seed --force
+	php artisan user:create --seed
