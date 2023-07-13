@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Filament::registerViteTheme('resources/css/filament.css');
+        Filament::serving(function () {
+            Filament::registerViteTheme('resources/css/filament.css');
+        });
     }
 }
