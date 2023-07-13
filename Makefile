@@ -1,5 +1,3 @@
-.PHONY: deploy install setup
-
 deploy:
 	git push
 	npm install
@@ -21,8 +19,8 @@ setup:
 	cp .env.example .env
 	sed -i '' 's/mysql/sqlite/g' .env
 	npm i
-	composer i
 	npm run build
+	composer i
 	php artisan key:gen
 	php artisan migrate --seed --force
 	php artisan user:create --dev
