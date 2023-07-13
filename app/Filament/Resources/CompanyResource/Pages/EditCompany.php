@@ -14,13 +14,13 @@ class EditCompany extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->modalHeading("Supprimer l'entreprise : ".$this->record->name),
+                ->modalHeading($this->record->name),
         ];
     }
 
     protected function getTitle(): string
     {
-        return "Modifier l'entreprise : ".$this->record->name;
+        return $this->record->name;
     }
 
     protected function getRedirectUrl(): string

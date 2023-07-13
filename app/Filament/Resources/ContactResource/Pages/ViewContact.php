@@ -15,7 +15,7 @@ class ViewContact extends ViewRecord
 
     protected function getTitle(): string
     {
-        return $this->record->first_name.' '.$this->record->last_name;
+        return $this->record->first_name . ' ' . $this->record->last_name;
     }
 
     protected function getFormSchema(): array
@@ -24,18 +24,13 @@ class ViewContact extends ViewRecord
             Card::make()
                 ->schema([
                     Placeholder::make('')
-                        ->content(new HtmlString('<h2 class="text-xl font-bold">Informations</h2>'))
+                        ->content(new HtmlString('<h2 class="text-xl font-bold">Infos</h2>'))
                         ->columnSpanFull(),
-                    TextInput::make('last_name')
-                        ->label('Nom'),
-                    TextInput::make('first_name')
-                        ->label('Prénom'),
-                    TextInput::make('job_title')
-                        ->label('Titre du poste'),
-                    TextInput::make('email')
-                        ->label('E-mail'),
-                    TextInput::make('phone')
-                        ->label('Téléphone'),
+                    TextInput::make('last_name'),
+                    TextInput::make('first_name'),
+                    TextInput::make('job_title'),
+                    TextInput::make('email'),
+                    TextInput::make('phone'),
                 ])->columns(2),
         ];
     }

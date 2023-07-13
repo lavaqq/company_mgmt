@@ -24,32 +24,22 @@ class ViewCompany extends ViewRecord
             Card::make()
                 ->schema([
                     Placeholder::make('')
-                        ->content(new HtmlString('<h2 class="text-xl font-bold">Informations</h2>')),
+                        ->content(new HtmlString('<h2 class="text-xl font-bold">Infos</h2>')),
                     Card::make()
                         ->schema([
-                            TextInput::make('name')
-                                ->label('Dénomination sociale'),
-                            TextInput::make('legal_form')
-                                ->label('Forme légale'),
-                            TextInput::make('vat_country_code')
-                                ->label('Code pays (géonomenclature)'),
-                            TextInput::make('vat_number')
-                                ->label('Numéro de TVA'),
+                            TextInput::make('name'),
+                            TextInput::make('legal_form'),
+                            TextInput::make('vat_country_code'),
+                            TextInput::make('vat_number'),
                         ])->columns(2),
                     Card::make()
                         ->schema([
-                            TextInput::make('street')
-                                ->label('Rue'),
-                            TextInput::make('zipcode')
-                                ->label('Code postal'),
-                            TextInput::make('number')
-                                ->label('Numéro'),
-                            TextInput::make('city')
-                                ->label('Ville'),
-                            TextInput::make('box')
-                                ->label('Boîte'),
-                            TextInput::make('country')
-                                ->label('Pays'),
+                            TextInput::make('street'),
+                            TextInput::make('zipcode'),
+                            TextInput::make('number'),
+                            TextInput::make('city'),
+                            TextInput::make('box'),
+                            TextInput::make('country'),
                         ])->columns(2),
                 ]),
         ];
@@ -59,8 +49,6 @@ class ViewCompany extends ViewRecord
     {
         return [
             CompanyResource\Widgets\ContactTable::class,
-            CompanyResource\Widgets\EstimateTable::class,
-            CompanyResource\Widgets\InvoiceTable::class,
         ];
     }
 

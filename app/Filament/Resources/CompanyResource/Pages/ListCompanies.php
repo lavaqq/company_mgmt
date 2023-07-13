@@ -15,24 +15,8 @@ class ListCompanies extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make()
-                ->label('Créer une entreprise'),
+            Actions\CreateAction::make(),
         ];
-    }
-
-    protected function getTitle(): string
-    {
-        return 'Liste des entreprises';
-    }
-
-    protected function getTableEmptyStateIcon(): ?string
-    {
-        return 'heroicon-o-briefcase';
-    }
-
-    protected function getTableEmptyStateHeading(): ?string
-    {
-        return 'Aucune entreprise enregistré';
     }
 
     protected function getTableRecordUrlUsing(): ?Closure
