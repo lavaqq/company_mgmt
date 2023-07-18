@@ -2,25 +2,15 @@
 
 namespace App\Models;
 
-<<<<<<< HEAD
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Filament\Models\Contracts\FilamentUser;
-=======
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
->>>>>>> parent of e60e34d (test)
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\HasApiTokens;
 
-<<<<<<< HEAD
-class User extends Authenticatable implements FilamentUser
-=======
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
->>>>>>> parent of e60e34d (test)
 {
     use HasApiTokens, Notifiable;
 
@@ -63,7 +53,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
             return true;
         }
 
-        return str_ends_with($this->email, '@'.env('DOMAIN_CAN_ACCESS_FILAMENT'));
+        return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
     }
 
     public function getFilamentAvatarUrl(): ?string
