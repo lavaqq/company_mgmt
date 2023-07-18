@@ -44,12 +44,6 @@ class ContactResource extends Resource
                         TextInput::make('first_name')
                             ->label('Prénom')
                             ->required(),
-                        // Select::make('companies')
-                        //     ->label('Entreprise(s)')
-                        //     ->searchable()
-                        //     ->multiple()
-                        //     ->relationship('companies', 'name')
-                        //     ->preload(),
                         TextInput::make('job_title')
                             ->label('Titre du poste'),
                         TextInput::make('email')
@@ -58,16 +52,6 @@ class ContactResource extends Resource
                         TextInput::make('phone')
                             ->label('Téléphone')
                             ->tel(),
-                    ])->columns(2),
-                Card::make()
-                    ->schema([
-                        Select::make('companies')
-                            ->label('Entreprise(s)')
-                            ->searchable()
-                            ->multiple()
-                            ->relationship('companies', 'name')
-                            ->preload()
-                            ->columnSpan(1),
                     ])->columns(2),
             ]);
     }
