@@ -17,7 +17,13 @@ class DealFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->sentence(6),
+            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'deal_value' => fake()->numberBetween(100, 8000),
+            'actual_deal_value' => fake()->numberBetween(100, 8000),
+            'start_date' => fake()->dateTimeThisYear(),
+            'signature_date' => fake()->dateTimeThisYear(),
+            'note' => fake()->sentence(20) || null,
         ];
     }
 }
