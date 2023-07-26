@@ -24,4 +24,12 @@ class Attachment extends Model
     {
         return $this->hasOne(Invoice::class);
     }
+
+    /**
+     * Get the credit note associated with the attachment.
+     */
+    public function creditNote(): HasOne
+    {
+        return $this->hasOne(CreditNote::class);
+    }
 }
