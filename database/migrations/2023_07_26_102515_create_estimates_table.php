@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id');
+            $table->string('reference');
+            $table->decimal('tax_rate', 10, 2);
+            $table->date('issue_date');
+            $table->string('deadline')->nullable();
+            $table->boolean('prepayment')->default(false);
+            $table->enum('status', []); // TODO: need to fill enum
+            $table->foreignId('attachment_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
