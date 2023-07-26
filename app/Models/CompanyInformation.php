@@ -23,7 +23,7 @@ class CompanyInformation extends Model
     ];
 
     /**
-     * Get the company that owns the phone.
+     * Get the company that owns the information.
      */
     public function company(): BelongsTo
     {
