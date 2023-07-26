@@ -49,4 +49,12 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimateDiscount::class);
     }
+
+    /**
+     * Get the attachment that owns the estimate.
+     */
+    public function attachment(): BelongsTo
+    {
+        return $this->belongsTo(Attachment::class);
+    }
 }
