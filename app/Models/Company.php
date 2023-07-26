@@ -70,4 +70,12 @@ class Company extends Model
     {
         return $this->hasMany(Estimate::class);
     }
+
+    /**
+     * Get the invoices for the company.
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
