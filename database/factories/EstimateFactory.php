@@ -17,7 +17,7 @@ class EstimateFactory extends Factory
     public function definition(): array
     {
         return [
-            'reference' => 'IN-' . fake()->randomNumber(4, true),
+            'reference' => 'ES-' . fake()->randomNumber(4, true),
             'tax_rate' => fake()->randomFloat(1, 0, 25),
             'issue_date' => fake()->dateTimeThisYear(),
             'deadline' => fake()->sentence(2) || null,
