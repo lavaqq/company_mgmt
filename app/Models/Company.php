@@ -62,4 +62,12 @@ class Company extends Model
     {
         return $this->hasManyThrough(Deals::class, Lead::class);
     }
+
+    /**
+     * Get the estimates for the company.
+     */
+    public function estimates(): HasMany
+    {
+        return $this->hasMany(Estimate::class);
+    }
 }
