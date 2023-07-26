@@ -50,12 +50,4 @@ class Invoice extends Model
     {
         return $this->hasMany(InvoiceDiscount::class);
     }
-
-    /**
-     * Get the attachment that owns the invoice.
-     */
-    public function attachment(): BelongsTo
-    {
-        return $this->belongsTo(Attachment::class);
-    }
 }
