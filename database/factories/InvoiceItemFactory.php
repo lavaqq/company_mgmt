@@ -17,7 +17,8 @@ class InvoiceItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'description' => fake()->sentence(5),
+            'amount' => fake()->numberBetween(100, 1000),
         ];
     }
 }

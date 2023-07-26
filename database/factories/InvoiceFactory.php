@@ -17,7 +17,13 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'reference' => 'IN-' . fake()->randomNumber(4, true),
+            'vcs' => null,
+            'tax_rate' => fake()->randomFloat(1, 0, 25),
+            'issue_date' => fake()->dateTimeThisYear(),
+            'due_date' => fake()->dateTimeThisYear(),
+            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values,
+            'in_accounting_software' => fake()->boolean(),
         ];
     }
 }

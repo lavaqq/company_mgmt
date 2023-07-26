@@ -17,7 +17,9 @@ class InvoiceDiscountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'description' => fake()->sentence(5),
+            'is_percentage' => fake()->boolean(),
+            'amount' => fake()->numberBetween(10, 30),
         ];
     }
 }
