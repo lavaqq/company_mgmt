@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Deal extends Model
@@ -15,5 +16,21 @@ class Deal extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'status',
+        'deal_value',
+        'actual_deal_value',
+        'start_date',
+        'signature_date',
+        'note',
+    ];
+
+    /**
+     * Get the lead that owns the deal.
+     */
+    public function lead(): BelongsTo
+    {
+        return $this->belongsTo(Lead::class);
+    }
 }
