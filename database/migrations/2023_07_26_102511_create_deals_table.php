@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('lead_id');
+            $table->foreignId('company_id');
+            $table->string('title');
+            $table->enum('status', []); // TODO: need to fill enum
+            $table->decimal('deal_value', 10, 2)->default(0);
+            $table->decimal('actual_deal_value', 10, 2)->default(0);
+            $table->date('start_date');
+            $table->date('signature_date')->nullable();
+            $table->longText('note')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
