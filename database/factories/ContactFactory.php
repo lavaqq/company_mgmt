@@ -17,7 +17,11 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'last_name' => fake()->lastName(),
+            'first_name' => fake()->firstName(),
+            'job_title' => fake()->jobTitle(),
+            'email' => fake()->safeEmail(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }
