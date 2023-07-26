@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('estimated_duration')->nullable();
             $table->date('schedule_start')->nullable();
             $table->date('schedule_end')->nullable();
+            $table->string('category')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -26,6 +26,7 @@ class Task extends Model
         'estimated_duration',
         'schedule_start',
         'schedule_end',
+        'category'
     ];
 
     /**
