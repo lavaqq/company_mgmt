@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('icon')->nullable();
+            $table->longText('note')->nullable();
+            $table->boolean('archived')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
