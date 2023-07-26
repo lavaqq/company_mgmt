@@ -86,4 +86,12 @@ class Company extends Model
     {
         return $this->hasManyThrough(CreditNote::class, Invoice::class);
     }
+
+    /**
+     * Get the received invoices for the company.
+     */
+    public function receivedInvoices(): HasMany
+    {
+        return $this->hasMany(ReceivedInvoice::class);
+    }
 }
