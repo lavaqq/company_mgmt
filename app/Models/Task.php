@@ -23,7 +23,7 @@ class Task extends Model
         'note',
         'status',
         'duration_tmp_start',
-        'duration_tmp_stop',
+        'is_running',
         'duration',
         'estimated_duration',
         'schedule_start',

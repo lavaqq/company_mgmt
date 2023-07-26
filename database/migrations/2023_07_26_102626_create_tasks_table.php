@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('note')->nullable();
             $table->enum('status', []); // TODO: need to fill enum
             $table->timestamp('duration_tmp_start')->nullable();
-            $table->timestamp('duration_tmp_stop')->nullable();
+            $table->boolean('is_running')->default(false);
             $table->integer('duration');
             $table->integer('estimated_duration')->nullable();
             $table->date('schedule_start')->nullable();
