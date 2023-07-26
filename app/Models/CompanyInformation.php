@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CompanyAdress extends Model
+class CompanyInformation extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,12 +17,9 @@ class CompanyAdress extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'street',
-        'number',
-        'box',
-        'city',
-        'zipcode',
-        'country',
+        'legal_form',
+        'vat_number',
+        'vat_country_code',
     ];
 
     /**
