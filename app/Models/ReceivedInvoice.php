@@ -30,12 +30,4 @@ class ReceivedInvoice extends Model
     {
         return $this->belongsTo(Company::class);
     }
-
-    /**
-     * Get the attachment that owns the received invoice.
-     */
-    public function attachment(): BelongsTo
-    {
-        return $this->belongsTo(Attachment::class);
-    }
 }
