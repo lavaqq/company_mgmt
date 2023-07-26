@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
@@ -22,4 +23,12 @@ class Contact extends Model
         'email',
         'phone',
     ];
+
+    /**
+     * The companies that belong to the contact.
+     */
+    public function companies(): BelongsToMany
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }

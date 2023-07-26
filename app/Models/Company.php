@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -21,7 +22,7 @@ class Company extends Model
     ];
 
     /**
-     * Get the adress associated with the user.
+     * Get the adress associated with the company.
      */
     public function adress(): HasOne
     {
@@ -29,10 +30,18 @@ class Company extends Model
     }
 
     /**
-     * Get the information associated with the user.
+     * Get the information associated with the company.
      */
     public function information(): HasOne
     {
         return $this->hasOne(CompanyInformation::class);
+    }
+
+    /**
+     * The contacts that belong to the company.
+     */
+    public function contacts(): BelongsToMany
+    {
+        return $this->belongsToMany(Contact::class);
     }
 }
