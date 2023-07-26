@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,19 +10,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lead extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'company_id',
         'title',
         'status',
+        'start_date',
         'origin',
         'note',
-        'start_date',
     ];
 
     /**
-     * Get the company in relation with the record.
+     * Get the company that owns the lead.
      */
     public function company(): BelongsTo
     {
@@ -29,10 +34,10 @@ class Lead extends Model
     }
 
     /**
-     * Get all deals in relation with the record.
+     * Get the deals for the lead.
      */
     public function deals(): HasMany
     {
-        return $this->HasMany(Deal::class);
+        return $this->hasMany(Lead::class);
     }
 }

@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EstimateDiscount extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'description',
         'is_percentage',
@@ -17,7 +23,7 @@ class EstimateDiscount extends Model
     ];
 
     /**
-     * Get the estimate in relation with the record.
+     * Get the estimate that owns the item.
      */
     public function estimate(): BelongsTo
     {

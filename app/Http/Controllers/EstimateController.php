@@ -12,11 +12,11 @@ class EstimateController extends Controller
     public function show(Estimate $record)
     {
         if ($record->external_estimate) {
-            return Response::file(public_path(Storage::url($record->external_estimate)));
+            return Response::file(public_path(Storage::url($record->attachment->file_path)));
         }
 
         $pdf = Pdf::loadView('pdf.estimate', ['data' => $record]);
 
-        return $pdf->stream($record->reference.' ('.$record->deal->lead->company->name.')'.'.pdf');
+        return $pdf->stream($record->reference . ' (' . $record->deal->lead->company->name . ')' . '.pdf');
     }
 }

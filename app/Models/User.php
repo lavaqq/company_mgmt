@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
-use Filament\Models\Contracts\HasName;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
+class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +21,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
     protected $fillable = [
         'first_name',
         'last_name',
-        'avatar',
+        'avatar_path',
         'email',
         'password',
     ];
@@ -47,22 +46,11 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
         'password' => 'hashed',
     ];
 
-    public function canAccessFilament(): bool
+    /**
+     * The users that belong to the task.
+     */
+    public function tasks(): BelongsToMany
     {
-        if (App::environment('local')) {
-            return true;
-        }
-
-        return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
-    }
-
-    public function getFilamentAvatarUrl(): ?string
-    {
-        return $this->avatar;
-    }
-
-    public function getFilamentName(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
+        return $this->belongsToMany(Task::class);
     }
 }

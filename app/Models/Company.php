@@ -2,31 +2,45 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'name',
-        'legal_form',
-        'vat_number',
-        'vat_country_code',
-        'street',
-        'number',
-        'box',
-        'city',
-        'zipcode',
-        'country',
+        'name'
     ];
 
     /**
-     * Get all contacts in relation with the record.
+     * Get the adress associated with the company.
+     */
+    public function adress(): HasOne
+    {
+        return $this->hasOne(CompanyAdress::class);
+    }
+
+    /**
+     * Get the information associated with the company.
+     */
+    public function information(): HasOne
+    {
+        return $this->hasOne(CompanyInformation::class);
+    }
+
+    /**
+     * The contacts that belong to the company.
      */
     public function contacts(): BelongsToMany
     {
@@ -34,42 +48,50 @@ class Company extends Model
     }
 
     /**
-     * Get all leads in relation with the record.
+     * Get the leads for the company.
      */
     public function leads(): HasMany
     {
-        return $this->HasMany(Lead::class);
+        return $this->hasMany(Lead::class);
     }
 
     /**
-     * Get all deals in relation with the record.
+     * Get all of the deals for the company.
      */
-    public function deals(): HasMany
+    public function deals(): HasManyThrough
     {
-        return $this->HasMany(Deal::class);
+        return $this->hasManyThrough(Deals::class, Lead::class);
     }
 
     /**
-     * Get all estimates in relation with the record.
+     * Get the estimates for the company.
      */
-    public function estimates(): HasManyThrough
+    public function estimates(): HasMany
     {
-        return $this->hasManyThrough(Estimate::class, Deal::class);
+        return $this->hasMany(Estimate::class);
     }
 
     /**
-     * Get all invoices in relation with the record.
+     * Get the invoices for the company.
      */
-    public function invoices(): HasManyThrough
+    public function invoices(): HasMany
     {
-        return $this->hasManyThrough(Invoice::class, Deal::class);
+        return $this->hasMany(Invoice::class);
     }
 
     /**
-     * Get all received invoices in relation with the record.
+     * Get all of the credit notes for the company.
+     */
+    public function creditNotes(): HasManyThrough
+    {
+        return $this->hasManyThrough(CreditNote::class, Invoice::class);
+    }
+
+    /**
+     * Get the received invoices for the company.
      */
     public function receivedInvoices(): HasMany
     {
-        return $this->HasMany(ReceivedInvoice::class);
+        return $this->hasMany(ReceivedInvoice::class);
     }
 }

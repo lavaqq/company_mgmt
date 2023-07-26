@@ -10,6 +10,6 @@ class ReceivedInvoiceController extends Controller
 {
     public function show(ReceivedInvoice $record)
     {
-        return Response::file(public_path(Storage::url($record->file)));
+        return Response::file(public_path(Storage::url($record->attachment->file_path)));
     }
 }

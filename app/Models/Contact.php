@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'last_name',
         'first_name',
@@ -19,7 +25,7 @@ class Contact extends Model
     ];
 
     /**
-     * Get all companies in relation with the record.
+     * The companies that belong to the contact.
      */
     public function companies(): BelongsToMany
     {
