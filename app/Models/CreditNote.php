@@ -47,12 +47,4 @@ class CreditNote extends Model
     {
         return $this->hasMany(CreditNoteDiscount::class);
     }
-
-    /**
-     * Get the attachment that owns the credit note.
-     */
-    public function attachment(): BelongsTo
-    {
-        return $this->belongsTo(Attachment::class);
-    }
 }

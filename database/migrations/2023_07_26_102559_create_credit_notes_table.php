@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->enum('status', []); // TODO: need to fill enum
-            $table->foreignId('attachment_id')->nullable();
+            $table->foreignId('attachment_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
