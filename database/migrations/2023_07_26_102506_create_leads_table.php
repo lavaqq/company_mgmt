@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id');
+            $table->string('title');
+            $table->enum('status', []); // TODO: need to fill enum
+            $table->date('start_date');
+            $table->enum('origin', []); // TODO: need to fill enum
+            $table->longText('note')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
