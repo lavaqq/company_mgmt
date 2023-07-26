@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -31,5 +32,13 @@ class Attachment extends Model
     public function creditNote(): HasOne
     {
         return $this->hasOne(CreditNote::class);
+    }
+
+    /**
+     * The tasks that belong to the attachement.
+     */
+    public function tasks(): BelongsToMany
+    {
+        return $this->belongsToMany(Task::class);
     }
 }
