@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('deadline')->nullable();
             $table->boolean('prepayment')->default(false);
             $table->enum('status', []); // TODO: need to fill enum
-            $table->foreignId('attachment_id')->nullable();
+            $table->foreignId('attachment_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
