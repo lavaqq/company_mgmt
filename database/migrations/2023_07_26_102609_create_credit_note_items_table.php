@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('credit_note_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('credit_note_id');
+            $table->string('description');
+            $table->decimal('amount', 10, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

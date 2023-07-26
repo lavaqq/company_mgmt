@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('credit_notes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('invoice_id');
+            $table->foreignId('company_id');
+            $table->string('reference');
+            $table->decimal('tax_rate', 10, 2);
+            $table->date('issue_date');
+            $table->enum('status', []); // TODO: need to fill enum
+            $table->foreignId('attachment_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
