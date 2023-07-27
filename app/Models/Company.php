@@ -60,7 +60,7 @@ class Company extends Model
      */
     public function deals(): HasManyThrough
     {
-        return $this->hasManyThrough(Deals::class, Lead::class);
+        return $this->hasManyThrough(Deal::class, Lead::class);
     }
 
     /**
