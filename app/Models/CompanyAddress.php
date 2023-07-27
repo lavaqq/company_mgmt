@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CompanyAdress extends Model
+class CompanyAddress extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -26,7 +26,7 @@ class CompanyAdress extends Model
     ];
 
     /**
-     * Get the company that owns the adress.
+     * Get the company that owns the address.
      */
     public function company(): BelongsTo
     {

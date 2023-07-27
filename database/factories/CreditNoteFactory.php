@@ -20,7 +20,10 @@ class CreditNoteFactory extends Factory
             'reference' => 'CN-' . fake()->randomNumber(4, true),
             'tax_rate' => fake()->randomFloat(1, 0, 25),
             'issue_date' => fake()->dateTimeThisYear(),
-            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'status' => fake()->randomElement([
+                'creation',
+                'sended'
+            ])
         ];
     }
 }

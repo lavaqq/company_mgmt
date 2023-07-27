@@ -18,9 +18,19 @@ class LeadFactory extends Factory
     {
         return [
             'title' => fake()->sentence(6),
-            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'status' => fake()->randomElement([
+                'new',
+                'waiting_for_contact',
+                'contacted',
+                'qualified',
+                'unqualified',
+            ]),
             'start_date' => fake()->dateTimeThisYear(),
-            'origin' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'origin' => fake()->randomElement([
+                'unknown',
+                'inbound',
+                'outbound',
+            ]),
             'note' => fake()->sentence(20) || null,
         ];
     }

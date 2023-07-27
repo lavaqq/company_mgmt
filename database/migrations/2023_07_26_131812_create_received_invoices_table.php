@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('issue_date');
             $table->decimal('total_excl_vat', 10, 2);
             $table->decimal('tax', 10, 2);
-            $table->foreignId('attachment_path')->nullable();
+            $table->foreignId('attachment_path');
             $table->boolean('in_accounting_software')->default(false);
             $table->softDeletes();
             $table->timestamps();

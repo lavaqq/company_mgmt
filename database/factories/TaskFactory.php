@@ -19,7 +19,13 @@ class TaskFactory extends Factory
         return [
             'title' => fake()->sentence(5),
             'note' => fake()->sentence(10),
-            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values,
+            'status' => fake()->randomElement([
+                'done',
+                'stuck',
+                'working_on_it',
+                'in_progress',
+                null
+            ])
         ];
     }
 }

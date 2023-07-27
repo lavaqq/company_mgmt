@@ -17,7 +17,11 @@ class ReceivedInvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'issue_date' => fake()->dateTimeThisYear(),
+            'total_excl_vat' => fake()->numberBetween(100, 1000),
+            'tax' => fake()->randomFloat(1, 0, 25),
+            'attachment_path' => 'tmp',
+            'in_accounting_software' => fake()->boolean(),
         ];
     }
 }

@@ -16,7 +16,14 @@ return new class extends Migration
             $table->foreignId('lead_id');
             $table->foreignId('company_id');
             $table->string('title');
-            $table->enum('status', []); // TODO: need to fill enum
+            $table->enum('status', [
+                'new',
+                'discovery',
+                'proposal',
+                'negotiation',
+                'won',
+                'lost',
+            ]);
             $table->decimal('deal_value', 10, 2)->default(0);
             $table->decimal('actual_deal_value', 10, 2)->default(0);
             $table->date('start_date');

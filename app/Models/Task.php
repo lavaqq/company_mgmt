@@ -42,7 +42,7 @@ class Task extends Model
     /**
      * Get the attachments for the task.
      */
-    public function invoices(): HasMany
+    public function attachments(): HasMany
     {
         return $this->hasMany(Attachment::class);
     }
@@ -51,7 +51,7 @@ class Task extends Model
     /**
      * Get the project that owns the task.
      */
-    public function company(): BelongsTo
+    public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
     }

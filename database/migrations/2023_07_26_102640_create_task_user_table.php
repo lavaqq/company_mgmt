@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_informations', function (Blueprint $table) {
+        Schema::create('task_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id');
-            $table->enum('legal_form', []); // TODO: need to fill enum
-            $table->string('vat_number');
-            $table->enum('vat_country_code', []); // TODO: need to fill enum
-            $table->softDeletes();
+            $table->foreignId('user_id');
+            $table->foreignId('task_id');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_informations');
+        Schema::dropIfExists('task_user');
     }
 };

@@ -24,11 +24,11 @@ class Company extends Model
     ];
 
     /**
-     * Get the adress associated with the company.
+     * Get the address associated with the company.
      */
-    public function adress(): HasOne
+    public function address(): HasOne
     {
-        return $this->hasOne(CompanyAdress::class);
+        return $this->hasOne(CompanyAddress::class);
     }
 
     /**
@@ -60,7 +60,7 @@ class Company extends Model
      */
     public function deals(): HasManyThrough
     {
-        return $this->hasManyThrough(Deals::class, Lead::class);
+        return $this->hasManyThrough(Deal::class, Lead::class);
     }
 
     /**

@@ -16,10 +16,15 @@ return new class extends Migration
             $table->foreignId('project_id')->nullable();
             $table->string('title');
             $table->longText('note')->nullable();
-            $table->enum('status', []); // TODO: need to fill enum
+            $table->enum('status', [
+                'done',
+                'stuck',
+                'working_on_it',
+                'in_progress',
+            ])->nullable();
             $table->timestamp('duration_tmp_start')->nullable();
             $table->boolean('is_running')->default(false);
-            $table->integer('duration');
+            $table->integer('duration')->nullable();
             $table->integer('estimated_duration')->nullable();
             $table->date('schedule_start')->nullable();
             $table->date('schedule_end')->nullable();

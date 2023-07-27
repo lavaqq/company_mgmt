@@ -1,23 +1,20 @@
 <?php
 
-namespace Database\Factories;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CompanyInformation>
- */
-class CompanyInformationFactory extends Factory
+return new class extends Migration
 {
     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
+     * Run the migrations.
      */
-    public function definition(): array
+    public function up(): void
     {
-        return [
-            'legal_form' => fake()->randomElement([
+        Schema::create('company_information', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('company_id');
+            $table->enum('legal_form', [
                 'SA',
                 'SAS',
                 'SNC',
@@ -37,9 +34,9 @@ class CompanyInformationFactory extends Factory
                 'SARL',
                 'SPRL',
                 'INDEPENDENT',
-            ]),
-            'vat_number' => self::generateRandomNumber(),
-            'vat_country_code' => fake()->randomElement([
+            ]);
+            $table->string('vat_number');
+            $table->enum('vat_country_code', [
                 'AT',
                 'BE',
                 'BG',
@@ -68,14 +65,17 @@ class CompanyInformationFactory extends Factory
                 'SI',
                 'SK',
                 'XI',
-            ])
-        ];
+            ]);
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
-    public function generateRandomNumber($length = 10)
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        $min = 10 ** ($length - 1);
-        $max = (10 ** $length) - 1;
-        return str_pad(random_int($min, $max), $length, '0', STR_PAD_LEFT);
+        Schema::dropIfExists('company_information');
     }
-}
+};
