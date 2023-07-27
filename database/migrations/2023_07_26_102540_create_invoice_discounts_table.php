@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->boolean('is_percentage');
             $table->decimal('amount', 10, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

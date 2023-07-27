@@ -38,6 +38,6 @@ class Lead extends Model
      */
     public function deals(): HasMany
     {
-        return $this->hasMany(Lead::class);
+        return $this->hasMany(Deal::class);
     }
 }
