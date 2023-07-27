@@ -19,7 +19,35 @@ return new class extends Migration
             $table->string('box')->nullable();
             $table->string('city');
             $table->string('zipcode');
-            $table->enum('country', []); // TODO: need to fill enum
+            $table->enum('country', [
+                'germany',
+                'austria',
+                'belgium',
+                'bulgaria',
+                'cyprus',
+                'croatia',
+                'denmark',
+                'spain',
+                'estonia',
+                'finland',
+                'france',
+                'greece',
+                'hungary',
+                'ireland',
+                'italy',
+                'latvia',
+                'lithuania',
+                'luxembourg',
+                'malta',
+                'netherlands',
+                'poland',
+                'portugal',
+                'romania',
+                'slovakia',
+                'slovenia',
+                'sweden',
+                'czech_republic',
+            ]);
             $table->softDeletes();
             $table->timestamps();
         });
