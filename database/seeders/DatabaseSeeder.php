@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ->count(100)
             ->hasAddress()
             ->hasInformation()
+            ->hasContacts(5)
             ->create();
     }
 }
