@@ -28,7 +28,7 @@ class Company extends Model
      */
     public function adress(): HasOne
     {
-        return $this->hasOne(CompanyAdress::class);
+        return $this->hasOne(CompanyAddress::class);
     }
 
     /**
