@@ -12,6 +12,9 @@ use App\Models\Deal;
 use App\Models\Estimate;
 use App\Models\Invoice;
 use App\Models\Lead;
+use App\Models\Project;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
@@ -65,6 +68,22 @@ class DatabaseSeeder extends Seeder
                         fn (Sequence $sequence) => ['company_id' => Company::all()->random()],
                     ))
                     ->count(2)
+            )
+            ->create();
+
+        Project::factory()
+            ->count(15)
+            ->create();
+
+        User::factory()
+            ->count(20)
+            ->has(
+                Task::factory()
+                    ->state(new Sequence(
+                        ['project_id' => Project::all()->random()->id],
+                        ['project_id' => null],
+                    ))
+                    ->count(10)
             )
             ->create();
     }
