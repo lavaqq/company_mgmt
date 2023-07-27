@@ -18,7 +18,14 @@ class DealFactory extends Factory
     {
         return [
             'title' => fake()->sentence(6),
-            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'status' => fake()->randomElement([
+                'new',
+                'discovery',
+                'proposal',
+                'negotiation',
+                'won',
+                'lost',
+            ]),
             'deal_value' => fake()->numberBetween(100, 8000),
             'actual_deal_value' => fake()->numberBetween(100, 8000),
             'start_date' => fake()->dateTimeThisYear(),
