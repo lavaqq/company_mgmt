@@ -21,7 +21,12 @@ class EstimateFactory extends Factory
             'tax_rate' => fake()->randomFloat(1, 0, 25),
             'issue_date' => fake()->dateTimeThisYear(),
             'deadline' => fake()->sentence(2) || null,
-            'status' => 'tmp', // TODO: need to replace by randomElement() with enum values
+            'status' => fake()->randomElement([
+                'creation',
+                'sended',
+                'signed',
+                'refused',
+            ])
         ];
     }
 }
