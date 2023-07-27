@@ -24,9 +24,9 @@ class Company extends Model
     ];
 
     /**
-     * Get the adress associated with the company.
+     * Get the address associated with the company.
      */
-    public function adress(): HasOne
+    public function address(): HasOne
     {
         return $this->hasOne(CompanyAddress::class);
     }

@@ -38,7 +38,7 @@ class CompanyInformationFactory extends Factory
                 'SPRL',
                 'INDEPENDENT',
             ]),
-            'vat_number' => fake()->randomNumber(10, true),
+            'vat_number' => self::generateRandomNumber(),
             'vat_country_code' => fake()->randomElement([
                 'AT',
                 'BE',
@@ -70,5 +70,12 @@ class CompanyInformationFactory extends Factory
                 'XI',
             ])
         ];
+    }
+
+    public function generateRandomNumber($length = 10)
+    {
+        $min = 10 ** ($length - 1);
+        $max = (10 ** $length) - 1;
+        return str_pad(random_int($min, $max), $length, '0', STR_PAD_LEFT);
     }
 }

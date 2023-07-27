@@ -26,7 +26,7 @@ class CompanyAddress extends Model
     ];
 
     /**
-     * Get the company that owns the adress.
+     * Get the company that owns the address.
      */
     public function company(): BelongsTo
     {
