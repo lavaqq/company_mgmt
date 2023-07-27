@@ -15,9 +15,19 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id');
             $table->string('title');
-            $table->enum('status', []); // TODO: need to fill enum
+            $table->enum('status', [
+                'new',
+                'waiting_for_contact',
+                'contacted',
+                'qualified',
+                'unqualified',
+            ]);
             $table->date('start_date');
-            $table->enum('origin', []); // TODO: need to fill enum
+            $table->enum('origin', [
+                'unknown',
+                'inbound',
+                'outbound',
+            ]);
             $table->longText('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
