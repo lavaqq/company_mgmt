@@ -24,7 +24,7 @@ return new class extends Migration
             ])->nullable();
             $table->timestamp('duration_tmp_start')->nullable();
             $table->boolean('is_running')->default(false);
-            $table->integer('duration');
+            $table->integer('duration')->nullable();
             $table->integer('estimated_duration')->nullable();
             $table->date('schedule_start')->nullable();
             $table->date('schedule_end')->nullable();
