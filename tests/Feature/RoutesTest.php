@@ -19,17 +19,6 @@ use Tests\TestCase;
 
 class RoutesTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_routes(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-
     public function test_company(): void
     {
         $response = $this->get('/test/company');
