@@ -14,9 +14,58 @@ return new class extends Migration
         Schema::create('company_informations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id');
-            $table->enum('legal_form', []); // TODO: need to fill enum
+            $table->enum('legal_form', [
+                'SA',
+                'SAS',
+                'SNC',
+                'SCS',
+                'SCOP',
+                'SCM',
+                'SELARL',
+                'SCI',
+                'EURL',
+                'SASU',
+                'SEP',
+                'SELAS',
+                'SELAFA',
+                'SEM',
+                'SCA',
+                'SRL',
+                'SARL',
+                'SPRL',
+                'INDEPENDENT',
+            ]);
             $table->string('vat_number');
-            $table->enum('vat_country_code', []); // TODO: need to fill enum
+            $table->enum('vat_country_code', [
+                'AT',
+                'BE',
+                'BG',
+                'CY',
+                'CZ',
+                'DE',
+                'DK',
+                'EE',
+                'EL',
+                'ES',
+                'FI',
+                'FR',
+                'HR',
+                'HU',
+                'IE',
+                'IT',
+                'LT',
+                'LU',
+                'LV',
+                'MT',
+                'NL',
+                'PL',
+                'PT',
+                'RO',
+                'SE',
+                'SI',
+                'SK',
+                'XI',
+            ]);
             $table->softDeletes();
             $table->timestamps();
         });
