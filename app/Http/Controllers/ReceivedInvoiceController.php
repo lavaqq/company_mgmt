@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ReceivedInvoice;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ReceivedInvoiceController extends Controller
@@ -41,6 +44,14 @@ class ReceivedInvoiceController extends Controller
         return ReceivedInvoice::with([
             'company',
         ])->find($id);
+    }
+
+    /**
+     * Display the pdf of the specified resource.
+     */
+    public function showPDF(ReceivedInvoice $record)
+    {
+        return Response::file(public_path(Storage::url($record->attachment_path)));
     }
 
     /**
