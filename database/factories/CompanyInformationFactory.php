@@ -68,7 +68,7 @@ class CompanyInformationFactory extends Factory
                 'SI',
                 'SK',
                 'XI',
-            ])
+            ]),
         ];
     }
 
@@ -76,6 +76,7 @@ class CompanyInformationFactory extends Factory
     {
         $min = 10 ** ($length - 1);
         $max = (10 ** $length) - 1;
+
         return str_pad(random_int($min, $max), $length, '0', STR_PAD_LEFT);
     }
 }

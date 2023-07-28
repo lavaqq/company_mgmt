@@ -25,6 +25,7 @@ return new class extends Migration
                 'signed',
                 'refused',
             ]);
+            $table->boolean('presigned')->default(false);
             $table->foreignId('attachment_path')->nullable();
             $table->softDeletes();
             $table->timestamps();

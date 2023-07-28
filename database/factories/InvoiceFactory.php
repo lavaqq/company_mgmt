@@ -17,7 +17,7 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'reference' => 'IN-' . fake()->randomNumber(4, true),
+            'reference' => 'IN-'.fake()->randomNumber(4, true),
             'vcs' => null,
             'tax_rate' => fake()->randomFloat(1, 0, 25),
             'issue_date' => fake()->dateTimeThisYear(),

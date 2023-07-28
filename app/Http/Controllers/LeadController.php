@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Lead;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class LeadController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Invoice::with([
+        return Lead::with([
             'company',
-            'items',
-            'discounts',
-            'creditNote',
+            'deals',
         ])->get();
     }
 
@@ -44,24 +39,10 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        return Invoice::with([
+        return Lead::with([
             'company',
-            'items',
-            'discounts',
-            'creditNote',
+            'deals',
         ])->find($id);
-    }
-
-    /**
-     * Display the pdf of the specified resource.
-     */
-    public function showPDF(Invoice $record)
-    {
-        if ($record->attachment_path) {
-            return Response::file(public_path(Storage::url($record->attachment_path)));
-        }
-        $pdf = Pdf::loadView('pdf.invoice', ['data' => $record]);
-        return $pdf->stream($record->reference . ' (' . $record->company->name . ')' . '.pdf');
     }
 
     /**

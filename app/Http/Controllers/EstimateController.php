@@ -3,20 +3,86 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estimate;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 
 class EstimateController extends Controller
 {
-    public function show(Estimate $record)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        if ($record->external_estimate) {
-            return Response::file(public_path(Storage::url($record->attachment->file_path)));
+        return Estimate::with([
+            'company',
+            'items',
+            'discounts',
+        ])->get();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return Estimate::with([
+            'company',
+            'items',
+            'discounts',
+        ])->find($id);
+    }
+
+    /**
+     * Display the pdf of the specified resource.
+     */
+    public function showPDF(Estimate $record)
+    {
+        if ($record->attachment_path) {
+            return Response::file(public_path(Storage::url($record->attachment_path)));
         }
-
         $pdf = Pdf::loadView('pdf.estimate', ['data' => $record]);
+        return $pdf->stream($record->reference . ' (' . $record->company->name . ')' . '.pdf');
+    }
 
-        return $pdf->stream($record->reference . ' (' . $record->deal->lead->company->name . ')' . '.pdf');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

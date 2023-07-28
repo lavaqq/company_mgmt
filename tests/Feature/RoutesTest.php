@@ -13,141 +13,139 @@ use App\Models\Project;
 use App\Models\ReceivedInvoice;
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RoutesTest extends TestCase
 {
-    public function test_company(): void
+    public function test_route_company_index(): void
     {
-        $response = $this->get('/test/company');
+        $response = $this->get(route('company.index'));
         $response->assertStatus(200);
     }
 
-    public function test_company_id(): void
+    public function test_route_company_show(): void
     {
-        $response = $this->get('/test/company/' . Company::all()->first()->id);
+        $response = $this->get(route('company.show', Company::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_contact(): void
+    public function test_route_contact_index(): void
     {
-        $response = $this->get('/test/contact');
+        $response = $this->get(route('contact.index'));
         $response->assertStatus(200);
     }
 
-    public function test_contact_id(): void
+    public function test_route_contact_show(): void
     {
-        $response = $this->get('/test/contact/' . Contact::all()->first()->id);
+        $response = $this->get(route('contact.show', Contact::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_credit(): void
+    public function test_route_credit_note_index(): void
     {
-        $response = $this->get('/test/credit-note');
+        $response = $this->get(route('credit-note.index'));
         $response->assertStatus(200);
     }
 
-    public function test_credit_id(): void
+    public function test_route_credit_note_show(): void
     {
-        $response = $this->get('/test/credit-note/' . CreditNote::all()->first()->id);
+        $response = $this->get(route('credit-note.show', CreditNote::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_deal(): void
+    public function test_route_estimate_index(): void
     {
-        $response = $this->get('/test/deal');
+        $response = $this->get(route('estimate.index'));
         $response->assertStatus(200);
     }
 
-    public function test_deal_id(): void
+    public function test_route_estimate_show(): void
     {
-        $response = $this->get('/test/deal/' . Deal::all()->first()->id);
+        $response = $this->get(route('estimate.show', Estimate::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_estimate(): void
+    public function test_route_invoice_index(): void
     {
-        $response = $this->get('/test/estimate');
+        $response = $this->get(route('invoice.index'));
         $response->assertStatus(200);
     }
 
-    public function test_estimate_id(): void
+    public function test_route_invoice_show(): void
     {
-        $response = $this->get('/test/estimate/' . Estimate::all()->first()->id);
+        $response = $this->get(route('invoice.show', Invoice::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_invoice(): void
+    public function test_route_lead_index(): void
     {
-        $response = $this->get('/test/invoice');
+        $response = $this->get(route('lead.index'));
         $response->assertStatus(200);
     }
 
-    public function test_invoice_id(): void
+    public function test_route_lead_show(): void
     {
-        $response = $this->get('/test/invoice/' . Invoice::all()->first()->id);
+        $response = $this->get(route('lead.show', Lead::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_lead(): void
+    public function test_route_deal_index(): void
     {
-        $response = $this->get('/test/lead');
+        $response = $this->get(route('deal.index'));
         $response->assertStatus(200);
     }
 
-    public function test_lead_id(): void
+    public function test_route_deal_show(): void
     {
-        $response = $this->get('/test/lead/' . Lead::all()->first()->id);
+        $response = $this->get(route('deal.show', Deal::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_project(): void
+    public function test_route_received_invoice_index(): void
     {
-        $response = $this->get('/test/project');
+        $response = $this->get(route('received-invoice.index'));
         $response->assertStatus(200);
     }
 
-    public function test_project_id(): void
+    public function test_route_received_invoice_show(): void
     {
-        $response = $this->get('/test/project/' . Project::all()->first()->id);
+        $response = $this->get(route('received-invoice.show', ReceivedInvoice::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_received(): void
+    public function test_route_project_index(): void
     {
-        $response = $this->get('/test/received-invoice');
+        $response = $this->get(route('project.index'));
         $response->assertStatus(200);
     }
 
-    public function test_received_id(): void
+    public function test_route_project_show(): void
     {
-        $response = $this->get('/test/received-invoice/' . ReceivedInvoice::all()->first()->id);
+        $response = $this->get(route('project.show', Project::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_task(): void
+    public function test_route_task_index(): void
     {
-        $response = $this->get('/test/task');
+        $response = $this->get(route('task.index'));
         $response->assertStatus(200);
     }
 
-    public function test_task_id(): void
+    public function test_route_task_show(): void
     {
-        $response = $this->get('/test/task/' . Task::all()->first()->id);
+        $response = $this->get(route('task.show', Task::all()->first()->id));
         $response->assertStatus(200);
     }
 
-    public function test_user(): void
+    public function test_route_user_index(): void
     {
-        $response = $this->get('/test/user');
+        $response = $this->get(route('user.index'));
         $response->assertStatus(200);
     }
 
-    public function test_user_id(): void
+    public function test_route_user_show(): void
     {
-        $response = $this->get('/test/user/' . User::all()->first()->id);
+        $response = $this->get(route('user.show', user::all()->first()->id));
         $response->assertStatus(200);
     }
 }

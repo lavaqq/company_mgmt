@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('issue_date');
             $table->enum('status', [
                 'creation',
-                'sended'
+                'sended',
             ]);
             $table->foreignId('attachment_path')->nullable();
             $table->softDeletes();

@@ -5,8 +5,6 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Company;
-use App\Models\CompanyAddress;
-use App\Models\CompanyInformation;
 use App\Models\CreditNote;
 use App\Models\Deal;
 use App\Models\Estimate;

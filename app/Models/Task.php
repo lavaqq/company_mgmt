@@ -28,7 +28,7 @@ class Task extends Model
         'estimated_duration',
         'schedule_start',
         'schedule_end',
-        'category'
+        'category',
     ];
 
     /**
@@ -46,7 +46,6 @@ class Task extends Model
     {
         return $this->hasMany(TaskAttachment::class);
     }
-
 
     /**
      * Get the project that owns the task.
