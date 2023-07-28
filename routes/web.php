@@ -1,18 +1,16 @@
 <?php
 
-use App\Http\Controllers\{
-    CompanyController,
-    ContactController,
-    CreditNoteController,
-    EstimateController,
-    InvoiceController,
-    LeadController,
-    DealController,
-    ReceivedInvoiceController,
-    ProjectController,
-    TaskController,
-    UserController
-};
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CreditNoteController;
+use App\Http\Controllers\DealController;
+use App\Http\Controllers\EstimateController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReceivedInvoiceController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

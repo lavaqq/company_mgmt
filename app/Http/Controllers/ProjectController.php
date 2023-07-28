@@ -13,7 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         return Project::with([
-            'tasks'
+            'tasks',
         ])->get();
     }
 
@@ -39,7 +39,7 @@ class ProjectController extends Controller
     public function show(string $id)
     {
         return Project::with([
-            'tasks'
+            'tasks',
         ])->find($id);
     }
 

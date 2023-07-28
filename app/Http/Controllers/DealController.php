@@ -13,7 +13,7 @@ class DealController extends Controller
     public function index()
     {
         return Deal::with([
-            'lead'
+            'lead',
         ])->get();
     }
 
@@ -39,7 +39,7 @@ class DealController extends Controller
     public function show(string $id)
     {
         return Deal::with([
-            'lead'
+            'lead',
         ])->find($id);
     }
 

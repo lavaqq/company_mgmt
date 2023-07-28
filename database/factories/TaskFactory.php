@@ -24,8 +24,8 @@ class TaskFactory extends Factory
                 'stuck',
                 'working_on_it',
                 'in_progress',
-                null
-            ])
+                null,
+            ]),
         ];
     }
 }

@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         return User::with([
-            'tasks'
+            'tasks',
         ])->get();
     }
 
@@ -39,7 +39,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         return User::with([
-            'tasks'
+            'tasks',
         ])->find($id);
     }
 

@@ -17,13 +17,13 @@ class CreditNoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'reference' => 'CN-' . fake()->randomNumber(4, true),
+            'reference' => 'CN-'.fake()->randomNumber(4, true),
             'tax_rate' => fake()->randomFloat(1, 0, 25),
             'issue_date' => fake()->dateTimeThisYear(),
             'status' => fake()->randomElement([
                 'creation',
-                'sended'
-            ])
+                'sended',
+            ]),
         ];
     }
 }

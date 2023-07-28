@@ -13,7 +13,7 @@ class ReceivedInvoiceController extends Controller
     public function index()
     {
         return ReceivedInvoice::with([
-            'company'
+            'company',
         ])->get();
     }
 
@@ -39,7 +39,7 @@ class ReceivedInvoiceController extends Controller
     public function show(string $id)
     {
         return ReceivedInvoice::with([
-            'company'
+            'company',
         ])->find($id);
     }
 

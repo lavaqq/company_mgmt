@@ -16,7 +16,7 @@ class InvoiceController extends Controller
             'company',
             'items',
             'discounts',
-            'creditNote'
+            'creditNote',
         ])->get();
     }
 
@@ -45,7 +45,7 @@ class InvoiceController extends Controller
             'company',
             'items',
             'discounts',
-            'creditNote'
+            'creditNote',
         ])->find($id);
     }
 
