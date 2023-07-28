@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\CreditNote;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class CreditNoteController extends Controller
@@ -45,6 +48,18 @@ class CreditNoteController extends Controller
             'items',
             'discounts',
         ])->find($id);
+    }
+
+    /**
+     * Display the pdf of the specified resource.
+     */
+    public function showPDF(CreditNote $record)
+    {
+        if ($record->attachment_path) {
+            return Response::file(public_path(Storage::url($record->attachment_path)));
+        }
+        $pdf = Pdf::loadView('pdf.credit-note', ['data' => $record]);
+        return $pdf->stream($record->reference . ' (' . $record->company->name . ')' . '.pdf');
     }
 
     /**
