@@ -447,6 +447,9 @@
 
         <section class="estimate-signatures">
             <p class="estimate-signatures__provider text uppercase">SIGNATURE DU PRESTATAIRE</p>
+            @if ($date->presigned)
+                TODO: add signature
+            @endif
             <p class="estimate-signatures__client text uppercase">DATE ET SIGNATURE DU CLIENT</p>
         </section>
 
