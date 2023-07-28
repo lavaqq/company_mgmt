@@ -6,6 +6,7 @@ setup:
 	npm i
 	npm run build
 	php artisan key:gen
+	php artisan storage:link
 	php artisan migrate --seed --force
 	php artisan user:create --dev
 
