@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estimate;
+use App\Models\Deal;
 use Illuminate\Http\Request;
 
-class EstimateController extends Controller
+class DealController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Estimate::with([
-            'company',
-            'items',
-            'discounts',
+        return Deal::with([
+            'lead'
         ])->get();
     }
 
@@ -40,10 +38,8 @@ class EstimateController extends Controller
      */
     public function show(string $id)
     {
-        return Estimate::with([
-            'company',
-            'items',
-            'discounts',
+        return Deal::with([
+            'lead'
         ])->find($id);
     }
 

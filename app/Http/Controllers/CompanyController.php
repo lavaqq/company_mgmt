@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estimate;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class EstimateController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Estimate::with([
-            'company',
-            'items',
-            'discounts',
+        return Company::with([
+            'address',
+            'information',
+            'contacts',
+            'leads',
+            'deals',
+            'estimates',
+            'invoices',
+            'creditNotes',
+            'receivedInvoices',
         ])->get();
     }
 
@@ -40,10 +46,16 @@ class EstimateController extends Controller
      */
     public function show(string $id)
     {
-        return Estimate::with([
-            'company',
-            'items',
-            'discounts',
+        return Company::with([
+            'address',
+            'information',
+            'contacts',
+            'leads',
+            'deals',
+            'estimates',
+            'invoices',
+            'creditNotes',
+            'receivedInvoices',
         ])->find($id);
     }
 
