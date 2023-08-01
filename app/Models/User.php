@@ -13,6 +13,7 @@ use Filament\Panel;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
 {
@@ -69,7 +70,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
 
     public function getFilamentAvatarUrl(): ?string
     {
-        return $this->avatar_path;
+        return Storage::url($this->avatar_path);
     }
 
     public function getFilamentName(): string
