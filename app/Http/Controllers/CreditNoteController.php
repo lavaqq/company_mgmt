@@ -59,7 +59,7 @@ class CreditNoteController extends Controller
             return Response::file(public_path(Storage::url($record->attachment_path)));
         }
         $pdf = Pdf::loadView('pdf.credit-note', ['data' => $record]);
-        return $pdf->stream($record->reference . ' (' . $record->company->name . ')' . '.pdf');
+        return $pdf->stream($record->reference . ' (' . $record->invoice->company->name . ')' . '.pdf');
     }
 
     /**
