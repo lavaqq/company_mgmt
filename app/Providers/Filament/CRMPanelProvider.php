@@ -6,7 +6,6 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
-use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -19,29 +18,26 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class HomePanelProvider extends PanelProvider
+class CRMPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('home')
-            ->path('')
-            ->login()
-            ->profile()
+            ->id('crm')
+            ->path('crm')
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->discoverResources(in: app_path('Filament/CRM/Resources'), for: 'App\\Filament\\CRM\\Resources')
+            ->discoverPages(in: app_path('Filament/CRM/Pages'), for: 'App\\Filament\\CRM\\Pages')
             ->pages([
-                Dashboard::class
+                Pages\Dashboard::class,
             ])
-            ->navigation(false)
+            ->discoverWidgets(in: app_path('Filament/CRM/Widgets'), for: 'App\\Filament\\CRM\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
+                Widgets\FilamentInfoWidget::class,
             ])
-            ->discoverResources(in: app_path('Filament/Resources/Home'), for: 'App\\Filament\\Resources\\Home')
-            ->discoverPages(in: app_path('Filament/Pages/Home'), for: 'App\\Filament\\Pages\\Home')
-            ->discoverWidgets(in: app_path('Filament/Widgets/Home'), for: 'App\\Filament\\Widgets\\Home')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
