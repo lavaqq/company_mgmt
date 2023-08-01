@@ -24,7 +24,7 @@ class Estimate extends Model
         'deadline',
         'prepayment',
         'status',
-        'presigned'
+        'presigned',
     ];
 
     /**

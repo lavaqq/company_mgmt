@@ -3,17 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasName;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
-use Filament\Models\Contracts\HasAvatar;
-use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
 {
@@ -65,6 +65,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasName
         if (App::environment('local')) {
             return true;
         }
+
         return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
     }
 
