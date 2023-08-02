@@ -16,7 +16,7 @@ class CustomFilamentAuthenticate extends Middleware
     {
         $guard = Filament::auth();
 
-        if (!$guard->check()) {
+        if (! $guard->check()) {
             $this->unauthenticated($request, $guards);
 
             return;
@@ -31,7 +31,7 @@ class CustomFilamentAuthenticate extends Middleware
 
         abort_if(
             $user instanceof FilamentUser ?
-                (!$user->canAccessPanel($panel)) : (config('app.env') !== 'local'),
+                (! $user->canAccessPanel($panel)) : (config('app.env') !== 'local'),
             403,
         );
     }
