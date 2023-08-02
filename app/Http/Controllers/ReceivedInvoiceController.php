@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ReceivedInvoice;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ReceivedInvoiceController extends Controller
 {

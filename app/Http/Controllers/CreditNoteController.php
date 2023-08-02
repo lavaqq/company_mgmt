@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\CreditNote;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class CreditNoteController extends Controller
 {
@@ -59,7 +59,8 @@ class CreditNoteController extends Controller
             return Response::file(public_path(Storage::url($record->attachment_path)));
         }
         $pdf = Pdf::loadView('pdf.credit-note', ['data' => $record]);
-        return $pdf->stream($record->reference . ' (' . $record->company->name . ')' . '.pdf');
+
+        return $pdf->stream($record->reference.' ('.$record->invoice->company->name.')'.'.pdf');
     }
 
     /**

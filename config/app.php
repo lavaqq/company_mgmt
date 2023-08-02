@@ -167,6 +167,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\Filament\HubPanelProvider::class,
+        App\Providers\Filament\CRMPanelProvider::class,
+        App\Providers\Filament\PMPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 

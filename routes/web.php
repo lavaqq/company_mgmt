@@ -39,7 +39,6 @@ Route::prefix('test')->group(function () {
     Route::resource('user', UserController::class)->only(['index', 'show']);
 });
 
-
 Route::middleware([Authenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'showPDF'])->name('invoice.pdf');
     Route::get('estimates/{record}/pdf', [EstimateController::class, 'showPDF'])->name('estimate.pdf');
