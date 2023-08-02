@@ -7,7 +7,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Database\Eloquent\Model;
 
-class Authenticate extends Middleware
+class CustomFilamentAuthenticate extends Middleware
 {
     /**
      * @param  array<string>  $guards
