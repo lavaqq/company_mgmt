@@ -67,4 +67,9 @@ class User extends Authenticatable implements FilamentUser, HasName, HasAvatar
         }
         return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
     }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return Storage::url($this->avatar_path);
+    }
 }
