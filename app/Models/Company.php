@@ -21,6 +21,15 @@ class Company extends Model
      */
     protected $fillable = [
         'name',
+        'legal_form',
+        'vat_number',
+        'vat_country_code',
+        'street',
+        'number',
+        'box',
+        'city',
+        'zipcode',
+        'country'
     ];
 
     /**
