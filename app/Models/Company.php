@@ -24,22 +24,6 @@ class Company extends Model
     ];
 
     /**
-     * Get the address associated with the company.
-     */
-    public function address(): HasOne
-    {
-        return $this->hasOne(CompanyAddress::class);
-    }
-
-    /**
-     * Get the information associated with the company.
-     */
-    public function information(): HasOne
-    {
-        return $this->hasOne(CompanyInformation::class);
-    }
-
-    /**
      * The contacts that belong to the company.
      */
     public function contacts(): BelongsToMany
