@@ -25,8 +25,6 @@ class DatabaseSeeder extends Seeder
     {
         Company::factory()
             ->count(20)
-            ->hasAddress()
-            ->hasInformation()
             ->hasContacts(5)
             ->has(
                 Estimate::factory()

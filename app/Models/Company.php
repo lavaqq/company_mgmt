@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\Country;
+use App\Enums\CountryCode;
+use App\Enums\LegalForm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
@@ -21,23 +23,27 @@ class Company extends Model
      */
     protected $fillable = [
         'name',
+        'legal_form',
+        'vat_number',
+        'vat_country_code',
+        'street',
+        'number',
+        'box',
+        'city',
+        'zipcode',
+        'country',
     ];
 
     /**
-     * Get the address associated with the company.
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
      */
-    public function address(): HasOne
-    {
-        return $this->hasOne(CompanyAddress::class);
-    }
-
-    /**
-     * Get the information associated with the company.
-     */
-    public function information(): HasOne
-    {
-        return $this->hasOne(CompanyInformation::class);
-    }
+    protected $casts = [
+        'legal_form' => LegalForm::class,
+        'vat_country_code' => CountryCode::class,
+        'country' => Country::class,
+    ];
 
     /**
      * The contacts that belong to the company.

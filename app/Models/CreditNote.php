@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CreditNoteStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,15 @@ class CreditNote extends Model
         'tax_rate',
         'issue_date',
         'status',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'status' => CreditNoteStatus::class,
     ];
 
     /**

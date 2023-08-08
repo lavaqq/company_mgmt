@@ -13,8 +13,6 @@ class CompanyController extends Controller
     public function index()
     {
         return Company::with([
-            'address',
-            'information',
             'contacts',
             'leads',
             'deals',
@@ -47,8 +45,6 @@ class CompanyController extends Controller
     public function show(string $id)
     {
         return Company::with([
-            'address',
-            'information',
             'contacts',
             'leads',
             'deals',

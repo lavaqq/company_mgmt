@@ -11,7 +11,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReceivedInvoiceController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\CustomFilamentAuthenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +39,7 @@ Route::prefix('test')->group(function () {
     Route::resource('user', UserController::class)->only(['index', 'show']);
 });
 
-Route::middleware([Authenticate::class])->group(function () {
+Route::middleware([CustomFilamentAuthenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'showPDF'])->name('invoice.pdf');
     Route::get('estimates/{record}/pdf', [EstimateController::class, 'showPDF'])->name('estimate.pdf');
     Route::get('received-invoices/{record}/pdf', [ReceivedInvoiceController::class, 'showPDF'])->name('received-invoice.pdf');

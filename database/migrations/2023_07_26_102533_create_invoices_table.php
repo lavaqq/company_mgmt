@@ -19,12 +19,7 @@ return new class extends Migration
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
-            $table->enum('status', [
-                'creation',
-                'sended',
-                'paid',
-                'cancelled',
-            ]);
+            $table->string('status')->default('creation');
             $table->foreignId('attachment_path')->nullable();
             $table->boolean('in_accounting_software')->default(false);
             $table->softDeletes();

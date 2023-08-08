@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\LeadOrigin;
+use App\Enums\LeadStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,6 +25,16 @@ class Lead extends Model
         'start_date',
         'origin',
         'note',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'status' => LeadStatus::class,
+        'origin' => LeadOrigin::class,
     ];
 
     /**

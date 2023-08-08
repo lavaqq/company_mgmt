@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\DealStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,6 +25,15 @@ class Deal extends Model
         'start_date',
         'signature_date',
         'note',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'status' => DealStatus::class,
     ];
 
     /**
