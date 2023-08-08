@@ -19,7 +19,6 @@ class CreateCompany extends CreateRecord
     protected function getRedirectUrl(): string
     {
         $resource = static::getResource();
-
         return $resource::getUrl('index');
     }
 }
