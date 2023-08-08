@@ -46,7 +46,7 @@ class CompanyResource extends Resource
                     ->schema([
                         TextEntry::make('name'),
                         TextEntry::make('contacts')
-                            ->formatStateUsing(fn (Model $state): string => $state->first_name.' '.$state->last_name)
+                            ->formatStateUsing(fn (Model $state): string => $state->first_name . ' ' . $state->last_name)
                             ->bulleted(),
                     ]),
                 InfolistsFieldset::make('Informations de facturation et contractuel')
@@ -139,12 +139,15 @@ class CompanyResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->label('Dénomination sociale')
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->searchable(),
                 TextColumn::make('legal_form')
                     ->label('Forme légale')
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->searchable(),
                 TextColumn::make('vat_number')
                     ->label('Numéro de TVA')
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -172,6 +175,8 @@ class CompanyResource extends Resource
                     ->label(''),
                 Tables\Actions\EditAction::make()
                     ->label(''),
+                Tables\Actions\DeleteAction::make()
+                    ->label(''),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -185,9 +190,7 @@ class CompanyResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
