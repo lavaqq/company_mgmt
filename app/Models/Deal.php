@@ -36,7 +36,6 @@ class Deal extends Model
         'status' => DealStatus::class,
     ];
 
-
     /**
      * Get the lead that owns the deal.
      */

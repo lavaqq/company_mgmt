@@ -6,10 +6,9 @@ use Filament\Support\Contracts\HasLabel;
 
 enum LeadOrigin: string implements HasLabel
 {
-
-    case UNKNOWN = "unknown";
-    case INBOUND = "inbound";
-    case OUTBOUND = "outbound";
+    case UNKNOWN = 'unknown';
+    case INBOUND = 'inbound';
+    case OUTBOUND = 'outbound';
 
     public function getLabel(): ?string
     {

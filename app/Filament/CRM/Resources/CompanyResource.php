@@ -2,24 +2,15 @@
 
 namespace App\Filament\CRM\Resources;
 
-use App\Enums\CompanyLegalFormEnum;
 use App\Enums\Country;
 use App\Enums\CountryCode;
 use App\Enums\LegalForm;
 use App\Filament\CRM\Resources\CompanyResource\Pages;
-use App\Filament\CRM\Resources\CompanyResource\RelationManagers;
 use App\Models\Company;
-use App\Models\CompanyAddress;
-use App\Models\Contact;
-use Filament\Forms;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Infolists\Components\Fieldset as InfolistsFieldset;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -30,7 +21,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\HtmlString;
 
 class CompanyResource extends Resource
 {
@@ -56,8 +46,8 @@ class CompanyResource extends Resource
                     ->schema([
                         TextEntry::make('name'),
                         TextEntry::make('contacts')
-                            ->formatStateUsing(fn (Model $state): string => $state->first_name . ' ' . $state->last_name)
-                            ->bulleted()
+                            ->formatStateUsing(fn (Model $state): string => $state->first_name.' '.$state->last_name)
+                            ->bulleted(),
                     ]),
                 InfolistsFieldset::make('Informations de facturation et contractuel')
                     ->schema([
@@ -82,8 +72,8 @@ class CompanyResource extends Resource
                         TextEntry::make('box')
                             ->label('Boîte'),
                         TextEntry::make('country')
-                            ->label('Pays')
-                    ])
+                            ->label('Pays'),
+                    ]),
             ]);
     }
 
@@ -122,7 +112,7 @@ class CompanyResource extends Resource
                         Select::make('signatory')
                             ->label('Signataire')
                             ->native(false)
-                            ->placeholder("WIP (Soon)")
+                            ->placeholder('WIP (Soon)')
                             ->preload(),
                         TextInput::make('street')
                             ->label('Rue'),
@@ -139,7 +129,7 @@ class CompanyResource extends Resource
                         Select::make('country')
                             ->label('Pays')
                             ->options(Country::class)->searchable(),
-                    ])->columns(2)
+                    ])->columns(2),
             ]);
     }
 

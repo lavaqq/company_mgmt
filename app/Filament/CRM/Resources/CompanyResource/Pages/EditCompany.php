@@ -12,7 +12,7 @@ class EditCompany extends EditRecord
 
     public function getHeading(): string
     {
-        return "Modifier l'entreprise : " . $this->record->name;
+        return "Modifier l'entreprise : ".$this->record->name;
     }
 
     protected function getHeaderActions(): array

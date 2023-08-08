@@ -9,7 +9,6 @@ enum CreditNoteStatus: string implements HasLabel
     case CREATION = 'creation';
     case SENDED = 'sended';
 
-
     public function getLabel(): ?string
     {
         return match ($this) {

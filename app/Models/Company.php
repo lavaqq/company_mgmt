@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\CompanyLegalFormEnum;
 use App\Enums\Country;
 use App\Enums\CountryCode;
 use App\Enums\LegalForm;
@@ -11,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
@@ -33,7 +31,7 @@ class Company extends Model
         'box',
         'city',
         'zipcode',
-        'country'
+        'country',
     ];
 
     /**
@@ -44,7 +42,7 @@ class Company extends Model
     protected $casts = [
         'legal_form' => LegalForm::class,
         'vat_country_code' => CountryCode::class,
-        'country' => Country::class
+        'country' => Country::class,
     ];
 
     /**
@@ -54,7 +52,6 @@ class Company extends Model
     {
         return $this->belongsToMany(Contact::class);
     }
-
 
     /**
      * Get the leads for the company.

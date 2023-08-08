@@ -3,7 +3,6 @@
 namespace App\Filament\CRM\Resources\CompanyResource\Pages;
 
 use App\Filament\CRM\Resources\CompanyResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateCompany extends CreateRecord
@@ -20,6 +19,7 @@ class CreateCompany extends CreateRecord
     protected function getRedirectUrl(): string
     {
         $resource = static::getResource();
+
         return $resource::getUrl('index');
     }
 }

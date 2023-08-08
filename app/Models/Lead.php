@@ -34,7 +34,7 @@ class Lead extends Model
      */
     protected $casts = [
         'status' => LeadStatus::class,
-        'origin' => LeadOrigin::class
+        'origin' => LeadOrigin::class,
     ];
 
     /**

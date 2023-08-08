@@ -6,7 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum LeadStatus: string implements HasLabel
 {
-
     case NEW = 'new';
     case WAITING_FOR_CONTACT = 'waiting_for_contact';
     case CONTACTED = 'contacted';

@@ -6,7 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum TaskStatus: string implements HasLabel
 {
-
     case DONE = 'done';
     case STUCK = 'stuck';
     case WORKING_ON_IT = 'working_on_it';

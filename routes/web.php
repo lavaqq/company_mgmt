@@ -11,7 +11,6 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReceivedInvoiceController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CustomFilamentAuthenticate;
 use Illuminate\Support\Facades\Route;
 
