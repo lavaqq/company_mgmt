@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('reference');
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
-            $table->enum('status', [
-                'creation',
-                'sended',
-            ]);
+            $table->string('status')->default('creation');
             $table->foreignId('attachment_path')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -16,12 +16,7 @@ return new class extends Migration
             $table->foreignId('project_id')->nullable();
             $table->string('title');
             $table->longText('note')->nullable();
-            $table->enum('status', [
-                'done',
-                'stuck',
-                'working_on_it',
-                'in_progress',
-            ])->nullable();
+            $table->string('status')->nullable();
             $table->timestamp('duration_tmp_start')->nullable();
             $table->boolean('is_running')->default(false);
             $table->integer('duration')->nullable();
