@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\CompanyLegalFormEnum;
+use App\Enums\Country;
+use App\Enums\CountryCode;
+use App\Enums\LegalForm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -33,12 +37,24 @@ class Company extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'legal_form' => LegalForm::class,
+        'vat_country_code' => CountryCode::class,
+        'country' => Country::class
+    ];
+
+    /**
      * The contacts that belong to the company.
      */
     public function contacts(): BelongsToMany
     {
         return $this->belongsToMany(Contact::class);
     }
+
 
     /**
      * Get the leads for the company.
