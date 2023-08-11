@@ -52,21 +52,13 @@ class User extends Authenticatable implements FilamentUser, HasName, HasAvatar
         'password' => 'hashed',
     ];
 
-    /**
-     * The users that belong to the task.
-     */
-    public function tasks(): BelongsToMany
-    {
-        return $this->belongsToMany(Task::class);
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
         if (App::environment('local')) {
             return true;
         }
 
-        return str_ends_with($this->email, '@'.env('DOMAIN_CAN_ACCESS_FILAMENT'));
+        return str_ends_with($this->email, '@' . env('DOMAIN_CAN_ACCESS_FILAMENT'));
     }
 
     public function getFilamentAvatarUrl(): ?string

@@ -1,17 +1,7 @@
 <?php
 
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CreditNoteController;
-use App\Http\Controllers\DealController;
-use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\LeadController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ReceivedInvoiceController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\CustomFilamentAuthenticate;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,23 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('test')->group(function () {
-    Route::resource('company', CompanyController::class)->only(['index', 'show']);
-    Route::resource('contact', ContactController::class)->only(['index', 'show']);
-    Route::resource('credit-note', CreditNoteController::class)->only(['index', 'show']);
-    Route::resource('estimate', EstimateController::class)->only(['index', 'show']);
-    Route::resource('invoice', InvoiceController::class)->only(['index', 'show']);
-    Route::resource('lead', LeadController::class)->only(['index', 'show']);
-    Route::resource('deal', DealController::class)->only(['index', 'show']);
-    Route::resource('received-invoice', ReceivedInvoiceController::class)->only(['index', 'show']);
-    Route::resource('project', ProjectController::class)->only(['index', 'show']);
-    Route::resource('task', TaskController::class)->only(['index', 'show']);
-    Route::resource('user', UserController::class)->only(['index', 'show']);
-});
-
-Route::middleware([CustomFilamentAuthenticate::class])->group(function () {
+Route::middleware([Authenticate::class])->group(function () {
     Route::get('invoices/{record}/pdf', [InvoiceController::class, 'showPDF'])->name('invoice.pdf');
-    Route::get('estimates/{record}/pdf', [EstimateController::class, 'showPDF'])->name('estimate.pdf');
-    Route::get('received-invoices/{record}/pdf', [ReceivedInvoiceController::class, 'showPDF'])->name('received-invoice.pdf');
-    Route::get('credit-notes/{record}/pdf', [CreditNoteController::class, 'showPDF'])->name('credit-note.pdf');
 });

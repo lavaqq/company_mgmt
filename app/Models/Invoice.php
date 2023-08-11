@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\Country;
+use App\Enums\CountryCode;
 use App\Enums\InvoiceStatus;
+use App\Enums\LegalForm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +23,16 @@ class Invoice extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
+        'legal_form',
+        'vat_number',
+        'vat_country_code',
+        'street',
+        'number',
+        'box',
+        'city',
+        'zipcode',
+        'country',
         'reference',
         'vcs',
         'tax_rate',
@@ -35,16 +48,10 @@ class Invoice extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'status' => InvoiceStatus::class,
+        'legal_form' => LegalForm::class,
+        'vat_country_code' => CountryCode::class,
+        'country' => Country::class,
     ];
-
-    /**
-     * Get the company that owns the invoice.
-     */
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
 
     /**
      * Get the items for the invoice.
@@ -60,14 +67,6 @@ class Invoice extends Model
     public function discounts(): HasMany
     {
         return $this->hasMany(InvoiceDiscount::class);
-    }
-
-    /**
-     * Get the credit note associated with the Invoice.
-     */
-    public function creditNote(): HasOne
-    {
-        return $this->hasOne(CreditNote::class);
     }
 
     public function getTotalExcludingTax(): float
