@@ -12,12 +12,13 @@ class EditInvoice extends EditRecord
 
     public function getHeading(): string
     {
-        return "Modifier la facture : " . $this->record->reference;
+        return 'Modifier la facture : '.$this->record->reference;
     }
 
     protected function getRedirectUrl(): string
     {
         $resource = static::getResource();
+
         return $resource::getUrl('index');
     }
 

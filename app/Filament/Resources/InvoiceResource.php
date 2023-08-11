@@ -6,16 +6,12 @@ use App\Enums\Country;
 use App\Enums\CountryCode;
 use App\Enums\LegalForm;
 use App\Filament\Resources\InvoiceResource\Pages;
-use App\Filament\Resources\InvoiceResource\RelationManagers;
-use Filament\Forms\Components\Repeater;
 use App\Models\Invoice;
 use Carbon\Carbon;
-use Closure;
-use Filament\Tables\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
@@ -25,6 +21,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,11 +48,11 @@ class InvoiceResource extends Resource
     {
         $reference = str_pad(38 + 1, 4, '0', STR_PAD_LEFT);
         $date = Carbon::parse($dateValue)->format('dmy');
-        $sequence = $reference . $date;
+        $sequence = $reference.$date;
         $verificationNumber = str_pad((intval($sequence) % 97 ?: 97), 2, '0', STR_PAD_LEFT);
-        $vcs = $sequence . $verificationNumber;
+        $vcs = $sequence.$verificationNumber;
 
-        return '+++ ' . substr($vcs, 0, 3) . ' / ' . substr($vcs, 3, 4) . ' / ' . substr($vcs, 7) . ' +++';
+        return '+++ '.substr($vcs, 0, 3).' / '.substr($vcs, 3, 4).' / '.substr($vcs, 7).' +++';
     }
 
     public static function form(Form $form): Form
@@ -98,7 +95,7 @@ class InvoiceResource extends Resource
                     ->schema([
                         TextInput::make('reference')
                             ->label('Numéro de facture')
-                            ->default(fn (): string => 'LS-' . str_pad(38 + 1, 4, '0', STR_PAD_LEFT))
+                            ->default(fn (): string => 'LS-'.str_pad(38 + 1, 4, '0', STR_PAD_LEFT))
                             // ->disabled()
                             ->dehydrated()
                             ->required(),

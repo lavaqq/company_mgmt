@@ -52,7 +52,7 @@ class InvoiceController extends Controller
         }
         $pdf = Pdf::loadView('pdf.invoice', ['data' => $record]);
 
-        return $pdf->stream($record->reference . ' (' . $record->name . ')' . '.pdf');
+        return $pdf->stream($record->reference.' ('.$record->name.')'.'.pdf');
     }
 
     /**
