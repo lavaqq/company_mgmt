@@ -8,7 +8,6 @@ use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\App;
@@ -51,14 +50,6 @@ class User extends Authenticatable implements FilamentUser, HasName, HasAvatar
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    /**
-     * The users that belong to the task.
-     */
-    public function tasks(): BelongsToMany
-    {
-        return $this->belongsToMany(Task::class);
-    }
 
     public function canAccessPanel(Panel $panel): bool
     {

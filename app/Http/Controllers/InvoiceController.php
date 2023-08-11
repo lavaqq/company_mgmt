@@ -15,12 +15,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return Invoice::with([
-            'company',
-            'items',
-            'discounts',
-            'creditNote',
-        ])->get();
+        //
     }
 
     /**
@@ -44,12 +39,7 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        return Invoice::with([
-            'company',
-            'items',
-            'discounts',
-            'creditNote',
-        ])->find($id);
+        //
     }
 
     /**
@@ -62,7 +52,7 @@ class InvoiceController extends Controller
         }
         $pdf = Pdf::loadView('pdf.invoice', ['data' => $record]);
 
-        return $pdf->stream($record->reference.' ('.$record->company->name.')'.'.pdf');
+        return $pdf->stream($record->reference.' ('.$record->name.')'.'.pdf');
     }
 
     /**

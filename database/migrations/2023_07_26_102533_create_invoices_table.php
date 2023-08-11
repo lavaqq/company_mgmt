@@ -13,15 +13,22 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id');
+            $table->string('name');
+            $table->string('legal_form')->nullable();
+            $table->string('vat_number')->nullable(); // enum
+            $table->string('vat_country_code')->nullable(); // enum
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('box')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('country')->nullable(); // enum
             $table->string('reference');
             $table->string('vcs')->nullable();
             $table->decimal('tax_rate', 10, 2);
             $table->date('issue_date');
             $table->date('due_date');
-            $table->string('status')->default('creation');
             $table->foreignId('attachment_path')->nullable();
-            $table->boolean('in_accounting_software')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

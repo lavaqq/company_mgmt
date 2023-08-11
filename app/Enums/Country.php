@@ -6,33 +6,33 @@ use Filament\Support\Contracts\HasLabel;
 
 enum Country: string implements HasLabel
 {
-    case GERMANY = 'germany';
-    case AUSTRIA = 'austria';
-    case BELGIUM = 'belgium';
-    case BULGARIA = 'bulgaria';
-    case CYPRUS = 'cyprus';
-    case CROATIA = 'croatia';
-    case DENMARK = 'denmark';
-    case SPAIN = 'spain';
-    case ESTONIA = 'estonia';
-    case FINLAND = 'finland';
+    case GERMANY = 'allemagne';
+    case AUSTRIA = 'autriche';
+    case BELGIUM = 'belgique';
+    case BULGARIA = 'bulgarie';
+    case CYPRUS = 'chypre';
+    case CROATIA = 'croatie';
+    case DENMARK = 'danemark';
+    case SPAIN = 'espagne';
+    case ESTONIA = 'estonie';
+    case FINLAND = 'finlande';
     case FRANCE = 'france';
-    case GREECE = 'greece';
-    case HUNGARY = 'hungary';
-    case IRELAND = 'ireland';
-    case ITALY = 'italy';
-    case LATVIA = 'latvia';
-    case LITHUANIA = 'lithuania';
+    case GREECE = 'grèce';
+    case HUNGARY = 'hongrie';
+    case IRELAND = 'irlande';
+    case ITALY = 'italie';
+    case LATVIA = 'lettonie';
+    case LITHUANIA = 'lituanie';
     case LUXEMBOURG = 'luxembourg';
-    case MALTA = 'malta';
-    case NETHERLANDS = 'netherlands';
-    case POLAND = 'poland';
+    case MALTA = 'malte';
+    case NETHERLANDS = 'pays-bas';
+    case POLAND = 'pologne';
     case PORTUGAL = 'portugal';
-    case ROMANIA = 'romania';
-    case SLOVAKIA = 'slovakia';
-    case SLOVENIA = 'slovenia';
-    case SWEDEN = 'sweden';
-    case CZECH_REPUBLIC = 'czech_republic';
+    case ROMANIA = 'roumanie';
+    case SLOVAKIA = 'slovaquie';
+    case SLOVENIA = 'slovénie';
+    case SWEDEN = 'suède';
+    case CZECH_REPUBLIC = 'tchéquie';
 
     public function getLabel(): ?string
     {
