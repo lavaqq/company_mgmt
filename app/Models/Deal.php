@@ -18,6 +18,8 @@ class Deal extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'lead_id',
+        'company_id',
         'title',
         'status',
         'deal_value',

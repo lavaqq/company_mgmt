@@ -25,9 +25,9 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $activeNavigationIcon = 'heroicon-s-users';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-user-group';
 
     protected static ?string $navigationLabel = 'Contacts';
 
@@ -86,8 +86,7 @@ class ContactResource extends Resource
                             ->multiple()
                             ->relationship(name: 'companies', titleAttribute: 'name')
                             ->preload()
-                            ->live()
-                            ->columnSpan(1),
+                            ->live(),
                     ])
             ]);
     }

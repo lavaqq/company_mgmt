@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Company::factory()
-            ->count(20)
-            ->hasContacts(5)
+            ->count(5)
+            ->hasContacts(2)
             ->has(
                 Estimate::factory()
                     ->hasItems(3)
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         Lead::factory()
-            ->count(100)
+            ->count(10)
             ->state(new Sequence(
                 fn (Sequence $sequence) => ['company_id' => Company::all()->random()],
             ))

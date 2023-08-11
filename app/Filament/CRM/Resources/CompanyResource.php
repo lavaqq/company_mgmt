@@ -93,8 +93,7 @@ class CompanyResource extends Resource
                             ->relationship(name: 'contacts', titleAttribute: 'first_name')
                             ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->first_name} {$record->last_name}")
                             ->preload()
-                            ->live()
-                            ->columnSpan(1),
+                            ->live(),
                     ])->columns(2),
                 Fieldset::make('Informations de facturation et contractuel')
                     ->schema([

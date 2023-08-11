@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('lead_id');
             $table->foreignId('company_id');
             $table->string('title');
-            $table->string('status')->default('new');
+            $table->string('status');
             $table->decimal('deal_value', 10, 2)->default(0);
             $table->decimal('actual_deal_value', 10, 2)->default(0);
             $table->date('start_date');
