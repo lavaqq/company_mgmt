@@ -24,7 +24,7 @@ enum LegalForm: string implements HasLabel
     case SRL = 'srl';
     case SARL = 'sarl';
     case SPRL = 'sprl';
-    case INDEPENDENT = 'independent';
+    case INDEPENDENT = 'independant';
 
     public function getLabel(): ?string
     {
