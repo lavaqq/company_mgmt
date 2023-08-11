@@ -14,7 +14,7 @@ new-db:
 	php artisan migrate:fresh --seed --force
 	php artisan user:create --dev
 
-	deploy:
+deploy:
 	git push
 	npm install
 	npm run build
